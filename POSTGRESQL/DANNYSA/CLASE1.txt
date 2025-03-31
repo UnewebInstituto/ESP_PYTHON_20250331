@@ -1,0 +1,28 @@
+-- CREACION DE BASE DE DATOS
+create database bd_ic_dannysa;
+--CREAR TABLA VIA CONSOLA
+create table contactos(
+  cedula varchar(15),
+  nombre varchar(80),
+  apellido varchar(80),
+  fechanac date,
+  telefono varchar(20),
+  correo varchar(60) 
+);
+--PARA BORRAR UNA TABLA
+drop table prueba
+--INGRESO DE REGISTROS
+INSERT INTO contactos(cedula, nombre, apellido, fechanac, telefono, correo)
+VALUES ('V15723465','ANA','VASQUEZ' ,'1960-08-15','+582129878043','va@gmail.com'),
+	('V9354121','YOLANDA','TORTOZA' ,'1970-08-25','+582129878093','yt@gmail.com');
+  --CONSULTA DE REGISTROS
+  --TODOS LOS CAMPOS Y REGISTROS DE LA TABLA
+  SELECT * FROM contactos;
+  SELECT cedula, correo FROM contactos;
+  SELECT cedula, correo FROM contactos WHERE nombre='ANA';
+  --ACTUALIZAR REGISTROS
+  UPDATE contactos SET nombre='SUSANA';
+
+  --ACTUALIZACION CONDICIONADA
+  UPDATE contactos SET nombre='SUSANA'
+  WHERE cedula='V9354121';

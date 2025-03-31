@@ -1,0 +1,710 @@
+danny.data1111@gmail.com;
+orlanyslemus@gmail.com;
+
+…or create a new repository on the command line
+
+echo "# ESP_PYTHON_20250331" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/UnewebInstituto/ESP_PYTHON_20250331.git
+git push -u origin main
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/UnewebInstituto/ESP_PYTHON_20250331.git
+git branch -M main
+git push -u origin main
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# help
+Está usando psql, la interfaz de línea de órdenes de PostgreSQL.
+Digite:  \copyright para ver los términos de distribución
+       \h para ayuda de órdenes SQL
+       \? para ayuda de órdenes psql
+       \g o punto y coma («;») para ejecutar la consulta
+       \q para salir
+postgres=# \h
+Ayuda disponible:
+  ABORT                            CREATE USER MAPPING
+  ALTER AGGREGATE                  CREATE VIEW
+  ALTER COLLATION                  DEALLOCATE
+  ALTER CONVERSION                 DECLARE
+  ALTER DATABASE                   DELETE
+  ALTER DEFAULT PRIVILEGES         DISCARD
+  ALTER DOMAIN                     DO
+  ALTER EVENT TRIGGER              DROP ACCESS METHOD
+  ALTER EXTENSION                  DROP AGGREGATE
+  ALTER FOREIGN DATA WRAPPER       DROP CAST
+  ALTER FOREIGN TABLE              DROP COLLATION
+  ALTER FUNCTION                   DROP CONVERSION
+  ALTER GROUP                      DROP DATABASE
+  ALTER INDEX                      DROP DOMAIN
+  ALTER LANGUAGE                   DROP EVENT TRIGGER
+  ALTER LARGE OBJECT               DROP EXTENSION
+  ALTER MATERIALIZED VIEW          DROP FOREIGN DATA WRAPPER
+  ALTER OPERATOR                   DROP FOREIGN TABLE
+  ALTER OPERATOR CLASS             DROP FUNCTION
+  ALTER OPERATOR FAMILY            DROP GROUP
+  ALTER POLICY                     DROP INDEX
+  ALTER PROCEDURE                  DROP LANGUAGE
+  ALTER PUBLICATION                DROP MATERIALIZED VIEW
+  ALTER ROLE                       DROP OPERATOR
+  ALTER ROUTINE                    DROP OPERATOR CLASS
+  ALTER RULE                       DROP OPERATOR FAMILY
+  ALTER SCHEMA                     DROP OWNED
+  ALTER SEQUENCE                   DROP POLICY
+  ALTER SERVER                     DROP PROCEDURE
+  ALTER STATISTICS                 DROP PUBLICATION
+  ALTER SUBSCRIPTION               DROP ROLE
+  ALTER SYSTEM                     DROP ROUTINE
+  ALTER TABLE                      DROP RULE
+  ALTER TABLESPACE                 DROP SCHEMA
+  ALTER TEXT SEARCH CONFIGURATION  DROP SEQUENCE
+  ALTER TEXT SEARCH DICTIONARY     DROP SERVER
+  ALTER TEXT SEARCH PARSER         DROP STATISTICS
+  ALTER TEXT SEARCH TEMPLATE       DROP SUBSCRIPTION
+  ALTER TRIGGER                    DROP TABLE
+  ALTER TYPE                       DROP TABLESPACE
+  ALTER USER                       DROP TEXT SEARCH CONFIGURATION
+  ALTER USER MAPPING               DROP TEXT SEARCH DICTIONARY
+  ALTER VIEW                       DROP TEXT SEARCH PARSER
+  ANALYZE                          DROP TEXT SEARCH TEMPLATE
+  BEGIN                            DROP TRANSFORM
+  CALL                             DROP TRIGGER
+  CHECKPOINT                       DROP TYPE
+  CLOSE                            DROP USER
+  CLUSTER                          DROP USER MAPPING
+  COMMENT                          DROP VIEW
+  COMMIT                           END
+  COMMIT PREPARED                  EXECUTE
+  COPY                             EXPLAIN
+  CREATE ACCESS METHOD             FETCH
+  CREATE AGGREGATE                 GRANT
+  CREATE CAST                      IMPORT FOREIGN SCHEMA
+  CREATE COLLATION                 INSERT
+  CREATE CONVERSION                LISTEN
+  CREATE DATABASE                  LOAD
+  CREATE DOMAIN                    LOCK
+  CREATE EVENT TRIGGER             MERGE
+  CREATE EXTENSION                 MOVE
+  CREATE FOREIGN DATA WRAPPER      NOTIFY
+  CREATE FOREIGN TABLE             PREPARE
+  CREATE FUNCTION                  PREPARE TRANSACTION
+  CREATE GROUP                     REASSIGN OWNED
+  CREATE INDEX                     REFRESH MATERIALIZED VIEW
+  CREATE LANGUAGE                  REINDEX
+  CREATE MATERIALIZED VIEW         RELEASE SAVEPOINT
+  CREATE OPERATOR                  RESET
+  CREATE OPERATOR CLASS            REVOKE
+  CREATE OPERATOR FAMILY           ROLLBACK
+  CREATE POLICY                    ROLLBACK PREPARED
+  CREATE PROCEDURE                 ROLLBACK TO SAVEPOINT
+  CREATE PUBLICATION               SAVEPOINT
+  CREATE ROLE                      SECURITY LABEL
+  CREATE RULE                      SELECT
+  CREATE SCHEMA                    SELECT INTO
+  CREATE SEQUENCE                  SET
+  CREATE SERVER                    SET CONSTRAINTS
+  CREATE STATISTICS                SET ROLE
+  CREATE SUBSCRIPTION              SET SESSION AUTHORIZATION
+  CREATE TABLE                     SET TRANSACTION
+  CREATE TABLE AS                  SHOW
+  CREATE TABLESPACE                START TRANSACTION
+  CREATE TEXT SEARCH CONFIGURATION TABLE
+  CREATE TEXT SEARCH DICTIONARY    TRUNCATE
+  CREATE TEXT SEARCH PARSER        UNLISTEN
+  CREATE TEXT SEARCH TEMPLATE      UPDATE
+  CREATE TRANSFORM                 VACUUM
+  CREATE TRIGGER                   VALUES
+  CREATE TYPE                      WITH
+  CREATE USER
+
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=# \?
+General
+  \bind [PARAM]...
+                  definir parßmetros de consulta
+  \copyright      mostrar tÚrminos de uso y distribuci¾n de PostgreSQL
+  \crosstabview [COLUMNAS]
+                  ejecutar la consulta y desplegar en ½crosstab╗
+  \errverbose     mostrar error mßs reciente en mßxima verbosidad
+  \g [(OPTIONS)] [FILE]
+                  ejecuta la consulta (y envÝa el resultado a un fichero o |pipe);
+                  \g sin argumentos es equivalente a un punto y coma
+  \gdesc          describir resultado de la consulta, sin ejecutarla
+  \gexec          ejecutar la consulta, luego ejecuta cada valor del resultado
+  \gset [PREFIJO] ejecutar la consulta y almacenar el resultado en variables
+                  de psql
+  \gx [(OPTIONS)] [FILE]
+                  como \g, pero fuerza el modo de salida expandido
+  \q              salir de psql
+  \watch [[i=]SEG] [c=N] ejecute consulta cada SEG segundos, hasta N veces
+
+Ayuda
+  \? [commands]   desplegar ayuda sobre las ¾rdenes backslash
+  \? options      desplegar ayuda sobre opciones de lÝnea de ¾rdenes
+  \? variables    desplegar ayuda sobre variables especiales
+  \h [NOMBRE]     mostrar ayuda de sintaxis de ¾rdenes SQL;
+                  use ½*╗ para todas las ¾rdenes
+
+B·fer de consulta
+  \e [ARCHIVO] [L═NEA]
+                  editar el b·fer de consulta (o archivo) con editor externo
+  \ef [NOMBRE-FUNCIËN [L═NEA]]
+                  editar una funci¾n con editor externo
+  \ev [NOMBRE-VISTA [L═NEA]]
+                  editar definici¾n de una vista con editor externo
+  \p              mostrar el contenido del b·fer de consulta
+  \r              reiniciar (limpiar) el b·fer de consulta
+  \w ARCHIVO      escribir b·fer de consulta a archivo
+
+Entrada/Salida
+        (con -n, donde existe, se omite el salto de lÝnea final)
+  \copy ...            ejecutar orden SQL COPY con flujo de datos al cliente
+  \echo [-n] [STRING]  escribe la cadena en la salida estßndar
+  \i ARCHIVO           ejecutar ¾rdenes desde archivo
+  \ir ARCHIVO          como \i, pero relativo a la ubicaci¾n del script actual
+  \o [ARCHIVO]         enviar resultados de consultas a archivo u |orden
+  \qecho [-n] [STRING] escribe la cadena hacia flujo de salida \o
+  \warn [-n] [STRING]  escribe la cadena a la salida de error estßndar
+
+Condicional
+  \if EXPRESIËN   inicia bloque condicional
+  \elif EXPR      alternativa dentro del bloque condicional actual
+  \else           alternativa final dentro del bloque condicional actual
+  \endif          termina el bloque condicional
+
+Informativo
+   (opciones: S = desplegar objetos de sistema, + = agregar mßs detalle)
+  \d[S+]            listar tablas, vistas y secuencias
+  \d[S+]  NOMBRE    describir tabla, Ýndice, secuencia o vista
+  \da[S]  [PATRËN]  listar funciones de agregaci¾n
+  \dA[+]  [PATRËN]  listar mÚtodos de acceso
+  \dAc[+] [AMPTRN [TYPEPTRN]]  listar las clases de operadores
+  \dAf[+] [AMPTRN [TYPEPTRN]]  listar las familias de operadores
+  \dAo[+] [AMPTRN [OPFPTRN]]   listar los operadores de la familia de operadores
+  \dAp[+] [AMPTRN [OPFPTRN]]   enumera las funciones de la familia de operadores
+  \db[+]  [PATRËN]  listar tablespaces
+  \dc[S+] [PATRËN]  listar conversiones
+  \dconfig[+] [PATRËN]  listar parßmetros de configuraci¾n
+  \dC[+]  [PATRËN]  listar conversiones de tipo (casts)
+  \dd[S]  [PATRËN]  listar comentarios de objetos que no aparecen en otra parte
+  \dD[S+] [PATRËN]  listar dominios
+  \ddp    [PATRËN]  listar privilegios por omisi¾n
+  \dE[S+] [PATRËN]  listar tablas forßneas
+  \des[+] [PATRËN]  listar servidores forßneos
+  \det[+] [PATRËN]  listar tablas forßneas
+  \deu[+] [PATRËN]  listar mapeos de usuario
+  \dew[+] [PATRËN]  listar conectores de datos externos
+  \df[anptw][S+] [FUNCPTRN [TYPEPTRN ...]]
+                    listar funciones [s¾lo ag./normal/proc./trigger/ventana]
+  \dF[+]  [PATRËN]  listar configuraciones de b·squeda en texto
+  \dFd[+] [PATRËN]  listar diccionarios de b·squeda en texto
+  \dFp[+] [PATRËN]  listar analizadores (parsers) de b·sq. en texto
+  \dFt[+] [PATRËN]  listar plantillas de b·squeda en texto
+  \dg[S+] [PATRËN]  listar roles
+  \di[S+] [PATRËN]  listar Ýndices
+  \dl[+]            listar objetos grandes, lo mismo que \lo_list
+  \dL[S+] [PATRËN]  listar lenguajes procedurales
+  \dm[S+] [PATRËN]  listar vistas materializadas
+  \dn[S+] [PATRËN]  listar esquemas
+  \do[S+] [OPPTRN [TYPEPTRN [TYPEPTRN]]]
+                    listar operadores
+  \dO[S]  [PATRËN]  listar ordenamientos (collations)
+  \dp[S]  [PATRËN]  listar privilegios de acceso a tablas, vistas y secuencias
+  \dP[tin+] [PATRËN] listar relaciones particionadas (s¾lo tablas/Ýndices) [n=anidadas]
+  \drds [PATRËN_ROL [PATRËN_BASE]]
+                    listar parßmetros de rol por base de datos
+  \drg[S] [PATRËN]  listar roles
+  \dRp[+] [PATRËN]  listar publicaciones de replicaci¾n
+  \dRs[+] [PATRËN]  listar suscripciones de replicaci¾n
+  \ds[S+] [PATRËN]  listar secuencias
+  \dt[S+] [PATRËN]  listar tablas
+  \dT[S+] [PATRËN]  listar tipos de dato
+  \du[S+] [PATRËN]  listar roles
+  \dv[S+] [PATRËN]  listar vistas
+  \dx[+]  [PATRËN]  listar extensiones
+  \dX     [PATRËN]  listar estadÝsticas extendidas
+  \dy[+]  [PATRËN]  listar disparadores por eventos
+  \l[+]   [PATRËN]  listar bases de datos
+  \sf[+]  FUNCIËN   mostrar la definici¾n de una funci¾n
+  \sv[+]  VISTA     mostrar la definici¾n de una vista
+  \z[S]   [PATRËN]  lo mismo que \dp
+
+Objetos Grandes
+  \lo_export LOBOID ARCHIVO escribir objeto grande a archivo
+  \lo_import ARCHIVO [COMENTARIO]
+                    leer objeto grande desde archivo
+  \lo_list[+]       listar objetos grandes
+  \lo_unlink LOBOID borrar un objeto grande
+
+Formato
+  \a              cambiar entre modo de salida alineado y sin alinear
+  \C [CADENA]     definir tÝtulo de tabla, o indefinir si es vacÝo
+  \f [CADENA]     mostrar o definir separador de campos para
+                  modo de salida sin alinear
+  \H              cambiar modo de salida HTML (actualmente desactivado)
+  \pset [NOMBRE [VALOR]]  define opci¾n de tabla de salida
+                  (border|columns|csv_fieldsep|expanded|fieldsep|fieldsep_zero|
+                   footer|format|linestyle|null|numericlocale|pager|
+                   pager_min_lines|recordsep|recordsep_zero|tableattr|title|
+                   tuples_only|unicode_border_linestyle|unicode_column_linestyle|
+                   unicode_header_linestyle)
+  \t [on|off]      mostrar s¾lo filas (actualmente desactivado)
+  \T [CADENA]      definir atributos HTML de <table>, o indefinir si es vacÝo
+  \x [on|off|auto] cambiar modo expandido (actualmente desactivado)
+
+Conexiones
+  \c[onnect] [BASE-DE-DATOS|- USUARIO|- ANFITRIËN|- PUERTO|- | conninfo]
+                  conectar a una nueva base de datos (actual: ½postgres╗)
+  \conninfo       despliega la informaci¾n sobre la conexi¾n actual
+  \encoding [CODIFICACIËN]
+                  mostrar o definir codificaci¾n del cliente
+  \password [USUARIO]
+                  cambiar la contrase±a para un usuario en forma segura
+
+Sistema Operativo
+  \cd [DIR]        cambiar el directorio de trabajo actual
+  \getenv PSQLVAR ENVVAR obtener variable de ambiente
+  \setenv NOMBRE [VALOR]
+                   definir o indefinir variable de ambiente
+  \timing [on|off] mostrar tiempo de ejecuci¾n de ¾rdenes
+                   (actualmente desactivado)
+  \! [ORDEN]       ejecutar orden en intÚrprete de ¾rdenes (shell),
+                   o iniciar intÚrprete interactivo
+
+Variables
+  \prompt [TEXTO] NOMBRE  preguntar al usuario el valor de la variable
+  \set [NOMBRE [VALOR]]   definir variables internas,
+                          listar todas si no se dan parßmetros
+  \unset NOMBRE           indefinir (eliminar) variable interna
+
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# help
+Está usando psql, la interfaz de línea de órdenes de PostgreSQL.
+Digite:  \copyright para ver los términos de distribución
+       \h para ayuda de órdenes SQL
+       \? para ayuda de órdenes psql
+       \g o punto y coma («;») para ejecutar la consulta
+       \q para salir
+postgres=# \h
+Ayuda disponible:
+  ABORT                            CREATE USER MAPPING
+  ALTER AGGREGATE                  CREATE VIEW
+  ALTER COLLATION                  DEALLOCATE
+  ALTER CONVERSION                 DECLARE
+  ALTER DATABASE                   DELETE
+  ALTER DEFAULT PRIVILEGES         DISCARD
+  ALTER DOMAIN                     DO
+  ALTER EVENT TRIGGER              DROP ACCESS METHOD
+  ALTER EXTENSION                  DROP AGGREGATE
+  ALTER FOREIGN DATA WRAPPER       DROP CAST
+  ALTER FOREIGN TABLE              DROP COLLATION
+  ALTER FUNCTION                   DROP CONVERSION
+  ALTER GROUP                      DROP DATABASE
+  ALTER INDEX                      DROP DOMAIN
+  ALTER LANGUAGE                   DROP EVENT TRIGGER
+  ALTER LARGE OBJECT               DROP EXTENSION
+  ALTER MATERIALIZED VIEW          DROP FOREIGN DATA WRAPPER
+  ALTER OPERATOR                   DROP FOREIGN TABLE
+  ALTER OPERATOR CLASS             DROP FUNCTION
+  ALTER OPERATOR FAMILY            DROP GROUP
+  ALTER POLICY                     DROP INDEX
+  ALTER PROCEDURE                  DROP LANGUAGE
+  ALTER PUBLICATION                DROP MATERIALIZED VIEW
+  ALTER ROLE                       DROP OPERATOR
+  ALTER ROUTINE                    DROP OPERATOR CLASS
+  ALTER RULE                       DROP OPERATOR FAMILY
+  ALTER SCHEMA                     DROP OWNED
+  ALTER SEQUENCE                   DROP POLICY
+  ALTER SERVER                     DROP PROCEDURE
+  ALTER STATISTICS                 DROP PUBLICATION
+  ALTER SUBSCRIPTION               DROP ROLE
+  ALTER SYSTEM                     DROP ROUTINE
+  ALTER TABLE                      DROP RULE
+  ALTER TABLESPACE                 DROP SCHEMA
+  ALTER TEXT SEARCH CONFIGURATION  DROP SEQUENCE
+  ALTER TEXT SEARCH DICTIONARY     DROP SERVER
+  ALTER TEXT SEARCH PARSER         DROP STATISTICS
+  ALTER TEXT SEARCH TEMPLATE       DROP SUBSCRIPTION
+  ALTER TRIGGER                    DROP TABLE
+  ALTER TYPE                       DROP TABLESPACE
+  ALTER USER                       DROP TEXT SEARCH CONFIGURATION
+  ALTER USER MAPPING               DROP TEXT SEARCH DICTIONARY
+  ALTER VIEW                       DROP TEXT SEARCH PARSER
+  ANALYZE                          DROP TEXT SEARCH TEMPLATE
+  BEGIN                            DROP TRANSFORM
+  CALL                             DROP TRIGGER
+  CHECKPOINT                       DROP TYPE
+  CLOSE                            DROP USER
+  CLUSTER                          DROP USER MAPPING
+  COMMENT                          DROP VIEW
+  COMMIT                           END
+  COMMIT PREPARED                  EXECUTE
+  COPY                             EXPLAIN
+  CREATE ACCESS METHOD             FETCH
+  CREATE AGGREGATE                 GRANT
+  CREATE CAST                      IMPORT FOREIGN SCHEMA
+  CREATE COLLATION                 INSERT
+  CREATE CONVERSION                LISTEN
+  CREATE DATABASE                  LOAD
+  CREATE DOMAIN                    LOCK
+  CREATE EVENT TRIGGER             MERGE
+  CREATE EXTENSION                 MOVE
+  CREATE FOREIGN DATA WRAPPER      NOTIFY
+  CREATE FOREIGN TABLE             PREPARE
+  CREATE FUNCTION                  PREPARE TRANSACTION
+  CREATE GROUP                     REASSIGN OWNED
+  CREATE INDEX                     REFRESH MATERIALIZED VIEW
+  CREATE LANGUAGE                  REINDEX
+  CREATE MATERIALIZED VIEW         RELEASE SAVEPOINT
+  CREATE OPERATOR                  RESET
+  CREATE OPERATOR CLASS            REVOKE
+  CREATE OPERATOR FAMILY           ROLLBACK
+  CREATE POLICY                    ROLLBACK PREPARED
+  CREATE PROCEDURE                 ROLLBACK TO SAVEPOINT
+  CREATE PUBLICATION               SAVEPOINT
+  CREATE ROLE                      SECURITY LABEL
+  CREATE RULE                      SELECT
+  CREATE SCHEMA                    SELECT INTO
+  CREATE SEQUENCE                  SET
+  CREATE SERVER                    SET CONSTRAINTS
+  CREATE STATISTICS                SET ROLE
+  CREATE SUBSCRIPTION              SET SESSION AUTHORIZATION
+  CREATE TABLE                     SET TRANSACTION
+  CREATE TABLE AS                  SHOW
+  CREATE TABLESPACE                START TRANSACTION
+  CREATE TEXT SEARCH CONFIGURATION TABLE
+  CREATE TEXT SEARCH DICTIONARY    TRUNCATE
+  CREATE TEXT SEARCH PARSER        UNLISTEN
+  CREATE TEXT SEARCH TEMPLATE      UPDATE
+  CREATE TRANSFORM                 VACUUM
+  CREATE TRIGGER                   VALUES
+  CREATE TYPE                      WITH
+  CREATE USER
+
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=# \?
+General
+  \bind [PARAM]...
+                  definir parßmetros de consulta
+  \copyright      mostrar tÚrminos de uso y distribuci¾n de PostgreSQL
+  \crosstabview [COLUMNAS]
+                  ejecutar la consulta y desplegar en ½crosstab╗
+  \errverbose     mostrar error mßs reciente en mßxima verbosidad
+  \g [(OPTIONS)] [FILE]
+                  ejecuta la consulta (y envÝa el resultado a un fichero o |pipe);
+                  \g sin argumentos es equivalente a un punto y coma
+  \gdesc          describir resultado de la consulta, sin ejecutarla
+  \gexec          ejecutar la consulta, luego ejecuta cada valor del resultado
+  \gset [PREFIJO] ejecutar la consulta y almacenar el resultado en variables
+                  de psql
+  \gx [(OPTIONS)] [FILE]
+                  como \g, pero fuerza el modo de salida expandido
+  \q              salir de psql
+  \watch [[i=]SEG] [c=N] ejecute consulta cada SEG segundos, hasta N veces
+
+Ayuda
+  \? [commands]   desplegar ayuda sobre las ¾rdenes backslash
+  \? options      desplegar ayuda sobre opciones de lÝnea de ¾rdenes
+  \? variables    desplegar ayuda sobre variables especiales
+  \h [NOMBRE]     mostrar ayuda de sintaxis de ¾rdenes SQL;
+                  use ½*╗ para todas las ¾rdenes
+
+B·fer de consulta
+  \e [ARCHIVO] [L═NEA]
+                  editar el b·fer de consulta (o archivo) con editor externo
+  \ef [NOMBRE-FUNCIËN [L═NEA]]
+                  editar una funci¾n con editor externo
+  \ev [NOMBRE-VISTA [L═NEA]]
+                  editar definici¾n de una vista con editor externo
+  \p              mostrar el contenido del b·fer de consulta
+  \r              reiniciar (limpiar) el b·fer de consulta
+  \w ARCHIVO      escribir b·fer de consulta a archivo
+
+Entrada/Salida
+        (con -n, donde existe, se omite el salto de lÝnea final)
+  \copy ...            ejecutar orden SQL COPY con flujo de datos al cliente
+  \echo [-n] [STRING]  escribe la cadena en la salida estßndar
+  \i ARCHIVO           ejecutar ¾rdenes desde archivo
+  \ir ARCHIVO          como \i, pero relativo a la ubicaci¾n del script actual
+  \o [ARCHIVO]         enviar resultados de consultas a archivo u |orden
+  \qecho [-n] [STRING] escribe la cadena hacia flujo de salida \o
+  \warn [-n] [STRING]  escribe la cadena a la salida de error estßndar
+
+Condicional
+  \if EXPRESIËN   inicia bloque condicional
+  \elif EXPR      alternativa dentro del bloque condicional actual
+  \else           alternativa final dentro del bloque condicional actual
+  \endif          termina el bloque condicional
+
+Informativo
+   (opciones: S = desplegar objetos de sistema, + = agregar mßs detalle)
+  \d[S+]            listar tablas, vistas y secuencias
+  \d[S+]  NOMBRE    describir tabla, Ýndice, secuencia o vista
+  \da[S]  [PATRËN]  listar funciones de agregaci¾n
+  \dA[+]  [PATRËN]  listar mÚtodos de acceso
+  \dAc[+] [AMPTRN [TYPEPTRN]]  listar las clases de operadores
+  \dAf[+] [AMPTRN [TYPEPTRN]]  listar las familias de operadores
+  \dAo[+] [AMPTRN [OPFPTRN]]   listar los operadores de la familia de operadores
+  \dAp[+] [AMPTRN [OPFPTRN]]   enumera las funciones de la familia de operadores
+  \db[+]  [PATRËN]  listar tablespaces
+  \dc[S+] [PATRËN]  listar conversiones
+  \dconfig[+] [PATRËN]  listar parßmetros de configuraci¾n
+  \dC[+]  [PATRËN]  listar conversiones de tipo (casts)
+  \dd[S]  [PATRËN]  listar comentarios de objetos que no aparecen en otra parte
+  \dD[S+] [PATRËN]  listar dominios
+  \ddp    [PATRËN]  listar privilegios por omisi¾n
+  \dE[S+] [PATRËN]  listar tablas forßneas
+  \des[+] [PATRËN]  listar servidores forßneos
+  \det[+] [PATRËN]  listar tablas forßneas
+  \deu[+] [PATRËN]  listar mapeos de usuario
+  \dew[+] [PATRËN]  listar conectores de datos externos
+  \df[anptw][S+] [FUNCPTRN [TYPEPTRN ...]]
+                    listar funciones [s¾lo ag./normal/proc./trigger/ventana]
+  \dF[+]  [PATRËN]  listar configuraciones de b·squeda en texto
+  \dFd[+] [PATRËN]  listar diccionarios de b·squeda en texto
+  \dFp[+] [PATRËN]  listar analizadores (parsers) de b·sq. en texto
+  \dFt[+] [PATRËN]  listar plantillas de b·squeda en texto
+  \dg[S+] [PATRËN]  listar roles
+  \di[S+] [PATRËN]  listar Ýndices
+  \dl[+]            listar objetos grandes, lo mismo que \lo_list
+  \dL[S+] [PATRËN]  listar lenguajes procedurales
+  \dm[S+] [PATRËN]  listar vistas materializadas
+  \dn[S+] [PATRËN]  listar esquemas
+  \do[S+] [OPPTRN [TYPEPTRN [TYPEPTRN]]]
+                    listar operadores
+  \dO[S]  [PATRËN]  listar ordenamientos (collations)
+  \dp[S]  [PATRËN]  listar privilegios de acceso a tablas, vistas y secuencias
+  \dP[tin+] [PATRËN] listar relaciones particionadas (s¾lo tablas/Ýndices) [n=anidadas]
+  \drds [PATRËN_ROL [PATRËN_BASE]]
+                    listar parßmetros de rol por base de datos
+  \drg[S] [PATRËN]  listar roles
+  \dRp[+] [PATRËN]  listar publicaciones de replicaci¾n
+  \dRs[+] [PATRËN]  listar suscripciones de replicaci¾n
+  \ds[S+] [PATRËN]  listar secuencias
+  \dt[S+] [PATRËN]  listar tablas
+  \dT[S+] [PATRËN]  listar tipos de dato
+  \du[S+] [PATRËN]  listar roles
+  \dv[S+] [PATRËN]  listar vistas
+  \dx[+]  [PATRËN]  listar extensiones
+  \dX     [PATRËN]  listar estadÝsticas extendidas
+  \dy[+]  [PATRËN]  listar disparadores por eventos
+  \l[+]   [PATRËN]  listar bases de datos
+  \sf[+]  FUNCIËN   mostrar la definici¾n de una funci¾n
+  \sv[+]  VISTA     mostrar la definici¾n de una vista
+  \z[S]   [PATRËN]  lo mismo que \dp
+
+Objetos Grandes
+  \lo_export LOBOID ARCHIVO escribir objeto grande a archivo
+  \lo_import ARCHIVO [COMENTARIO]
+                    leer objeto grande desde archivo
+  \lo_list[+]       listar objetos grandes
+  \lo_unlink LOBOID borrar un objeto grande
+
+Formato
+  \a              cambiar entre modo de salida alineado y sin alinear
+  \C [CADENA]     definir tÝtulo de tabla, o indefinir si es vacÝo
+  \f [CADENA]     mostrar o definir separador de campos para
+                  modo de salida sin alinear
+  \H              cambiar modo de salida HTML (actualmente desactivado)
+  \pset [NOMBRE [VALOR]]  define opci¾n de tabla de salida
+                  (border|columns|csv_fieldsep|expanded|fieldsep|fieldsep_zero|
+                   footer|format|linestyle|null|numericlocale|pager|
+                   pager_min_lines|recordsep|recordsep_zero|tableattr|title|
+                   tuples_only|unicode_border_linestyle|unicode_column_linestyle|
+                   unicode_header_linestyle)
+  \t [on|off]      mostrar s¾lo filas (actualmente desactivado)
+  \T [CADENA]      definir atributos HTML de <table>, o indefinir si es vacÝo
+  \x [on|off|auto] cambiar modo expandido (actualmente desactivado)
+
+Conexiones
+  \c[onnect] [BASE-DE-DATOS|- USUARIO|- ANFITRIËN|- PUERTO|- | conninfo]
+                  conectar a una nueva base de datos (actual: ½postgres╗)
+  \conninfo       despliega la informaci¾n sobre la conexi¾n actual
+  \encoding [CODIFICACIËN]
+                  mostrar o definir codificaci¾n del cliente
+  \password [USUARIO]
+                  cambiar la contrase±a para un usuario en forma segura
+
+Sistema Operativo
+  \cd [DIR]        cambiar el directorio de trabajo actual
+  \getenv PSQLVAR ENVVAR obtener variable de ambiente
+  \setenv NOMBRE [VALOR]
+                   definir o indefinir variable de ambiente
+  \timing [on|off] mostrar tiempo de ejecuci¾n de ¾rdenes
+                   (actualmente desactivado)
+  \! [ORDEN]       ejecutar orden en intÚrprete de ¾rdenes (shell),
+                   o iniciar intÚrprete interactivo
+
+Variables
+  \prompt [TEXTO] NOMBRE  preguntar al usuario el valor de la variable
+  \set [NOMBRE [VALOR]]   definir variables internas,
+                          listar todas si no se dan parßmetros
+  \unset NOMBRE           indefinir (eliminar) variable interna
+
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=# create database bd_ic_henry;
+CREATE DATABASE
+postgres=# help
+Está usando psql, la interfaz de línea de órdenes de PostgreSQL.
+Digite:  \copyright para ver los términos de distribución
+       \h para ayuda de órdenes SQL
+       \? para ayuda de órdenes psql
+       \g o punto y coma («;») para ejecutar la consulta
+       \q para salir
+postgres=# \c bd_ic_henry;
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# create table contactos(
+bd_ic_henry(#     cedula varchar(15),
+bd_ic_henry(#     nombre varchar(80),
+bd_ic_henry(#     apellido varchar(80),
+bd_ic_henry(#     fechanac date,
+bd_ic_henry(#     telefono varchar(20),
+bd_ic_henry(#     correo varchar(60)
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# create table prueba(
+bd_ic_henry(# campo varchar(10)
+bd_ic_henry(# campo1 varchar(10)
+bd_ic_henry(# ;
+bd_ic_henry(# );
+ERROR:  error de sintaxis en o cerca de «campo1»
+LÍNEA 3: campo1 varchar(10)
+         ^
+bd_ic_henry=# create table prueba(
+bd_ic_henry(# campo varchar(10),
+bd_ic_henry(# campo1 varchar(10)
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# drop table prueba;
+DROP TABLE
+bd_ic_henry=# INSERT INTO contactos(cedula, nombre, apellido, fechanac, telefono, correo) VALUES
+bd_ic_henry-# ('V7654321', 'ANA','VASQUEZ' ,'1960-08-15' ,'+58 212 9876543' ,'av@gmail.com' ),
+bd_ic_henry-# ('V9654321', 'YOLANDA','TORTOZA' ,'1970-09-25' ,'+58 212 5876543' ,'yt@gmail.com');
+INSERT 0 2
+bd_ic_henry=# SELECT * FROM contactos;
+  cedula  | nombre  | apellido |  fechanac  |    telefono     |    correo
+----------+---------+----------+------------+-----------------+--------------
+ V7654321 | ANA     | VASQUEZ  | 1960-08-15 | +58 212 9876543 | av@gmail.com
+ V9654321 | YOLANDA | TORTOZA  | 1970-09-25 | +58 212 5876543 | yt@gmail.com
+(2 filas)
+
+
+bd_ic_henry=# SELECT cedula, correo FROM contactos;
+  cedula  |    correo
+----------+--------------
+ V7654321 | av@gmail.com
+ V9654321 | yt@gmail.com
+(2 filas)
+
+
+bd_ic_henry=# SELECT cedula, correo FROM contactos WHERE nombre = 'ANA';
+  cedula  |    correo
+----------+--------------
+ V7654321 | av@gmail.com
+(1 fila)
+
+
+bd_ic_henry=# SELECT * FROM contactos;
+  cedula  | nombre  | apellido |  fechanac  |    telefono     |    correo
+----------+---------+----------+------------+-----------------+--------------
+ V7654321 | ANA     | VASQUEZ  | 1960-08-15 | +58 212 9876543 | av@gmail.com
+ V9654321 | YOLANDA | TORTOZA  | 1970-09-25 | +58 212 5876543 | yt@gmail.com
+(2 filas)
+
+
+bd_ic_henry=# SELECT cedula, correo FROM contactos;
+  cedula  |    correo
+----------+--------------
+ V7654321 | av@gmail.com
+ V9654321 | yt@gmail.com
+(2 filas)
+
+
+bd_ic_henry=#
+bd_ic_henry=# UPDATE contactos SET nombre = 'SUSANA';
+UPDATE 2
+bd_ic_henry=# SELECT * FROM contactos;
+  cedula  | nombre | apellido |  fechanac  |    telefono     |    correo
+----------+--------+----------+------------+-----------------+--------------
+ V7654321 | SUSANA | VASQUEZ  | 1960-08-15 | +58 212 9876543 | av@gmail.com
+ V9654321 | SUSANA | TORTOZA  | 1970-09-25 | +58 212 5876543 | yt@gmail.com
+(2 filas)
+
+
+bd_ic_henry=# UPDATE contactos SET nombre = 'ANA' WHERE cedula = 'V7654321';
+UPDATE 1
+bd_ic_henry=# UPDATE contactos SET nombre = 'YOLANDA' WHERE cedula = 'V9654321';
+UPDATE 1
+bd_ic_henry=# SELECT * FROM contactos;
+  cedula  | nombre  | apellido |  fechanac  |    telefono     |    correo
+----------+---------+----------+------------+-----------------+--------------
+ V7654321 | ANA     | VASQUEZ  | 1960-08-15 | +58 212 9876543 | av@gmail.com
+ V9654321 | YOLANDA | TORTOZA  | 1970-09-25 | +58 212 5876543 | yt@gmail.com
+(2 filas)
+
+
+bd_ic_henry=#
