@@ -21,7 +21,7 @@ drop table
 
 
 --INGRESO DE REGISTROS
-INSERT INTO contactos(cedula,nombre,apellido,fechanac,telefono,correo) VALUES
+INSERT INTO contactos1(cedula,nombre,apellido,fechanac,telefono,correo) VALUES
 ('v7654321','ANA','VASQUEZ' ,'1690-08-15','+58 212 9876543','av@gmail.com'),
 	('V18415213','YOLANDA','TORTOZA','1970-09-25','+58 212 25483','ABF@GMAIL.COM');
 
