@@ -1,0 +1,960 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# \l *ic*
+                                                                       Listado de base de datos
+       Nombre        |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+---------------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd20231209_ricardo  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_dannysa       | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_henry         | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_orlanys       | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ ejercicio1          | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ gbd20231209_ricardo | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(6 filas)
+
+
+postgres=# \c bd_ic_henry
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# CREATE TABLE PROVEEDORES1(
+bd_ic_henry(#     id serial,
+bd_ic_henry(#     nombre varchar(30),
+bd_ic_henry(#     direccion text,
+bd_ic_henry(#     telefono varchar(20),
+bd_ic_henry(#     correo varchar(60),
+bd_ic_henry(#     primary key(id)
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# CREATE TABLE PRODUCTOS1(
+bd_ic_henry(#     id serial,
+bd_ic_henry(#     proveedor_id integer,
+bd_ic_henry(#     nombre varchar(30),
+bd_ic_henry(#     precio numeric(13,2),
+bd_ic_henry(#     existencia integer,
+bd_ic_henry(#     primary key(id),
+bd_ic_henry(#     foreign key(proveedor_id) references proveedores1(id)
+bd_ic_henry(#     on delete cascade on update cascade
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# \d proveedores1;
+                                      Tabla ½public.proveedores1╗
+  Columna  |         Tipo          | Ordenamiento | Nulable  |               Por omisi¾n
+-----------+-----------------------+--------------+----------+------------------------------------------
+ id        | integer               |              | not null | nextval('proveedores1_id_seq'::regclass)
+ nombre    | character varying(30) |              |          |
+ direccion | text                  |              |          |
+ telefono  | character varying(20) |              |          |
+ correo    | character varying(60) |              |          |
+═ndices:
+    "proveedores1_pkey" PRIMARY KEY, btree (id)
+Referenciada por:
+    TABLE "productos1" CONSTRAINT "productos1_proveedor_id_fkey" FOREIGN KEY (proveedor_id) REFERENCES proveedores1(id) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+bd_ic_henry=# \d productos1;
+                                        Tabla ½public.productos1╗
+   Columna    |         Tipo          | Ordenamiento | Nulable  |              Por omisi¾n
+--------------+-----------------------+--------------+----------+----------------------------------------
+ id           | integer               |              | not null | nextval('productos1_id_seq'::regclass)
+ proveedor_id | integer               |              |          |
+ nombre       | character varying(30) |              |          |
+ precio       | numeric(13,2)         |              |          |
+ existencia   | integer               |              |          |
+═ndices:
+    "productos1_pkey" PRIMARY KEY, btree (id)
+Restricciones de llave forßnea:
+    "productos1_proveedor_id_fkey" FOREIGN KEY (proveedor_id) REFERENCES proveedores1(id) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+bd_ic_henry=# INSERT INTO PROVEEDORES1(nombre, direccion, telefono, correo)
+bd_ic_henry-# VALUES
+bd_ic_henry-# ('GE','AV. LECUNA','+58 212 9876543','info@ge.com'),
+bd_ic_henry-# ('LG','AV. ROMULO GALLEGOS','+58 212 8876543','info@lg.com'),
+bd_ic_henry-# ('WHIRPOOL','AV. FCO. DE MIRANDA','+58 212 7876543','info@whirpool.com'),
+bd_ic_henry-# ('ELECTROLUX','AV. PPAL. DE LAS MERCEDES','+58 212 6876543','info@electrolux.com');
+INSERT 0 4
+bd_ic_henry=# INSERT INTO PRODUCTOS1(proveedor_id, nombre, precio, existencia)
+bd_ic_henry-# VALUES
+bd_ic_henry-# (1,'NEVERA',500.25,12),
+bd_ic_henry-# (1,'LAVADORA',300.75,6),
+bd_ic_henry-# (1,'SECADORA',500.50,8),
+bd_ic_henry-# (1,'CONGELADOR',200.25,3),
+bd_ic_henry-# (2,'AIRE ACONDICIONADO',600,3),
+bd_ic_henry-# (2,'COCINA ELECTRICA',250,6),
+bd_ic_henry-# (2,'COCINA A GAS',175,9),
+bd_ic_henry-# (2,'NEVERA',480,7),
+bd_ic_henry-# (3,'LAVADORA',500,2),
+bd_ic_henry-# (3,'HORNO ELECTRICO',350,3),
+bd_ic_henry-# (3,'MICRO ONDAS',150,6),
+bd_ic_henry-# (3,'CONGELADOR',250,3),
+bd_ic_henry-# (4,'NEVERA',490,7),
+bd_ic_henry-# (4,'HORNO A GAS',250,6),
+bd_ic_henry-# (4,'SECADORA',550,5),
+bd_ic_henry-# (4,'LAVADORA',450,6);
+INSERT 0 16
+bd_ic_henry=# SELECT * FROM PROVEEDORES1;
+ id |   nombre   |         direccion         |    telefono     |       correo
+----+------------+---------------------------+-----------------+---------------------
+  1 | GE         | AV. LECUNA                | +58 212 9876543 | info@ge.com
+  2 | LG         | AV. ROMULO GALLEGOS       | +58 212 8876543 | info@lg.com
+  3 | WHIRPOOL   | AV. FCO. DE MIRANDA       | +58 212 7876543 | info@whirpool.com
+  4 | ELECTROLUX | AV. PPAL. DE LAS MERCEDES | +58 212 6876543 | info@electrolux.com
+(4 filas)
+
+
+bd_ic_henry=# SELECT * FROM PRODUCTOS1;
+ id | proveedor_id |       nombre       | precio | existencia
+----+--------------+--------------------+--------+------------
+  1 |            1 | NEVERA             | 500.25 |         12
+  2 |            1 | LAVADORA           | 300.75 |          6
+  3 |            1 | SECADORA           | 500.50 |          8
+  4 |            1 | CONGELADOR         | 200.25 |          3
+  5 |            2 | AIRE ACONDICIONADO | 600.00 |          3
+  6 |            2 | COCINA ELECTRICA   | 250.00 |          6
+  7 |            2 | COCINA A GAS       | 175.00 |          9
+  8 |            2 | NEVERA             | 480.00 |          7
+  9 |            3 | LAVADORA           | 500.00 |          2
+ 10 |            3 | HORNO ELECTRICO    | 350.00 |          3
+ 11 |            3 | MICRO ONDAS        | 150.00 |          6
+ 12 |            3 | CONGELADOR         | 250.00 |          3
+ 13 |            4 | NEVERA             | 490.00 |          7
+ 14 |            4 | HORNO A GAS        | 250.00 |          6
+ 15 |            4 | SECADORA           | 550.00 |          5
+ 16 |            4 | LAVADORA           | 450.00 |          6
+(16 filas)
+
+
+bd_ic_henry=# DELETE FROM PROVEEDORES1 WHERE ID = 1;
+DELETE 1
+bd_ic_henry=# SELECT * FROM PROVEEDORES1;
+ id |   nombre   |         direccion         |    telefono     |       correo
+----+------------+---------------------------+-----------------+---------------------
+  2 | LG         | AV. ROMULO GALLEGOS       | +58 212 8876543 | info@lg.com
+  3 | WHIRPOOL   | AV. FCO. DE MIRANDA       | +58 212 7876543 | info@whirpool.com
+  4 | ELECTROLUX | AV. PPAL. DE LAS MERCEDES | +58 212 6876543 | info@electrolux.com
+(3 filas)
+
+
+bd_ic_henry=# SELECT * FROM PRODUCTOS1;
+ id | proveedor_id |       nombre       | precio | existencia
+----+--------------+--------------------+--------+------------
+  5 |            2 | AIRE ACONDICIONADO | 600.00 |          3
+  6 |            2 | COCINA ELECTRICA   | 250.00 |          6
+  7 |            2 | COCINA A GAS       | 175.00 |          9
+  8 |            2 | NEVERA             | 480.00 |          7
+  9 |            3 | LAVADORA           | 500.00 |          2
+ 10 |            3 | HORNO ELECTRICO    | 350.00 |          3
+ 11 |            3 | MICRO ONDAS        | 150.00 |          6
+ 12 |            3 | CONGELADOR         | 250.00 |          3
+ 13 |            4 | NEVERA             | 490.00 |          7
+ 14 |            4 | HORNO A GAS        | 250.00 |          6
+ 15 |            4 | SECADORA           | 550.00 |          5
+ 16 |            4 | LAVADORA           | 450.00 |          6
+(12 filas)
+
+
+bd_ic_henry=# UPDATE PROVEEDORES1 SET ID = 22 WHERE ID = 2;
+UPDATE 1
+bd_ic_henry=# SELECT * FROM PROVEEDORES1;
+ id |   nombre   |         direccion         |    telefono     |       correo
+----+------------+---------------------------+-----------------+---------------------
+  3 | WHIRPOOL   | AV. FCO. DE MIRANDA       | +58 212 7876543 | info@whirpool.com
+  4 | ELECTROLUX | AV. PPAL. DE LAS MERCEDES | +58 212 6876543 | info@electrolux.com
+ 22 | LG         | AV. ROMULO GALLEGOS       | +58 212 8876543 | info@lg.com
+(3 filas)
+
+
+bd_ic_henry=# SELECT * FROM PRODUCTOS2;
+ERROR:  no existe la relación «productos2»
+LÍNEA 1: SELECT * FROM PRODUCTOS2;
+                       ^
+bd_ic_henry=# SELECT * FROM PRODUCTOS1;
+ id | proveedor_id |       nombre       | precio | existencia
+----+--------------+--------------------+--------+------------
+  9 |            3 | LAVADORA           | 500.00 |          2
+ 10 |            3 | HORNO ELECTRICO    | 350.00 |          3
+ 11 |            3 | MICRO ONDAS        | 150.00 |          6
+ 12 |            3 | CONGELADOR         | 250.00 |          3
+ 13 |            4 | NEVERA             | 490.00 |          7
+ 14 |            4 | HORNO A GAS        | 250.00 |          6
+ 15 |            4 | SECADORA           | 550.00 |          5
+ 16 |            4 | LAVADORA           | 450.00 |          6
+  5 |           22 | AIRE ACONDICIONADO | 600.00 |          3
+  6 |           22 | COCINA ELECTRICA   | 250.00 |          6
+  7 |           22 | COCINA A GAS       | 175.00 |          9
+  8 |           22 | NEVERA             | 480.00 |          7
+(12 filas)
+
+
+bd_ic_henry=# \c bd_ic_orlanys
+Ahora está conectado a la base de datos «bd_ic_orlanys» con el usuario «postgres».
+bd_ic_orlanys=# \dt
+           Listado de relaciones
+ Esquema |    Nombre    | Tipo  |  Due±o
+---------+--------------+-------+----------
+ public  | contactos    | tabla | postgres
+ public  | contactos1   | tabla | postgres
+ public  | contactos2   | tabla | postgres
+ public  | productos1   | tabla | postgres
+ public  | proveedores  | tabla | postgres
+ public  | proveedores1 | tabla | postgres
+(6 filas)
+
+
+bd_ic_orlanys=# \c bd_ig_orlanys
+Ahora está conectado a la base de datos «bd_ig_orlanys» con el usuario «postgres».
+bd_ig_orlanys=# \dt
+          Listado de relaciones
+ Esquema |   Nombre    | Tipo  |  Due±o
+---------+-------------+-------+----------
+ public  | contacto2   | tabla | postgres
+ public  | contactos   | tabla | postgres
+ public  | contactos1  | tabla | postgres
+ public  | contactos3  | tabla | postgres
+ public  | contactos4  | tabla | postgres
+ public  | productos   | tabla | postgres
+ public  | proveedores | tabla | postgres
+(7 filas)
+
+
+bd_ig_orlanys=# drop table proveedores;
+ERROR:  no se puede eliminar tabla proveedores porque otros objetos dependen de él
+DETALLE:  restricción «productos_proveedor_id_fkey» en tabla productos depende de tabla proveedores
+SUGERENCIA:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+bd_ig_orlanys=# drop table productos;
+DROP TABLE
+bd_ig_orlanys=# drop table proveedores;
+DROP TABLE
+bd_ig_orlanys=# \c bd_ic_orlanys
+Ahora está conectado a la base de datos «bd_ic_orlanys» con el usuario «postgres».
+bd_ic_orlanys=# \dt
+           Listado de relaciones
+ Esquema |    Nombre    | Tipo  |  Due±o
+---------+--------------+-------+----------
+ public  | contactos    | tabla | postgres
+ public  | contactos1   | tabla | postgres
+ public  | contactos2   | tabla | postgres
+ public  | productos1   | tabla | postgres
+ public  | proveedores  | tabla | postgres
+ public  | proveedores1 | tabla | postgres
+(6 filas)
+
+
+bd_ic_orlanys=# drop table proveedores;
+DROP TABLE
+bd_ic_orlanys=# CREATE TABLE PROVEEDORES(
+bd_ic_orlanys(#     id serial,
+bd_ic_orlanys(#     nombre varchar(30),
+bd_ic_orlanys(#     direccion text,
+bd_ic_orlanys(#     telefono varchar(20),
+bd_ic_orlanys(#     correo varchar(60),
+bd_ic_orlanys(#     primary key(id)
+bd_ic_orlanys(# );
+CREATE TABLE
+bd_ic_orlanys=# CREATE TABLE PRODUCTOS(
+bd_ic_orlanys(#     id serial,
+bd_ic_orlanys(#     proveedor_id integer,
+bd_ic_orlanys(#     nombre varchar(30),
+bd_ic_orlanys(#     precio numeric(13,2),
+bd_ic_orlanys(#     existencia integer,
+bd_ic_orlanys(#     primary key(id),
+bd_ic_orlanys(#     foreign key(proveedor_id) references proveedores(id)
+bd_ic_orlanys(# );
+CREATE TABLE
+bd_ic_orlanys=# INSERT INTO PROVEEDORES(nombre, direccion, telefono, correo)
+bd_ic_orlanys-# VALUES
+bd_ic_orlanys-# ('GE','AV. LECUNA','+58 212 9876543','info@ge.com'),
+bd_ic_orlanys-# ('LG','AV. ROMULO GALLEGOS','+58 212 8876543','info@lg.com'),
+bd_ic_orlanys-# ('WHIRPOOL','AV. FCO. DE MIRANDA','+58 212 7876543','info@whirpool.com'),
+bd_ic_orlanys-# ('ELECTROLUX','AV. PPAL. DE LAS MERCEDES','+58 212 6876543','info@electrolux.com');
+INSERT 0 4
+bd_ic_orlanys=#
+bd_ic_orlanys=# INSERT INTO PRODUCTOS(proveedor_id, nombre, precio, existencia)
+bd_ic_orlanys-# VALUES
+bd_ic_orlanys-# (1,'NEVERA',500.25,12),
+bd_ic_orlanys-# (1,'LAVADORA',300.75,6),
+bd_ic_orlanys-# (1,'SECADORA',500.50,8),
+bd_ic_orlanys-# (1,'CONGELADOR',200.25,3),
+bd_ic_orlanys-# (2,'AIRE ACONDICIONADO',600,3),
+bd_ic_orlanys-# (2,'COCINA ELECTRICA',250,6),
+bd_ic_orlanys-# (2,'COCINA A GAS',175,9),
+bd_ic_orlanys-# (2,'NEVERA',480,7),
+bd_ic_orlanys-# (3,'LAVADORA',500,2),
+bd_ic_orlanys-# (3,'HORNO ELECTRICO',350,3),
+bd_ic_orlanys-# (3,'MICRO ONDAS',150,6),
+bd_ic_orlanys-# (3,'CONGELADOR',250,3),
+bd_ic_orlanys-# (4,'NEVERA',490,7),
+bd_ic_orlanys-# (4,'HORNO A GAS',250,6),
+bd_ic_orlanys-# (4,'SECADORA',550,5),
+bd_ic_orlanys-# (4,'LAVADORA',450,6);
+INSERT 0 16
+bd_ic_orlanys=#
+bd_ic_orlanys=# \dt
+           Listado de relaciones
+ Esquema |    Nombre    | Tipo  |  Due±o
+---------+--------------+-------+----------
+ public  | contactos    | tabla | postgres
+ public  | contactos1   | tabla | postgres
+ public  | contactos2   | tabla | postgres
+ public  | productos    | tabla | postgres
+ public  | productos1   | tabla | postgres
+ public  | proveedores  | tabla | postgres
+ public  | proveedores1 | tabla | postgres
+(7 filas)
+
+
+bd_ic_orlanys=# \c bd_ig_henry
+Ahora está conectado a la base de datos «bd_ig_henry» con el usuario «postgres».
+bd_ig_henry=# \c bd_ic_henry
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# \dt
+           Listado de relaciones
+ Esquema |    Nombre    | Tipo  |  Due±o
+---------+--------------+-------+----------
+ public  | contactos    | tabla | postgres
+ public  | contactos1   | tabla | postgres
+ public  | contactos2   | tabla | postgres
+ public  | productos    | tabla | postgres
+ public  | productos1   | tabla | postgres
+ public  | proveedores  | tabla | postgres
+ public  | proveedores1 | tabla | postgres
+(7 filas)
+
+
+bd_ic_henry=# INSERT INTO PROVEEDORES(nombre, direccion, telefono, correo)
+bd_ic_henry-# VALUES
+bd_ic_henry-# ('GE','AV. LECUNA','+58 212 9876543','info@ge.com'),
+bd_ic_henry-# ('LG','AV. ROMULO GALLEGOS','+58 212 8876543','info@lg.com'),
+bd_ic_henry-# ('WHIRPOOL','AV. FCO. DE MIRANDA','+58 212 7876543','info@whirpool.com'),
+bd_ic_henry-# ('ELECTROLUX','AV. PPAL. DE LAS MERCEDES','+58 212 6876543','info@electrolux.com');
+INSERT 0 4
+bd_ic_henry=#
+bd_ic_henry=# INSERT INTO PRODUCTOS(proveedor_id, nombre, precio, existencia)
+bd_ic_henry-# VALUES
+bd_ic_henry-# (1,'NEVERA',500.25,12),
+bd_ic_henry-# (1,'LAVADORA',300.75,6),
+bd_ic_henry-# (1,'SECADORA',500.50,8),
+bd_ic_henry-# (1,'CONGELADOR',200.25,3),
+bd_ic_henry-# (2,'AIRE ACONDICIONADO',600,3),
+bd_ic_henry-# (2,'COCINA ELECTRICA',250,6),
+bd_ic_henry-# (2,'COCINA A GAS',175,9),
+bd_ic_henry-# (2,'NEVERA',480,7),
+bd_ic_henry-# (3,'LAVADORA',500,2),
+bd_ic_henry-# (3,'HORNO ELECTRICO',350,3),
+bd_ic_henry-# (3,'MICRO ONDAS',150,6),
+bd_ic_henry-# (3,'CONGELADOR',250,3),
+bd_ic_henry-# (4,'NEVERA',490,7),
+bd_ic_henry-# (4,'HORNO A GAS',250,6),
+bd_ic_henry-# (4,'SECADORA',550,5),
+bd_ic_henry-# (4,'LAVADORA',450,6);
+INSERT 0 16
+bd_ic_henry=# \dt
+           Listado de relaciones
+ Esquema |    Nombre    | Tipo  |  Due±o
+---------+--------------+-------+----------
+ public  | contactos    | tabla | postgres
+ public  | contactos1   | tabla | postgres
+ public  | contactos2   | tabla | postgres
+ public  | productos    | tabla | postgres
+ public  | productos1   | tabla | postgres
+ public  | proveedores  | tabla | postgres
+ public  | proveedores1 | tabla | postgres
+(7 filas)
+
+
+bd_ic_henry=# SELECT proveedores.nombre,
+bd_ic_henry-#        proveedores.telefono,
+bd_ic_henry-#        proveedores.correo,
+bd_ic_henry-#        productos.nombre,
+bd_ic_henry-#        productos.precio,
+bd_ic_henry-#        productos.existencia
+bd_ic_henry-#        FROM proveedores, productos
+bd_ic_henry-#        WHERE productos.proveedor_id = proveedores.id;
+   nombre   |    telefono     |       correo        |       nombre       | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(32 filas)
+
+
+bd_ic_henry=# SELECT A.nombre,
+bd_ic_henry-#        A.telefono,
+bd_ic_henry-#        A.correo,
+bd_ic_henry-#        B.nombre,
+bd_ic_henry-#        B.precio,
+bd_ic_henry-#        B.existencia
+bd_ic_henry-#        FROM A AS proveedores, B AS productos
+bd_ic_henry-#        WHERE B.proveedor_id = A.id;
+ERROR:  no existe la relación «a»
+LÍNEA 7:        FROM A AS proveedores, B AS productos
+                     ^
+bd_ic_henry=# SELECT A.nombre as proveedor,
+bd_ic_henry-#        A.telefono,
+bd_ic_henry-#        A.correo,
+bd_ic_henry-#        B.nombre as producto,
+bd_ic_henry-#        B.precio,
+bd_ic_henry-#        B.existencia
+bd_ic_henry-#        FROM proveedores AS A, productos AS B
+bd_ic_henry-#        WHERE B.proveedor_id = A.id;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(32 filas)
+
+
+bd_ic_henry=# select * from productos;
+ id | proveedor_id |       nombre       | precio | existencia
+----+--------------+--------------------+--------+------------
+  1 |            1 | NEVERA             | 500.25 |         12
+  2 |            1 | LAVADORA           | 300.75 |          6
+  3 |            1 | SECADORA           | 500.50 |          8
+  4 |            1 | CONGELADOR         | 200.25 |          3
+  5 |            2 | AIRE ACONDICIONADO | 600.00 |          3
+  6 |            2 | COCINA ELECTRICA   | 250.00 |          6
+  7 |            2 | COCINA A GAS       | 175.00 |          9
+  8 |            2 | NEVERA             | 480.00 |          7
+  9 |            3 | LAVADORA           | 500.00 |          2
+ 10 |            3 | HORNO ELECTRICO    | 350.00 |          3
+ 11 |            3 | MICRO ONDAS        | 150.00 |          6
+ 12 |            3 | CONGELADOR         | 250.00 |          3
+ 13 |            4 | NEVERA             | 490.00 |          7
+ 14 |            4 | HORNO A GAS        | 250.00 |          6
+ 15 |            4 | SECADORA           | 550.00 |          5
+ 16 |            4 | LAVADORA           | 450.00 |          6
+ 18 |            1 | NEVERA             | 500.25 |         12
+ 19 |            1 | LAVADORA           | 300.75 |          6
+ 20 |            1 | SECADORA           | 500.50 |          8
+ 21 |            1 | CONGELADOR         | 200.25 |          3
+ 22 |            2 | AIRE ACONDICIONADO | 600.00 |          3
+ 23 |            2 | COCINA ELECTRICA   | 250.00 |          6
+ 24 |            2 | COCINA A GAS       | 175.00 |          9
+ 25 |            2 | NEVERA             | 480.00 |          7
+ 26 |            3 | LAVADORA           | 500.00 |          2
+ 27 |            3 | HORNO ELECTRICO    | 350.00 |          3
+ 28 |            3 | MICRO ONDAS        | 150.00 |          6
+ 29 |            3 | CONGELADOR         | 250.00 |          3
+ 30 |            4 | NEVERA             | 490.00 |          7
+ 31 |            4 | HORNO A GAS        | 250.00 |          6
+ 32 |            4 | SECADORA           | 550.00 |          5
+ 33 |            4 | LAVADORA           | 450.00 |          6
+(32 filas)
+
+
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=#
+bd_ic_henry=# delete from productos where id >= 18;
+DELETE 16
+bd_ic_henry=# SELECT A.nombre as proveedor,
+bd_ic_henry-#        A.telefono,
+bd_ic_henry-#        A.correo,
+bd_ic_henry-#        B.nombre as producto,
+bd_ic_henry-#        B.precio,
+bd_ic_henry-#        B.existencia
+bd_ic_henry-#        FROM proveedores AS A, productos AS B
+bd_ic_henry-#        WHERE B.proveedor_id = A.id;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(16 filas)
+
+
+bd_ic_henry=# CREATE VIEW VISTA_PROV_PROD AS
+bd_ic_henry-# SELECT A.nombre as proveedor,
+bd_ic_henry-#        A.telefono,
+bd_ic_henry-#        A.correo,
+bd_ic_henry-#        B.nombre as producto,
+bd_ic_henry-#        B.precio,
+bd_ic_henry-#        B.existencia
+bd_ic_henry-#        FROM proveedores AS A, productos AS B
+bd_ic_henry-#        WHERE B.proveedor_id = A.id;
+CREATE VIEW
+bd_ic_henry=# \d
+                Listado de relaciones
+ Esquema |       Nombre        |   Tipo    |  Due±o
+---------+---------------------+-----------+----------
+ public  | contactos           | tabla     | postgres
+ public  | contactos1          | tabla     | postgres
+ public  | contactos2          | tabla     | postgres
+ public  | productos           | tabla     | postgres
+ public  | productos1          | tabla     | postgres
+ public  | productos1_id_seq   | secuencia | postgres
+ public  | productos_id_seq    | secuencia | postgres
+ public  | proveedores         | tabla     | postgres
+ public  | proveedores1        | tabla     | postgres
+ public  | proveedores1_id_seq | secuencia | postgres
+ public  | proveedores_id_seq  | secuencia | postgres
+ public  | vista_prov_prod     | vista     | postgres
+(12 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(16 filas)
+
+
+bd_ic_henry=# \dv VISTA_PROV_PROD;
+            Listado de relaciones
+ Esquema |     Nombre      | Tipo  |  Due±o
+---------+-----------------+-------+----------
+ public  | vista_prov_prod | vista | postgres
+(1 fila)
+
+
+bd_ic_henry=# \dv;
+            Listado de relaciones
+ Esquema |     Nombre      | Tipo  |  Due±o
+---------+-----------------+-------+----------
+ public  | vista_prov_prod | vista | postgres
+(1 fila)
+
+
+bd_ic_henry=# \d VISTA_PROV_PROD;
+                      Vista ½public.vista_prov_prod╗
+  Columna   |         Tipo          | Ordenamiento | Nulable | Por omisi¾n
+------------+-----------------------+--------------+---------+-------------
+ proveedor  | character varying(30) |              |         |
+ telefono   | character varying(20) |              |         |
+ correo     | character varying(60) |              |         |
+ producto   | character varying(30) |              |         |
+ precio     | numeric(13,2)         |              |         |
+ existencia | integer               |              |         |
+
+
+bd_ic_henry=# SELECT SUM(EXISTENCIA) FROM VISTA_PROV_PROD;
+ sum
+-----
+  92
+(1 fila)
+
+
+bd_ic_henry=# SELECT SUM(EXISTENCIA) AS TOTAL_EXISTENCIA FROM VISTA_PROV_PROD;
+ total_existencia
+------------------
+               92
+(1 fila)
+
+
+bd_ic_henry=# SELECT SUM(EXISTENCIA) AS "TOTAL EXISTENCIA" FROM VISTA_PROV_PROD;
+ TOTAL EXISTENCIA
+------------------
+               92
+(1 fila)
+
+
+bd_ic_henry=# SELECT AVG(PRECIO) AS PROMEDIO FROM VISTA_PROV_PROD;
+       promedio
+----------------------
+ 374.7968750000000000
+(1 fila)
+
+
+bd_ic_henry=# SELECT ROUND(AVG(PRECIO),2) AS PROMEDIO FROM VISTA_PROV_PROD;
+ promedio
+----------
+   374.80
+(1 fila)
+
+
+bd_ic_henry=# SELECT MIN(PRECIO) FROM VISTA_PROV_PROD;
+  min
+--------
+ 150.00
+(1 fila)
+
+
+bd_ic_henry=# SELECT MAX(PRECIO) FROM VISTA_PROV_PROD;
+  max
+--------
+ 600.00
+(1 fila)
+
+
+bd_ic_henry=# SELECT COUNT(*) FROM VISTA_PROV_PROD;
+ count
+-------
+    16
+(1 fila)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD WHERE provvedor = 'GE' AND precio >=500;
+ERROR:  no existe la columna «provvedor»
+LÍNEA 1: SELECT * FROM VISTA_PROV_PROD WHERE provvedor = 'GE' AND pre...
+                                             ^
+SUGERENCIA:  Probablemente quiera hacer referencia a la columna «vista_prov_prod.proveedor».
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD WHERE proveedor = 'GE' AND precio >=500;
+ proveedor |    telefono     |   correo    | producto | precio | existencia
+-----------+-----------------+-------------+----------+--------+------------
+ GE        | +58 212 9876543 | info@ge.com | NEVERA   | 500.25 |         12
+ GE        | +58 212 9876543 | info@ge.com | SECADORA | 500.50 |          8
+(2 filas)
+
+
+bd_ic_henry=# SELECT proveedor, producto, precio FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE proveedor = 'GE' OR proveedor = 'LG';
+ proveedor |      producto      | precio
+-----------+--------------------+--------
+ GE        | NEVERA             | 500.25
+ GE        | LAVADORA           | 300.75
+ GE        | SECADORA           | 500.50
+ GE        | CONGELADOR         | 200.25
+ LG        | AIRE ACONDICIONADO | 600.00
+ LG        | COCINA ELECTRICA   | 250.00
+ LG        | COCINA A GAS       | 175.00
+ LG        | NEVERA             | 480.00
+(8 filas)
+
+
+bd_ic_henry=# SELECT proveedor, producto, precio FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE proveedor IN ('GE', 'LG');
+ proveedor |      producto      | precio
+-----------+--------------------+--------
+ GE        | NEVERA             | 500.25
+ GE        | LAVADORA           | 300.75
+ GE        | SECADORA           | 500.50
+ GE        | CONGELADOR         | 200.25
+ LG        | AIRE ACONDICIONADO | 600.00
+ LG        | COCINA ELECTRICA   | 250.00
+ LG        | COCINA A GAS       | 175.00
+ LG        | NEVERA             | 480.00
+(8 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE PRECIO >= 500 AND PRECIO <= 1000;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+(5 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE PRECIO BETWEEN 500 AND 1000;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+(5 filas)
+
+
+bd_ic_henry=#
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE NOT(proveedor = 'GE' AND precio >=500);
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(14 filas)
+
+
+bd_ic_henry=# SELECT proveedor, producto, precio FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE NOT (proveedor = 'GE' OR proveedor = 'LG');
+ proveedor  |    producto     | precio
+------------+-----------------+--------
+ WHIRPOOL   | LAVADORA        | 500.00
+ WHIRPOOL   | HORNO ELECTRICO | 350.00
+ WHIRPOOL   | MICRO ONDAS     | 150.00
+ WHIRPOOL   | CONGELADOR      | 250.00
+ ELECTROLUX | NEVERA          | 490.00
+ ELECTROLUX | HORNO A GAS     | 250.00
+ ELECTROLUX | SECADORA        | 550.00
+ ELECTROLUX | LAVADORA        | 450.00
+(8 filas)
+
+
+bd_ic_henry=# SELECT proveedor, producto, precio FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE proveedor NOT IN ('GE', 'LG');
+ proveedor  |    producto     | precio
+------------+-----------------+--------
+ WHIRPOOL   | LAVADORA        | 500.00
+ WHIRPOOL   | HORNO ELECTRICO | 350.00
+ WHIRPOOL   | MICRO ONDAS     | 150.00
+ WHIRPOOL   | CONGELADOR      | 250.00
+ ELECTROLUX | NEVERA          | 490.00
+ ELECTROLUX | HORNO A GAS     | 250.00
+ ELECTROLUX | SECADORA        | 550.00
+ ELECTROLUX | LAVADORA        | 450.00
+(8 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE NOT (PRECIO >= 500 AND PRECIO <= 1000);
+ proveedor  |    telefono     |       correo        |     producto     | precio | existencia
+------------+-----------------+---------------------+------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA         | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR       | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS     | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA           | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO  | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS      | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR       | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA           | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS      | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA         | 450.00 |          6
+(11 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE PRECIO NOT BETWEEN 500 AND 1000;
+ proveedor  |    telefono     |       correo        |     producto     | precio | existencia
+------------+-----------------+---------------------+------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA         | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR       | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS     | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA           | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO  | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS      | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR       | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA           | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS      | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA         | 450.00 |          6
+(11 filas)
+
+
+bd_ic_henry=#   SELECT * FROM VISTA_PROV_PROD
+bd_ic_henry-# WHERE producto LIKE '%COCINA%';
+ proveedor |    telefono     |   correo    |     producto     | precio | existencia
+-----------+-----------------+-------------+------------------+--------+------------
+ LG        | +58 212 8876543 | info@lg.com | COCINA ELECTRICA | 250.00 |          6
+ LG        | +58 212 8876543 | info@lg.com | COCINA A GAS     | 175.00 |          9
+(2 filas)
+
+
+bd_ic_henry=# SELECT * FROM CONTACTOS;
+ cedula | nombre | apellido | fechanac | telefono | correo
+--------+--------+----------+----------+----------+--------
+(0 filas)
+
+
+bd_ic_henry=# SELECT * FROM CONTACTOS1;
+  cedula  | nombre  | apellido |  fechanac  |    telefono     |    correo
+----------+---------+----------+------------+-----------------+--------------
+ V7654321 | ANA     | VASQUEZ  | 1960-08-15 | +58 212 9876543 | av@gmail.com
+ V9654321 | YOLANDA | TORTOZA  | 1970-09-25 | +58 212 5876543 | yt@gmail.com
+(2 filas)
+
+
+bd_ic_henry=# INSERT INTO CONTACTOS1(cedula, nombre, apellido)
+bd_ic_henry-# VALUES ('V123','','');
+INSERT 0 1
+bd_ic_henry=# SELECT * FROM CONTACTOS1;
+  cedula  | nombre  | apellido |  fechanac  |    telefono     |    correo
+----------+---------+----------+------------+-----------------+--------------
+ V7654321 | ANA     | VASQUEZ  | 1960-08-15 | +58 212 9876543 | av@gmail.com
+ V9654321 | YOLANDA | TORTOZA  | 1970-09-25 | +58 212 5876543 | yt@gmail.com
+ V123     |         |          |            |                 |
+(3 filas)
+
+
+bd_ic_henry=#
+bd_ic_henry=# SELECT * FROM CONTACTOS1;
+  cedula  | nombre  | apellido |  fechanac  |    telefono     |    correo
+----------+---------+----------+------------+-----------------+--------------
+ V7654321 | ANA     | VASQUEZ  | 1960-08-15 | +58 212 9876543 | av@gmail.com
+ V9654321 | YOLANDA | TORTOZA  | 1970-09-25 | +58 212 5876543 | yt@gmail.com
+ V123     |         |          |            |                 |
+(3 filas)
+
+
+bd_ic_henry=# SELECT * FROM CONTACTOS1 WHERE nombre = '';
+ cedula | nombre | apellido | fechanac | telefono | correo
+--------+--------+----------+----------+----------+--------
+ V123   |        |          |          |          |
+(1 fila)
+
+
+bd_ic_henry=# SELECT * FROM CONTACTOS1 WHERE correo = '';
+ cedula | nombre | apellido | fechanac | telefono | correo
+--------+--------+----------+----------+----------+--------
+(0 filas)
+
+
+bd_ic_henry=# SELECT * FROM CONTACTOS1 WHERE correo IS NULL;
+ cedula | nombre | apellido | fechanac | telefono | correo
+--------+--------+----------+----------+----------+--------
+ V123   |        |          |          |          |
+(1 fila)
+
+
+bd_ic_henry=# SELECT COUNT(*) FROM CONTACTOS1;
+ count
+-------
+     3
+(1 fila)
+
+
+bd_ic_henry=# SELECT COUNT(CEDULA) FROM CONTACTOS1;
+ count
+-------
+     3
+(1 fila)
+
+
+bd_ic_henry=# SELECT COUNT(NOMBRE) FROM CONTACTOS1;
+ count
+-------
+     3
+(1 fila)
+
+
+bd_ic_henry=#
+bd_ic_henry=# SELECT COUNT(CORREO) FROM CONTACTOS1;
+ count
+-------
+     2
+(1 fila)
+
+
+bd_ic_henry=#
