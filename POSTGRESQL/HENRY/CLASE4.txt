@@ -1,0 +1,1297 @@
+BACKUP DESDE POSTGRESQL:
+
+#### Comando para Efectuar Backup en PostgreSQL
+
+Para realizar un backup de una base de datos en PostgreSQL, puedes utilizar el comando `pg_dump`. Este comando permite crear un volcado de la base de datos en un archivo, que puede ser utilizado para restaurar la base de datos en el futuro.
+
+#### Ejemplo de Comando
+
+Aquí tienes un ejemplo del comando para hacer un backup:
+
+```bash
+pg_dump -U nombre_usuario -W -F c -b -v -f "/ruta/del/backup/mi_backup.dump" nombre_base_datos
+```
+
+**Descripción de los parámetros:**
+- `-U nombre_usuario`: Especifica el nombre de usuario de PostgreSQL que tiene acceso a la base de datos.
+- `-W`: Solicita la contraseña del usuario.
+- `-F c`: Indica que el formato del archivo de salida será personalizado (formato comprimido).
+- `-b`: Incluye los blobs (binary large objects) en el backup.
+- `-v`: Muestra información detallada durante el proceso de backup.
+- `-f "/ruta/del/backup/mi_backup.dump"`: Especifica la ruta y el nombre del archivo donde se guardará el backup.
+- `nombre_base_datos`: Es el nombre de la base de datos que deseas respaldar.
+
+#### Ejemplo Práctico
+
+Si tu nombre de usuario es `postgres`, la base de datos que deseas respaldar se llama `mi_base_datos`, y quieres guardar el backup en el directorio `/backups`, el comando sería:
+
+```bash
+pg_dump -U postgres -W -F c -b -v -f "/backups/mi_backup.dump" mi_base_datos
+```
+
+Este comando te pedirá la contraseña del usuario `postgres` y luego procederá a crear el backup en el archivo especificado.
+
+
+ADAPTACIÓN:
+
+"C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250407.dump" bd_ic_henry
+
+ABRIR UN TERMINAL DE SISTEMA OPERATIVO MS-DOS:
+
+Command prompt en Visual Studio Code
+
+#### Comando para Efectuar Restore en PostgreSQL
+
+Para restaurar una base de datos en PostgreSQL desde un backup, puedes utilizar el comando `pg_restore`. Este comando es útil para restaurar bases de datos que han sido respaldadas en un formato personalizado o en formato tar.
+
+#### Ejemplo de Comando
+
+Aquí tienes un ejemplo del comando para hacer un restore:
+
+```bash
+pg_restore -U nombre_usuario -W -d nombre_base_datos -v "/ruta/del/backup/mi_backup.dump"
+```
+
+**Descripción de los parámetros:**
+- `-U nombre_usuario`: Especifica el nombre de usuario de PostgreSQL que tiene permisos para restaurar la base de datos.
+- `-W`: Solicita la contraseña del usuario.
+- `-d nombre_base_datos`: Especifica el nombre de la base de datos en la que se restaurará el backup.
+- `-v`: Muestra información detallada durante el proceso de restauración.
+- `"/ruta/del/backup/mi_backup.dump"`: Especifica la ruta y el nombre del archivo del backup que deseas restaurar.
+
+#### Ejemplo Práctico
+
+Si tu nombre de usuario es `postgres`, la base de datos en la que deseas restaurar el backup se llama `mi_base_datos`, y el archivo de backup se encuentra en `/backups`, el comando sería:
+
+```bash
+pg_restore -U postgres -W -d mi_base_datos -v "/backups/mi_backup.dump"
+```
+
+Este comando te pedirá la contraseña del usuario `postgres` y luego procederá a restaurar la base de datos desde el archivo especificado. Asegúrate de que la base de datos de destino (`mi_base_datos`) ya exista antes de ejecutar el comando, ya que `pg_restore` no crea la base de datos automáticamente.
+
+
+ADAPTACIÓN:
+
+"C:\Program Files\PostgreSQL\16\bin\pg_restore" -U postgres -W -d bd_ic_henry_r -v "backup_20250407.dump"
+
+
+
+COMANDOS EFECTUADOS:
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# \l *henry*
+                                                                       Listado de base de datos
+       Nombre        |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+---------------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd20231209_henry    | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_henry1   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_m_henry  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_m_henry1 | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_t_henry  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_henry         | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ig_henry         | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ gbd20231209_henry   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(8 filas)
+
+
+postgres=#
+postgres=#
+postgres=# \c bd_ic_henry;
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# \dv
+            Listado de relaciones
+ Esquema |     Nombre      | Tipo  |  Due±o
+---------+-----------------+-------+----------
+ public  | vista_prov_prod | vista | postgres
+(1 fila)
+
+
+bd_ic_henry=# select * from vista_prov_prod;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC, PRECIO ASC
+bd_ic_henry-# ;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+(16 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD;
+      producto
+--------------------
+ COCINA ELECTRICA
+ COCINA A GAS
+ HORNO A GAS
+ CONGELADOR
+ NEVERA
+ AIRE ACONDICIONADO
+ HORNO ELECTRICO
+ SECADORA
+ LAVADORA
+ MICRO ONDAS
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO;
+      producto
+--------------------
+ COCINA ELECTRICA
+ COCINA A GAS
+ HORNO A GAS
+ CONGELADOR
+ NEVERA
+ AIRE ACONDICIONADO
+ HORNO ELECTRICO
+ SECADORA
+ LAVADORA
+ MICRO ONDAS
+(10 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD ORDER BY PRODUCTO;
+      producto
+--------------------
+ AIRE ACONDICIONADO
+ COCINA A GAS
+ COCINA ELECTRICA
+ CONGELADOR
+ HORNO A GAS
+ HORNO ELECTRICO
+ LAVADORA
+ MICRO ONDAS
+ NEVERA
+ SECADORA
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO ORDER BY PRODUCTO;
+      producto
+--------------------
+ AIRE ACONDICIONADO
+ COCINA A GAS
+ COCINA ELECTRICA
+ CONGELADOR
+ HORNO A GAS
+ HORNO ELECTRICO
+ LAVADORA
+ MICRO ONDAS
+ NEVERA
+ SECADORA
+(10 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC;
+      producto
+--------------------
+ SECADORA
+ NEVERA
+ MICRO ONDAS
+ LAVADORA
+ HORNO ELECTRICO
+ HORNO A GAS
+ CONGELADOR
+ COCINA ELECTRICA
+ COCINA A GAS
+ AIRE ACONDICIONADO
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO ORDER BY PRODUCTO DESC;
+      producto
+--------------------
+ SECADORA
+ NEVERA
+ MICRO ONDAS
+ LAVADORA
+ HORNO ELECTRICO
+ HORNO A GAS
+ CONGELADOR
+ COCINA ELECTRICA
+ COCINA A GAS
+ AIRE ACONDICIONADO
+(10 filas)
+
+
+bd_ic_henry=# SELECT MAX(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+  max
+--------
+ 500.50
+(1 fila)
+
+
+bd_ic_henry=# SELECT MIN(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+  min
+--------
+ 200.25
+(1 fila)
+
+
+bd_ic_henry=# SELECT AVG(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+         avg
+----------------------
+ 375.4375000000000000
+(1 fila)
+
+
+bd_ic_henry=# SELECT SUM(EXISTENCIA) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+ sum
+-----
+  29
+(1 fila)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO), MIN(PRECIO), AVG(PRECIO), SUM(EXISTENCIA)
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  |  max   |  min   |         avg          | sum
+------------+--------+--------+----------------------+-----
+ GE         | 500.50 | 200.25 | 375.4375000000000000 |  29
+ WHIRPOOL   | 500.00 | 150.00 | 312.5000000000000000 |  14
+ LG         | 600.00 | 175.00 | 376.2500000000000000 |  25
+ ELECTROLUX | 550.00 | 250.00 | 435.0000000000000000 |  24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", AVG(PRECIO) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en exostencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo |   Precio promedio    | Cantidad en exostencia
+------------+---------------+---------------+----------------------+------------------------
+ GE         |        500.50 |        200.25 | 375.4375000000000000 |                     29
+ WHIRPOOL   |        500.00 |        150.00 | 312.5000000000000000 |                     14
+ LG         |        600.00 |        175.00 | 376.2500000000000000 |                     25
+ ELECTROLUX |        550.00 |        250.00 | 435.0000000000000000 |                     24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD ORDER BY PROVEEDOR GROUP BY PROVEEDOR;
+ERROR:  error de sintaxis en o cerca de «GROUP»
+LÍNEA 2: FROM VISTA_PROV_PROD ORDER BY PROVEEDOR GROUP BY PROVEEDOR;
+                                                 ^
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR AS "Proveedor", MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ Proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR AS proveedor, MAX(PRECIO) AS precio_maximo, MIN(PRECIO) AS precio_minimo, ROUND(AVG(PRECIO),2) AS precio_promedio, SUM(EXISTENCIA) AS cantidad_en_existencia
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ proveedor  | precio_maximo | precio_minimo | precio_promedio | cantidad_en_existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# \l *ic*henry;
+                                                                   Listado de base de datos
+   Nombre    |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+-------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd_ic_henry | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(1 fila)
+
+
+bd_ic_henry=# create database bd_ic_henry_r;
+CREATE DATABASE
+bd_ic_henry=# \c bd_ic_henry_r
+Ahora está conectado a la base de datos «bd_ic_henry_r» con el usuario «postgres».
+bd_ic_henry_r=# \d
+                Listado de relaciones
+ Esquema |       Nombre        |   Tipo    |  Due±o
+---------+---------------------+-----------+----------
+ public  | contactos           | tabla     | postgres
+ public  | contactos1          | tabla     | postgres
+ public  | contactos2          | tabla     | postgres
+ public  | productos           | tabla     | postgres
+ public  | productos1          | tabla     | postgres
+ public  | productos1_id_seq   | secuencia | postgres
+ public  | productos_id_seq    | secuencia | postgres
+ public  | proveedores         | tabla     | postgres
+ public  | proveedores1        | tabla     | postgres
+ public  | proveedores1_id_seq | secuencia | postgres
+ public  | proveedores_id_seq  | secuencia | postgres
+ public  | vista_prov_prod     | vista     | postgres
+(12 filas)
+
+
+bd_ic_henry_r=#
+
+RESULTADOS DEL COMMAND PROMPT:
+C:\ESP_PYTHON_20250331\POSTGRESQL\HENRY>
+"C:\Program Files\PostgreSQL\16\bin\pg_restore" -U postgres -W -d bd_ic_henry_r -v "backup_20250407.dump"
+pg_restore: connecting to database for restore
+Password:
+pg_restore: creating TABLE "public.contactos" 
+pg_restore: creating TABLE "public.contactos1"
+pg_restore: creating TABLE "public.contactos2"
+pg_restore: creating TABLE "public.productos" 
+pg_restore: creating TABLE "public.productos1"
+pg_restore: creating SEQUENCE "public.productos1_id_seq"        
+pg_restore: creating SEQUENCE OWNED BY "public.productos1_id_seq"
+pg_restore: creating SEQUENCE "public.productos_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "public.productos_id_seq"pg_restore: creating TABLE "public.proveedores"
+pg_restore: creating TABLE "public.proveedores1"
+pg_restore: creating SEQUENCE "public.proveedores1_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "public.proveedores1_id_seq"
+pg_restore: creating SEQUENCE "public.proveedores_id_seq"       
+pg_restore: creating SEQUENCE OWNED BY "public.proveedores_id_seq"
+pg_restore: creating VIEW "public.vista_prov_prod"
+pg_restore: creating DEFAULT "public.productos id"
+pg_restore: creating DEFAULT "public.productos1 id"
+pg_restore: creating DEFAULT "public.proveedores id"
+pg_restore: creating DEFAULT "public.proveedores1 id"
+pg_restore: processing data for table "public.contactos"        
+pg_restore: processing data for table "public.contactos1"       
+pg_restore: processing data for table "public.contactos2"       
+pg_restore: processing data for table "public.productos"
+pg_restore: processing data for table "public.productos1"       
+pg_restore: processing data for table "public.proveedores"      
+pg_restore: processing data for table "public.proveedores1"     
+pg_restore: executing SEQUENCE SET productos1_id_seq
+pg_restore: executing SEQUENCE SET productos_id_seq
+pg_restore: executing SEQUENCE SET proveedores1_id_seq
+pg_restore: executing SEQUENCE SET proveedores_id_seq
+pg_restore: creating CONSTRAINT "public.contactos1 contactos1_cedula_key"
+pg_restore: creating CONSTRAINT "public.contactos2 contactos2_cedula_key"
+pg_restore: creating CONSTRAINT "public.contactos2 contactos2_correo_key"
+pg_restore: creating CONSTRAINT "public.productos1 productos1_pkey"
+pg_restore: creating CONSTRAINT "public.productos productos_pkey"
+pg_restore: creating CONSTRAINT "public.proveedores1 proveedores1_pkey"
+pg_restore: creating CONSTRAINT "public.proveedores proveedores_pkey"
+pg_restore: creating FK CONSTRAINT "public.productos1 productos1_proveedor_id_fkey"
+pg_restore: creating FK CONSTRAINT "public.productos productos_proveedor_id_fkey"
+
+C:\ESP_PYTHON_20250331\POSTGRESQL\HENRY>
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# \l *henry*
+                                                                       Listado de base de datos
+       Nombre        |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+---------------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd20231209_henry    | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_henry1   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_m_henry  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_m_henry1 | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_t_henry  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_henry         | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ig_henry         | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ gbd20231209_henry   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(8 filas)
+
+
+postgres=#
+postgres=#
+postgres=# \c bd_ic_henry;
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# \dv
+            Listado de relaciones
+ Esquema |     Nombre      | Tipo  |  Due±o
+---------+-----------------+-------+----------
+ public  | vista_prov_prod | vista | postgres
+(1 fila)
+
+
+bd_ic_henry=# select * from vista_prov_prod;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC, PRECIO ASC
+bd_ic_henry-# ;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+(16 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD;
+      producto
+--------------------
+ COCINA ELECTRICA
+ COCINA A GAS
+ HORNO A GAS
+ CONGELADOR
+ NEVERA
+ AIRE ACONDICIONADO
+ HORNO ELECTRICO
+ SECADORA
+ LAVADORA
+ MICRO ONDAS
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO;
+      producto
+--------------------
+ COCINA ELECTRICA
+ COCINA A GAS
+ HORNO A GAS
+ CONGELADOR
+ NEVERA
+ AIRE ACONDICIONADO
+ HORNO ELECTRICO
+ SECADORA
+ LAVADORA
+ MICRO ONDAS
+(10 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD ORDER BY PRODUCTO;
+      producto
+--------------------
+ AIRE ACONDICIONADO
+ COCINA A GAS
+ COCINA ELECTRICA
+ CONGELADOR
+ HORNO A GAS
+ HORNO ELECTRICO
+ LAVADORA
+ MICRO ONDAS
+ NEVERA
+ SECADORA
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO ORDER BY PRODUCTO;
+      producto
+--------------------
+ AIRE ACONDICIONADO
+ COCINA A GAS
+ COCINA ELECTRICA
+ CONGELADOR
+ HORNO A GAS
+ HORNO ELECTRICO
+ LAVADORA
+ MICRO ONDAS
+ NEVERA
+ SECADORA
+(10 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC;
+      producto
+--------------------
+ SECADORA
+ NEVERA
+ MICRO ONDAS
+ LAVADORA
+ HORNO ELECTRICO
+ HORNO A GAS
+ CONGELADOR
+ COCINA ELECTRICA
+ COCINA A GAS
+ AIRE ACONDICIONADO
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO ORDER BY PRODUCTO DESC;
+      producto
+--------------------
+ SECADORA
+ NEVERA
+ MICRO ONDAS
+ LAVADORA
+ HORNO ELECTRICO
+ HORNO A GAS
+ CONGELADOR
+ COCINA ELECTRICA
+ COCINA A GAS
+ AIRE ACONDICIONADO
+(10 filas)
+
+
+bd_ic_henry=# SELECT MAX(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+  max
+--------
+ 500.50
+(1 fila)
+
+
+bd_ic_henry=# SELECT MIN(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+  min
+--------
+ 200.25
+(1 fila)
+
+
+bd_ic_henry=# SELECT AVG(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+         avg
+----------------------
+ 375.4375000000000000
+(1 fila)
+
+
+bd_ic_henry=# SELECT SUM(EXISTENCIA) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+ sum
+-----
+  29
+(1 fila)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO), MIN(PRECIO), AVG(PRECIO), SUM(EXISTENCIA)
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  |  max   |  min   |         avg          | sum
+------------+--------+--------+----------------------+-----
+ GE         | 500.50 | 200.25 | 375.4375000000000000 |  29
+ WHIRPOOL   | 500.00 | 150.00 | 312.5000000000000000 |  14
+ LG         | 600.00 | 175.00 | 376.2500000000000000 |  25
+ ELECTROLUX | 550.00 | 250.00 | 435.0000000000000000 |  24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", AVG(PRECIO) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en exostencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo |   Precio promedio    | Cantidad en exostencia
+------------+---------------+---------------+----------------------+------------------------
+ GE         |        500.50 |        200.25 | 375.4375000000000000 |                     29
+ WHIRPOOL   |        500.00 |        150.00 | 312.5000000000000000 |                     14
+ LG         |        600.00 |        175.00 | 376.2500000000000000 |                     25
+ ELECTROLUX |        550.00 |        250.00 | 435.0000000000000000 |                     24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD ORDER BY PROVEEDOR GROUP BY PROVEEDOR;
+ERROR:  error de sintaxis en o cerca de «GROUP»
+LÍNEA 2: FROM VISTA_PROV_PROD ORDER BY PROVEEDOR GROUP BY PROVEEDOR;
+                                                 ^
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR AS "Proveedor", MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ Proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR AS proveedor, MAX(PRECIO) AS precio_maximo, MIN(PRECIO) AS precio_minimo, ROUND(AVG(PRECIO),2) AS precio_promedio, SUM(EXISTENCIA) AS cantidad_en_existencia
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ proveedor  | precio_maximo | precio_minimo | precio_promedio | cantidad_en_existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# \l *ic*henry;
+                                                                   Listado de base de datos
+   Nombre    |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+-------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd_ic_henry | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(1 fila)
+
+
+bd_ic_henry=# create database bd_ic_henry_r;
+CREATE DATABASE
+bd_ic_henry=# \c bd_ic_henry_r
+Ahora está conectado a la base de datos «bd_ic_henry_r» con el usuario «postgres».
+bd_ic_henry_r=# \d
+                Listado de relaciones
+ Esquema |       Nombre        |   Tipo    |  Due±o
+---------+---------------------+-----------+----------
+ public  | contactos           | tabla     | postgres
+ public  | contactos1          | tabla     | postgres
+ public  | contactos2          | tabla     | postgres
+ public  | productos           | tabla     | postgres
+ public  | productos1          | tabla     | postgres
+ public  | productos1_id_seq   | secuencia | postgres
+ public  | productos_id_seq    | secuencia | postgres
+ public  | proveedores         | tabla     | postgres
+ public  | proveedores1        | tabla     | postgres
+ public  | proveedores1_id_seq | secuencia | postgres
+ public  | proveedores_id_seq  | secuencia | postgres
+ public  | vista_prov_prod     | vista     | postgres
+(12 filas)
+
+
+bd_ic_henry_r=# CREATE TABLE alumnos(
+bd_ic_henry_r(#     id serial,
+bd_ic_henry_r(#     nombre varchar(80),
+bd_ic_henry_r(#     apellido varchar(80),
+bd_ic_henry_r(#     primary key(id)
+bd_ic_henry_r(# );
+CREATE TABLE
+bd_ic_henry_r=# \c bd_ic_henry
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# CREATE TABLE alumnos(
+bd_ic_henry(#     id serial,
+bd_ic_henry(#     nombre varchar(80),
+bd_ic_henry(#     apellido varchar(80),
+bd_ic_henry(#     primary key(id)
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# CREATE TABLE asignaturas(
+bd_ic_henry(#     id serial,
+bd_ic_henry(#     nombre varchar(80),
+bd_ic_henry(#     descripcion text,
+bd_ic_henry(#     primary key(id)
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# CREATE TABLE alumnos_asignaturas(
+bd_ic_henry(#     alumno_id integer,
+bd_ic_henry(#     asignatura_id integer,
+bd_ic_henry(#     primary key(alumno_id, asignatura_id),
+bd_ic_henry(#     foreign key(alumno_id) references alumnos(id) on delete cascade on update cascade,
+bd_ic_henry(#     foreign key(asignatura_id) references asignaturas(id) on delete cascade on update cascade
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=#Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# \l *henry*
+                                                                       Listado de base de datos
+       Nombre        |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+---------------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd20231209_henry    | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_henry1   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_m_henry  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_m_henry1 | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd20240610_t_henry  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_henry         | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ig_henry         | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ gbd20231209_henry   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(8 filas)
+
+
+postgres=#
+postgres=#
+postgres=# \c bd_ic_henry;
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# \dv
+            Listado de relaciones
+ Esquema |     Nombre      | Tipo  |  Due±o
+---------+-----------------+-------+----------
+ public  | vista_prov_prod | vista | postgres
+(1 fila)
+
+
+bd_ic_henry=# select * from vista_prov_prod;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+(16 filas)
+
+
+bd_ic_henry=# SELECT * FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC, PRECIO ASC
+bd_ic_henry-# ;
+ proveedor  |    telefono     |       correo        |      producto      | precio | existencia
+------------+-----------------+---------------------+--------------------+--------+------------
+ GE         | +58 212 9876543 | info@ge.com         | SECADORA           | 500.50 |          8
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | SECADORA           | 550.00 |          5
+ LG         | +58 212 8876543 | info@lg.com         | NEVERA             | 480.00 |          7
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | NEVERA             | 490.00 |          7
+ GE         | +58 212 9876543 | info@ge.com         | NEVERA             | 500.25 |         12
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | MICRO ONDAS        | 150.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | LAVADORA           | 300.75 |          6
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | LAVADORA           | 450.00 |          6
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | LAVADORA           | 500.00 |          2
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | HORNO ELECTRICO    | 350.00 |          3
+ ELECTROLUX | +58 212 6876543 | info@electrolux.com | HORNO A GAS        | 250.00 |          6
+ GE         | +58 212 9876543 | info@ge.com         | CONGELADOR         | 200.25 |          3
+ WHIRPOOL   | +58 212 7876543 | info@whirpool.com   | CONGELADOR         | 250.00 |          3
+ LG         | +58 212 8876543 | info@lg.com         | COCINA ELECTRICA   | 250.00 |          6
+ LG         | +58 212 8876543 | info@lg.com         | COCINA A GAS       | 175.00 |          9
+ LG         | +58 212 8876543 | info@lg.com         | AIRE ACONDICIONADO | 600.00 |          3
+(16 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD;
+      producto
+--------------------
+ COCINA ELECTRICA
+ COCINA A GAS
+ HORNO A GAS
+ CONGELADOR
+ NEVERA
+ AIRE ACONDICIONADO
+ HORNO ELECTRICO
+ SECADORA
+ LAVADORA
+ MICRO ONDAS
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO;
+      producto
+--------------------
+ COCINA ELECTRICA
+ COCINA A GAS
+ HORNO A GAS
+ CONGELADOR
+ NEVERA
+ AIRE ACONDICIONADO
+ HORNO ELECTRICO
+ SECADORA
+ LAVADORA
+ MICRO ONDAS
+(10 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD ORDER BY PRODUCTO;
+      producto
+--------------------
+ AIRE ACONDICIONADO
+ COCINA A GAS
+ COCINA ELECTRICA
+ CONGELADOR
+ HORNO A GAS
+ HORNO ELECTRICO
+ LAVADORA
+ MICRO ONDAS
+ NEVERA
+ SECADORA
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO ORDER BY PRODUCTO;
+      producto
+--------------------
+ AIRE ACONDICIONADO
+ COCINA A GAS
+ COCINA ELECTRICA
+ CONGELADOR
+ HORNO A GAS
+ HORNO ELECTRICO
+ LAVADORA
+ MICRO ONDAS
+ NEVERA
+ SECADORA
+(10 filas)
+
+
+bd_ic_henry=# SELECT DISTINCT PRODUCTO FROM VISTA_PROV_PROD ORDER BY PRODUCTO DESC;
+      producto
+--------------------
+ SECADORA
+ NEVERA
+ MICRO ONDAS
+ LAVADORA
+ HORNO ELECTRICO
+ HORNO A GAS
+ CONGELADOR
+ COCINA ELECTRICA
+ COCINA A GAS
+ AIRE ACONDICIONADO
+(10 filas)
+
+
+bd_ic_henry=# SELECT PRODUCTO FROM VISTA_PROV_PROD GROUP BY PRODUCTO ORDER BY PRODUCTO DESC;
+      producto
+--------------------
+ SECADORA
+ NEVERA
+ MICRO ONDAS
+ LAVADORA
+ HORNO ELECTRICO
+ HORNO A GAS
+ CONGELADOR
+ COCINA ELECTRICA
+ COCINA A GAS
+ AIRE ACONDICIONADO
+(10 filas)
+
+
+bd_ic_henry=# SELECT MAX(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+  max
+--------
+ 500.50
+(1 fila)
+
+
+bd_ic_henry=# SELECT MIN(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+  min
+--------
+ 200.25
+(1 fila)
+
+
+bd_ic_henry=# SELECT AVG(PRECIO) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+         avg
+----------------------
+ 375.4375000000000000
+(1 fila)
+
+
+bd_ic_henry=# SELECT SUM(EXISTENCIA) FROM VISTA_PROV_PROD WHERE PROVEEDOR = 'GE';
+ sum
+-----
+  29
+(1 fila)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO), MIN(PRECIO), AVG(PRECIO), SUM(EXISTENCIA)
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  |  max   |  min   |         avg          | sum
+------------+--------+--------+----------------------+-----
+ GE         | 500.50 | 200.25 | 375.4375000000000000 |  29
+ WHIRPOOL   | 500.00 | 150.00 | 312.5000000000000000 |  14
+ LG         | 600.00 | 175.00 | 376.2500000000000000 |  25
+ ELECTROLUX | 550.00 | 250.00 | 435.0000000000000000 |  24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", AVG(PRECIO) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en exostencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo |   Precio promedio    | Cantidad en exostencia
+------------+---------------+---------------+----------------------+------------------------
+ GE         |        500.50 |        200.25 | 375.4375000000000000 |                     29
+ WHIRPOOL   |        500.00 |        150.00 | 312.5000000000000000 |                     14
+ LG         |        600.00 |        175.00 | 376.2500000000000000 |                     25
+ ELECTROLUX |        550.00 |        250.00 | 435.0000000000000000 |                     24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD ORDER BY PROVEEDOR GROUP BY PROVEEDOR;
+ERROR:  error de sintaxis en o cerca de «GROUP»
+LÍNEA 2: FROM VISTA_PROV_PROD ORDER BY PROVEEDOR GROUP BY PROVEEDOR;
+                                                 ^
+bd_ic_henry=# SELECT PROVEEDOR, MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR AS "Proveedor", MAX(PRECIO) AS "Precio máximo", MIN(PRECIO) AS "Precio mínimo", ROUND(AVG(PRECIO),2) AS "Precio promedio", SUM(EXISTENCIA) AS "Cantidad en existencia"
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ Proveedor  | Precio máximo | Precio mínimo | Precio promedio | Cantidad en existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# SELECT PROVEEDOR AS proveedor, MAX(PRECIO) AS precio_maximo, MIN(PRECIO) AS precio_minimo, ROUND(AVG(PRECIO),2) AS precio_promedio, SUM(EXISTENCIA) AS cantidad_en_existencia
+bd_ic_henry-# FROM VISTA_PROV_PROD GROUP BY PROVEEDOR ORDER BY PROVEEDOR;
+ proveedor  | precio_maximo | precio_minimo | precio_promedio | cantidad_en_existencia
+------------+---------------+---------------+-----------------+------------------------
+ ELECTROLUX |        550.00 |        250.00 |          435.00 |                     24
+ GE         |        500.50 |        200.25 |          375.44 |                     29
+ LG         |        600.00 |        175.00 |          376.25 |                     25
+ WHIRPOOL   |        500.00 |        150.00 |          312.50 |                     14
+(4 filas)
+
+
+bd_ic_henry=# \l *ic*henry;
+                                                                   Listado de base de datos
+   Nombre    |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+-------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd_ic_henry | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(1 fila)
+
+
+bd_ic_henry=# create database bd_ic_henry_r;
+CREATE DATABASE
+bd_ic_henry=# \c bd_ic_henry_r
+Ahora está conectado a la base de datos «bd_ic_henry_r» con el usuario «postgres».
+bd_ic_henry_r=# \d
+                Listado de relaciones
+ Esquema |       Nombre        |   Tipo    |  Due±o
+---------+---------------------+-----------+----------
+ public  | contactos           | tabla     | postgres
+ public  | contactos1          | tabla     | postgres
+ public  | contactos2          | tabla     | postgres
+ public  | productos           | tabla     | postgres
+ public  | productos1          | tabla     | postgres
+ public  | productos1_id_seq   | secuencia | postgres
+ public  | productos_id_seq    | secuencia | postgres
+ public  | proveedores         | tabla     | postgres
+ public  | proveedores1        | tabla     | postgres
+ public  | proveedores1_id_seq | secuencia | postgres
+ public  | proveedores_id_seq  | secuencia | postgres
+ public  | vista_prov_prod     | vista     | postgres
+(12 filas)
+
+
+bd_ic_henry_r=# CREATE TABLE alumnos(
+bd_ic_henry_r(#     id serial,
+bd_ic_henry_r(#     nombre varchar(80),
+bd_ic_henry_r(#     apellido varchar(80),
+bd_ic_henry_r(#     primary key(id)
+bd_ic_henry_r(# );
+CREATE TABLE
+bd_ic_henry_r=# \c bd_ic_henry
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# CREATE TABLE alumnos(
+bd_ic_henry(#     id serial,
+bd_ic_henry(#     nombre varchar(80),
+bd_ic_henry(#     apellido varchar(80),
+bd_ic_henry(#     primary key(id)
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# CREATE TABLE asignaturas(
+bd_ic_henry(#     id serial,
+bd_ic_henry(#     nombre varchar(80),
+bd_ic_henry(#     descripcion text,
+bd_ic_henry(#     primary key(id)
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# CREATE TABLE alumnos_asignaturas(
+bd_ic_henry(#     alumno_id integer,
+bd_ic_henry(#     asignatura_id integer,
+bd_ic_henry(#     primary key(alumno_id, asignatura_id),
+bd_ic_henry(#     foreign key(alumno_id) references alumnos(id) on delete cascade on update cascade,
+bd_ic_henry(#     foreign key(asignatura_id) references asignaturas(id) on delete cascade on update cascade
+bd_ic_henry(# );
+CREATE TABLE
+bd_ic_henry=# \d alumnos;
+                                      Tabla ½public.alumnos╗
+ Columna  |         Tipo          | Ordenamiento | Nulable  |             Por omisi¾n
+----------+-----------------------+--------------+----------+-------------------------------------
+ id       | integer               |              | not null | nextval('alumnos_id_seq'::regclass)
+ nombre   | character varying(80) |              |          |
+ apellido | character varying(80) |              |          |
+═ndices:
+    "alumnos_pkey" PRIMARY KEY, btree (id)
+Referenciada por:
+    TABLE "alumnos_asignaturas" CONSTRAINT "alumnos_asignaturas_alumno_id_fkey" FOREIGN KEY (alumno_id) REFERENCES alumnos(id) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+bd_ic_henry=# \d asignaturas;
+                                       Tabla ½public.asignaturas╗
+   Columna   |         Tipo          | Ordenamiento | Nulable  |               Por omisi¾n            
+-------------+-----------------------+--------------+----------+-----------------------------------------
+ id          | integer               |              | not null | nextval('asignaturas_id_seq'::regclass)
+ nombre      | character varying(80) |              |          |
+ descripcion | text                  |              |          |
+═ndices:
+    "asignaturas_pkey" PRIMARY KEY, btree (id)
+Referenciada por:
+    TABLE "alumnos_asignaturas" CONSTRAINT "alumnos_asignaturas_asignatura_id_fkey" FOREIGN KEY (asignatura_id) REFERENCES asignaturas(id) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+bd_ic_henry=# \d alumnos_asignaturas;
+               Tabla ½public.alumnos_asignaturas╗
+    Columna    |  Tipo   | Ordenamiento | Nulable  | Por omisi¾n
+---------------+---------+--------------+----------+-------------
+ alumno_id     | integer |              | not null |
+ asignatura_id | integer |              | not null |
+═ndices:
+    "alumnos_asignaturas_pkey" PRIMARY KEY, btree (alumno_id, asignatura_id)
+Restricciones de llave forßnea:
+    "alumnos_asignaturas_alumno_id_fkey" FOREIGN KEY (alumno_id) REFERENCES alumnos(id) ON UPDATE CASCADE ON DELETE CASCADE
+    "alumnos_asignaturas_asignatura_id_fkey" FOREIGN KEY (asignatura_id) REFERENCES asignaturas(id) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+bd_ic_henry=#
+
+

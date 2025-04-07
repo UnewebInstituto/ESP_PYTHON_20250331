@@ -1,0 +1,22 @@
+pg_dump -U postgres -W -F c -b -v -f "/backups/mi_backup.dump" mi_base_datos
+
+ADAPTACION:
+
+"C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250407.dump"
+bd_ic_orlanys
+
+"C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250407.dump" bd_ic_orlanys
+
+
+ABRIR UN TERMINAL DE SISTEMA OPERATIVO MS-DOS:
+
+Command prompt en Visual Studio Code
+
+
+--pg_restore
+
+ADAPTACIÓN:
+
+"C:\Program Files\PostgreSQL\16\bin\pg_restore" -U postgres -W -d bd_ic_orlanys_r -v "backup_20250407.dump"
+
+
