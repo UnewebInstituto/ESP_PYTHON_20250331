@@ -51,7 +51,7 @@ C:\Program Files\PostgreSQL\16\bin
 --RESTORE COMANDO PARA LA RECUPERACION 
 
 "C:\Program Files\PostgreSQL\16\bin\pg_restore" -U postgres -W -d bd_ic_dannysa_r -v "backup_20250407.dump"
-
+"C:\Program Files\PostgreSQL\16\bin\pg_restore" -U postgres -W -d bd_ic_dannysa_r -v "backup_20250409.dump"
 ABRIR UN TERMINAL DE SISTEMA OPERATIVO MS-DOS
 
 --ASOCIACION DE MUCHOS A MUCHOS 
@@ -74,3 +74,4 @@ CREATE TABLE alumnos_asignaturas(
   foreign key (alumno_id) references alumnos(id) on delete cascade on update cascade,
   foreign key (asignatura_id) references asignaturas(id) on delete cascade on update cascade
 );
+"C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250409.dump" bd_ic_dannysa

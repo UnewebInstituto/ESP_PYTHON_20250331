@@ -36,6 +36,9 @@ ADAPTACIÓN:
 
 "C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250407.dump" bd_ic_henry
 
+"C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250409.dump" bd_ic_henry
+
+
 ABRIR UN TERMINAL DE SISTEMA OPERATIVO MS-DOS:
 
 Command prompt en Visual Studio Code

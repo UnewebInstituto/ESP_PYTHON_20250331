@@ -1,0 +1,5 @@
+1;Matemática;Ciencias básicas
+2;Física;Ciencias básicas
+3;Química;Ciencias básicas
+4;Biología;Ciencias naturales
+5;Castellanos;Lenguaje y literatura

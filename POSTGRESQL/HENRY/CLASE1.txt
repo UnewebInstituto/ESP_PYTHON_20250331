@@ -8,7 +8,9 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remove remote origin
+
+git remote remove origin
+
 git remote add origin https://github.com/UnewebInstituto/ESP_PYTHON_20250331.git
 git push -u origin main
 

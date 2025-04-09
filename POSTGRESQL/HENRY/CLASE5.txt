@@ -1,0 +1,366 @@
+COPIAR DESDE ARCHIVO PLANO A TABLA DE BASE DE DATOS
+
+COPY alumnos FROM 'C:/ESP_PYTHON_20250331/HENRY/CLASE5/alumnos.txt';
+
+
+Para corregir el comando `COPY` en PostgreSQL y especificar que el archivo plano a leer está delimitado por punto y coma (`;`), debes incluir la opción `DELIMITER`. Aquí tienes el comando corregido:
+
+```sql
+COPY alumnos FROM 'C:/ESP_PYTHON_20250331/HENRY/CLASE5/alumnos.txt' DELIMITER ';' CSV;
+```
+
+### Explicación
+- **COPY**: Este comando se utiliza para copiar datos desde un archivo a una tabla en la base de datos.
+- **FROM**: Indica la ruta del archivo que se va a leer.
+- **DELIMITER ';'**: Especifica que el delimitador de los campos en el archivo es el punto y coma (`;`).
+- **CSV**: Indica que el formato del archivo es CSV, lo cual es útil cuando se utilizan delimitadores.
+
+Asegúrate de que la ruta del archivo y la tabla `alumnos` estén correctamente configuradas en tu base de datos. ¡Espero que esto te sea útil!
+
+***
+Para corregir el comando `COPY` en PostgreSQL y redirigir la salida a un archivo específico en la ruta que proporcionaste, debes especificar la ruta del archivo en lugar de `STDOUT`. Aquí tienes el comando corregido:
+
+```sql
+COPY country TO 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos.txt' DELIMITER '|';
+```
+
+### Explicación
+- **COPY**: Este comando se utiliza para copiar datos desde una tabla a un archivo.
+- **TO**: Indica que los datos se van a exportar a un archivo.
+- **'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos.txt'**: Especifica la ruta completa donde se guardará el archivo de salida.
+- **DELIMITER '|'**: Establece que el delimitador de los campos en el archivo será el carácter de barra vertical (`|`).
+
+Asegúrate de que la ruta sea accesible y que el servidor de PostgreSQL tenga permisos para escribir en esa ubicación. ¡Espero que esto te ayude!
+***
+
+DESDE CONSOLA DE psql
+
+CASO DE ENTRADA DESDE ARCHIVO PLANO
+-----------------------------------
+COPY alumnos FROM 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos.txt' DELIMITER ';' CSV;
+
+COPY asignaturas FROM 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/asignaturas.txt' DELIMITER ';' CSV;
+
+COPY alumnos_asignaturas FROM 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos_asignaturas.txt' DELIMITER ';' CSV;
+
+CASO SALIDA DESDE TABLA HACIA ARCHIVO PLANO
+-------------------------------------------
+COPY alumnos TO 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos_salida.txt' DELIMITER ';';
+
+COPY asignaturas TO 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/asignaturas_salida.txt' DELIMITER ';';
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# \c bd_ic_henry
+Ahora está conectado a la base de datos «bd_ic_henry» con el usuario «postgres».
+bd_ic_henry=# \d
+                Listado de relaciones
+ Esquema |       Nombre        |   Tipo    |  Due±o
+---------+---------------------+-----------+----------
+ public  | alumnos             | tabla     | postgres
+ public  | alumnos_asignaturas | tabla     | postgres
+ public  | alumnos_id_seq      | secuencia | postgres
+ public  | asignaturas         | tabla     | postgres
+ public  | asignaturas_id_seq  | secuencia | postgres
+ public  | contactos           | tabla     | postgres
+ public  | contactos1          | tabla     | postgres
+ public  | contactos2          | tabla     | postgres
+ public  | productos           | tabla     | postgres
+ public  | productos1          | tabla     | postgres
+ public  | productos1_id_seq   | secuencia | postgres
+ public  | productos_id_seq    | secuencia | postgres
+ public  | proveedores         | tabla     | postgres
+ public  | proveedores1        | tabla     | postgres
+ public  | proveedores1_id_seq | secuencia | postgres
+ public  | proveedores_id_seq  | secuencia | postgres
+ public  | vista_prov_prod     | vista     | postgres
+(17 filas)
+
+
+bd_ic_henry=# COPY alumnos FROM 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos.txt' DELIMITER ';' CSV;
+ERROR:  la sintaxis de entrada no es válida para tipo integer: «Dannysa»
+CONTEXTO:  COPY alumnos, line 1, column id: "Dannysa"
+bd_ic_henry=# COPY alumnos FROM 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos.txt' DELIMITER ';' CSV;
+COPY 5
+bd_ic_henry=# COPY asignaturas FROM 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/asignaturas.txt' DELIMITER ';' CSV;
+COPY 5
+bd_ic_henry=# select * from alumnos;
+ id | nombre  | apellido
+----+---------+-----------
+  1 | Dannysa | Andr├®s
+  2 | Orlanys | Lemus
+  3 | Ana     | Vasquez
+  4 | Yolanda | Tortoza
+  5 | Nelly   | Contreras
+(5 filas)
+
+
+bd_ic_henry=# select * from asignaturas;
+ id |   nombre    |      descripcion
+----+-------------+------------------------
+  1 | Matem├ítica | Ciencias b├ísicas
+  2 | F├¡sica     | Ciencias b├ísicas
+  3 | Qu├¡mica    | Ciencias b├ísicas
+  4 | Biolog├¡a   | Ciencias naturales
+  5 | Castellano  | Lenguaje y L├¡teratura
+(5 filas)
+
+
+bd_ic_henry=# COPY alumnos TO 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos_salida.txt' DELIMITER ';';
+COPY 5
+bd_ic_henry=# COPY asignaturas TO 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/asignaturas_salida.txt' DELIMITER ';';
+COPY 5
+bd_ic_henry=# COPY alumnos_asignaturas FROM 'C:/ESP_PYTHON_20250331/POSTGRESQL/HENRY/CLASE5/alumnos_asignaturas.txt' DELIMITER ';' CSV;
+COPY 13
+bd_ic_henry=# select * from alumnos_asignaturas;
+ alumno_id | asignatura_id
+-----------+---------------
+         1 |             1
+         1 |             2
+         1 |             3
+         2 |             1
+         2 |             5
+         3 |             3
+         3 |             4
+         4 |             4
+         5 |             1
+         5 |             2
+         5 |             3
+         5 |             4
+         5 |             5
+(13 filas)
+
+
+bd_ic_henry=# insert into alumnos_asignatura(alumno_id, asignatura_id) values(1,1);
+ERROR:  no existe la relación «alumnos_asignatura»
+LÍNEA 1: insert into alumnos_asignatura(alumno_id, asignatura_id) val...
+                     ^
+bd_ic_henry=# insert into alumnos_asignaturas(alumno_id, asignatura_id) values(1,1);
+ERROR:  llave duplicada viola restricción de unicidad «alumnos_asignaturas_pkey»
+DETALLE:  Ya existe la llave (alumno_id, asignatura_id)=(1, 1).
+bd_ic_henry=# select alumnos.nombre,
+bd_ic_henry-#        alumnos.apellido,
+bd_ic_henry-#        asignaturas.nombre,
+bd_ic_henry-#        from alumnos, asignaturas, alumnos_asignaturas
+bd_ic_henry-#        where alumnos_asignaturas.alumno_id = alumnos.id and
+bd_ic_henry-#              alumnos_asignaturas.asignatura_id = asignaturas.id;
+ERROR:  error de sintaxis en o cerca de «from»
+LÍNEA 4:        from alumnos, asignaturas, alumnos_asignaturas
+                ^
+bd_ic_henry=# select alumnos.nombre,
+bd_ic_henry-#        alumnos.apellido,
+bd_ic_henry-#        asignaturas.nombre
+bd_ic_henry-#        from alumnos, asignaturas, alumnos_asignaturas
+bd_ic_henry-#        where alumnos_asignaturas.alumno_id = alumnos.id and
+bd_ic_henry-#              alumnos_asignaturas.asignatura_id = asignaturas.id;
+ nombre  | apellido  |   nombre
+---------+-----------+-------------
+ Dannysa | Andr├®s   | Matem├ítica
+ Dannysa | Andr├®s   | F├¡sica
+ Dannysa | Andr├®s   | Qu├¡mica
+ Orlanys | Lemus     | Matem├ítica
+ Orlanys | Lemus     | Castellano
+ Ana     | Vasquez   | Qu├¡mica
+ Ana     | Vasquez   | Biolog├¡a
+ Yolanda | Tortoza   | Biolog├¡a
+ Nelly   | Contreras | Matem├ítica
+ Nelly   | Contreras | F├¡sica
+ Nelly   | Contreras | Qu├¡mica
+ Nelly   | Contreras | Biolog├¡a
+ Nelly   | Contreras | Castellano
+(13 filas)
+
+
+bd_ic_henry=# create view alumnos_asignaturas as
+bd_ic_henry-# select alumnos.nombre,
+bd_ic_henry-#        alumnos.apellido,
+bd_ic_henry-#        asignaturas.nombre
+bd_ic_henry-#        from alumnos, asignaturas, alumnos_asignaturas
+bd_ic_henry-#        where alumnos_asignaturas.alumno_id = alumnos.id and
+bd_ic_henry-#              alumnos_asignaturas.asignatura_id = asignaturas.id;
+ERROR:  la columna «nombre» fue especificada más de una vez
+bd_ic_henry=# create view alumnos_asignaturas as
+bd_ic_henry-# select alumnos.nombre,
+bd_ic_henry-#        alumnos.apellido,
+bd_ic_henry-#        asignaturas.nombre as asignaturas
+bd_ic_henry-#        from alumnos, asignaturas, alumnos_asignaturas
+bd_ic_henry-#        where alumnos_asignaturas.alumno_id = alumnos.id and
+bd_ic_henry-#              alumnos_asignaturas.asignatura_id = asignaturas.id;
+ERROR:  la relación «alumnos_asignaturas» ya existe
+bd_ic_henry=# create view view_alumnos_asignaturas as
+bd_ic_henry-# select alumnos.nombre,
+bd_ic_henry-#        alumnos.apellido,
+bd_ic_henry-#        asignaturas.nombre as asignaturas
+bd_ic_henry-#        from alumnos, asignaturas, alumnos_asignaturas
+bd_ic_henry-#        where alumnos_asignaturas.alumno_id = alumnos.id and
+bd_ic_henry-#              alumnos_asignaturas.asignatura_id = asignaturas.id;
+CREATE VIEW
+bd_ic_henry=#
+
+documentación 
+https://www.w3schools.com/sql/sql_join_inner.asp
+
+
+Microsoft Windows [Versión 10.0.19045.4170]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\ESP_PYTHON_20250331>"C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250409.dump" bd_ic_henry
+Password: 
+pg_dump: last built-in OID is 16383   
+pg_dump: reading extensions
+pg_dump: identifying extension members
+pg_dump: reading schemas
+pg_dump: reading user-defined tables  
+pg_dump: reading user-defined functions
+pg_dump: reading user-defined types
+pg_dump: reading procedural languages
+pg_dump: reading user-defined aggregate functions
+pg_dump: reading user-defined operators
+pg_dump: reading user-defined access methods     
+pg_dump: reading user-defined operator classes   
+pg_dump: reading user-defined operator families  
+pg_dump: reading user-defined text search parsers
+pg_dump: reading user-defined text search templates  
+pg_dump: reading user-defined text search dictionaries
+pg_dump: reading user-defined text search configurations
+pg_dump: reading user-defined foreign-data wrappers  
+pg_dump: reading user-defined foreign servers        
+pg_dump: reading default privileges
+pg_dump: reading user-defined collations
+pg_dump: reading user-defined conversions
+pg_dump: reading type casts
+pg_dump: reading transforms
+pg_dump: reading table inheritance information       
+pg_dump: reading event triggers
+pg_dump: finding extension tables
+pg_dump: finding inheritance relationships
+pg_dump: reading column info for interesting tables
+pg_dump: finding table default expressions
+pg_dump: flagging inherited columns in subtables
+pg_dump: reading partitioning data
+pg_dump: reading indexes
+pg_dump: flagging indexes in partitioned tables
+pg_dump: reading extended statistics
+pg_dump: reading constraints
+pg_dump: reading triggers
+pg_dump: reading rewrite rules
+pg_dump: reading policies
+pg_dump: reading row-level security policies
+pg_dump: reading publications
+pg_dump: reading publication membership of tables    
+pg_dump: reading publication membership of schemas
+pg_dump: reading subscriptions
+pg_dump: reading large objects
+pg_dump: reading dependency data
+pg_dump: saving encoding = UTF8
+pg_dump: saving standard_conforming_strings = on
+pg_dump: saving search_path =
+pg_dump: saving database definition
+pg_dump: dumping contents of table "public.alumnos"
+pg_dump: dumping contents of table "public.alumnos_asignaturas" 
+pg_dump: dumping contents of table "public.asignaturas"
+pg_dump: dumping contents of table "public.contactos"pg_dump: dumping contents of table "public.contactos1"
+pg_dump: dumping contents of table "public.contactos2"
+pg_dump: dumping contents of table "public.productos"pg_dump: dumping contents of table "public.productos1"
+pg_dump: dumping contents of table "public.productos2"
+pg_dump: dumping contents of table "public.proveedores"
+pg_dump: dumping contents of table "public.proveedores1"        
+pg_dump: dumping contents of table "public.proveedores2"        
+
+C:\ESP_PYTHON_20250331>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 0022-50E4
+
+ Directorio de C:\ESP_PYTHON_20250331
+
+09/04/2025  16:34    <DIR>          .
+09/04/2025  16:34    <DIR>          ..
+09/04/2025  16:34            27,494 backup_20250409.dump
+07/04/2025  16:28    <DIR>          POSTGRESQL
+               1 archivos         27,494 bytes
+               3 dirs  620,562,075,648 bytes libres
+
+C:\ESP_PYTHON_20250331>del backup_20250409.dump
+
+C:\ESP_PYTHON_20250331>cd postgresql
+
+C:\ESP_PYTHON_20250331\POSTGRESQL>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 0022-50E4
+
+ Directorio de C:\ESP_PYTHON_20250331\POSTGRESQL
+
+07/04/2025  16:28    <DIR>          .
+07/04/2025  16:28    <DIR>          ..
+07/04/2025  16:31            14,102 backup_20250407.dump        
+09/04/2025  14:13    <DIR>          DANNYSA
+09/04/2025  14:49    <DIR>          HENRY
+09/04/2025  15:11    <DIR>          ORLANYS
+               1 archivos         14,102 bytes
+               5 dirs  620,562,100,224 bytes libres
+
+C:\ESP_PYTHON_20250331\POSTGRESQL>del backup_20250409.dump
+No se pudo encontrar C:\ESP_PYTHON_20250331\POSTGRESQL\backup_20250409.dump
+
+C:\ESP_PYTHON_20250331\POSTGRESQL>del backup_20250407.dump 
+
+C:\ESP_PYTHON_20250331\POSTGRESQL>cd henry
+
+C:\ESP_PYTHON_20250331\POSTGRESQL\HENRY>"C:\Program Files\PostgreSQL\16\bin\pg_dump" -U postgres -W -F c -b -v -f "backup_20250409.dump" bd_ic_henry
+Password: 
+pg_dump: last built-in OID is 16383
+pg_dump: reading extensions
+pg_dump: identifying extension members
+pg_dump: reading schemas
+pg_dump: reading user-defined tables
+pg_dump: reading user-defined functions
+pg_dump: reading user-defined types
+pg_dump: reading procedural languages
+pg_dump: reading user-defined aggregate functions
+pg_dump: reading user-defined operators
+pg_dump: reading user-defined access methods
+pg_dump: reading user-defined operator classes
+pg_dump: reading user-defined operator families
+pg_dump: reading user-defined text search parsers
+pg_dump: reading user-defined text search templates
+pg_dump: reading user-defined text search dictionaries
+pg_dump: reading user-defined text search configurations        
+pg_dump: reading user-defined foreign-data wrappers
+pg_dump: reading user-defined foreign servers
+pg_dump: reading default privileges
+pg_dump: reading user-defined collations
+pg_dump: reading user-defined conversions
+pg_dump: reading type casts
+pg_dump: reading transforms
+pg_dump: reading table inheritance information
+pg_dump: reading event triggers
+pg_dump: finding extension tables
+pg_dump: finding inheritance relationships
+pg_dump: reading column info for interesting tables
+pg_dump: finding table default expressions
+pg_dump: flagging inherited columns in subtables
+pg_dump: reading partitioning data
+pg_dump: reading indexes
+pg_dump: flagging indexes in partitioned tables
+pg_dump: dumping contents of table "public.contactos"
+pg_dump: dumping contents of table "public.contactos1"
+pg_dump: dumping contents of table "public.contactos2"
+pg_dump: dumping contents of table "public.productos"
+pg_dump: dumping contents of table "public.productos1"
+pg_dump: dumping contents of table "public.productos2"
+pg_dump: dumping contents of table "public.proveedores"
+pg_dump: dumping contents of table "public.proveedores1"
+pg_dump: dumping contents of table "public.proveedores2"
+
+C:\ESP_PYTHON_20250331\POSTGRESQL\HENRY>                                                                              
