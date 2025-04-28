@@ -24,5 +24,4 @@ VALUES ('V15723465','ANA','VASQUEZ' ,'1960-08-15','+582129878043','va@gmail.com'
   UPDATE contactos SET nombre='SUSANA';
 
   --ACTUALIZACION CONDICIONADA
-  UPDATE contactos SET nombre='SUSANA'
-  WHERE cedula='V9354121';
+
