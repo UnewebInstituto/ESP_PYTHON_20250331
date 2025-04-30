@@ -1,0 +1,626 @@
+danny.data1111@gmail.com;
+orlanyslemus@gmail.com;
+carlasuarez42@gmail.com;
+
+Sitio oficial:
+https://www.python.org/
+
+Comentarios 
+# Esto es un comentario de una sola línea
+"""
+Esto es un comentario 
+de varias 
+líneas
+"""
+
+Aplica también 
+comillas simples 
+''' 
+
+
+'''
+
+IDLE: Entorno de desarrollo y aprendizaje integrado 
+
+Forma parte de la instalación de Python 
+
+Desde windows, inicio, idle
+
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+print('Dannysa, Orlanys, Carla')
+Dannysa, Orlanys, Carla
+print('Dannysa, Orlanys, Carla, Henry')
+Dannysa, Orlanys, Carla, Henry
+help()
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.45.3
+__future__          _thread             getopt              runpy
+__hello__           _threading_local    getpass             runscript
+__main__            _tkinter            gettext             sched
+__phello__          _tokenize           glob                scrolledlist
+_abc                _tracemalloc        graphlib            search
+_aix_support        _typing             grep                searchbase
+_android_support    _uuid               gzip                searchengine
+_ast                _warnings           hashlib             secrets
+_asyncio            _weakref            heapq               select
+_bisect             _weakrefset         help                selectors
+_blake2             _winapi             help_about          shelve
+_bz2                _wmi                history             shlex
+_codecs             _zoneinfo           hmac                shutil
+_codecs_cn          abc                 html                sidebar
+_codecs_hk          antigravity         http                signal
+_codecs_iso2022     argparse            hyperparser         site
+_codecs_jp          array               idle                smtplib
+_codecs_kr          asgiref             idle_test           socket
+_codecs_tw          ast                 idlelib             socketserver
+_collections        asyncio             imaplib             sqlite3
+_collections_abc    atexit              importlib           sqlparse
+_colorize           autocomplete        inspect             squeezer
+_compat_pickle      autocomplete_w      io                  sre_compile
+_compression        autoexpand          iomenu              sre_constants
+_contextvars        base64              ipaddress           sre_parse
+_csv                bdb                 itertools           ssl
+_ctypes             binascii            json                stackviewer
+_ctypes_test        bisect              keyword             stat
+_datetime           browser             linecache           statistics
+_decimal            builtins            locale              statusbar
+_elementtree        bz2                 logging             string
+_functools          cProfile            lzma                stringprep
+_hashlib            calendar            macosx              struct
+_heapq              calltip             mailbox             subprocess
+_imp                calltip_w           mainmenu            symtable
+_interpchannels     cmath               marshal             sys
+_interpqueues       cmd                 math                sysconfig
+_interpreters       code                mimetypes           tabnanny
+_io                 codecontext         mmap                tarfile
+_ios_support        codecs              modulefinder        tempfile
+_json               codeop              msvcrt              test
+_locale             collections         multicall           textview
+_lsprof             colorizer           multiprocessing     textwrap
+_lzma               colorsys            netrc               this
+_markupbase         compileall          nt                  threading
+_md5                concurrent          ntpath              time
+_multibytecodec     config              nturl2path          timeit
+_multiprocessing    config_key          numbers             tkinter
+_opcode             configdialog        opcode              token
+_opcode_metadata    configparser        operator            tokenize
+_operator           contextlib          optparse            tomllib
+_osx_support        contextvars         os                  tooltip
+_overlapped         copy                outwin              trace
+_pickle             copyreg             parenmatch          traceback
+_py_abc             csv                 pathbrowser         tracemalloc
+_pydatetime         ctypes              pathlib             tree
+_pydecimal          curses              pdb                 tty
+_pyio               dataclasses         percolator          turtle
+_pylong             datetime            pickle              turtledemo
+_pyrepl             dbm                 pickletools         types
+_queue              debugger            pip                 typing
+_random             debugger_r          pkgutil             tzdata
+_sha1               debugobj            platform            undo
+_sha2               debugobj_r          plistlib            unicodedata
+_sha3               decimal             poplib              unittest
+_signal             delegator           posixpath           urllib
+_sitebuiltins       difflib             pprint              util
+_socket             dis                 profile             uuid
+_sqlite3            django              pstats              venv
+_sre                doctest             pty                 warnings
+_ssl                dynoption           py_compile          wave
+_stat               editor              pyclbr              weakref
+_statistics         email               pydoc               webbrowser
+_string             encodings           pydoc_data          window
+_strptime           ensurepip           pyexpat             winreg
+_struct             enum                pyparse             winsound
+_symtable           errno               pyshell             wsgiref
+_sysconfig          faulthandler        query               xml
+_testbuffer         filecmp             queue               xmlrpc
+_testcapi           fileinput           quopri              xxsubtype
+_testclinic         filelist            random              zipapp
+_testclinic_limited fnmatch             re                  zipfile
+_testconsole        format              redirector          zipimport
+_testimportmultiple fractions           replace             zlib
+_testinternalcapi   ftplib              reprlib             zoneinfo
+_testlimitedcapi    functools           rlcompleter         zoomheight
+_testmultiphase     gc                  rpc                 zzdummy
+_testsinglephase    genericpath         run                 
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> keywords
+
+Here is a list of the Python keywords.  Enter any keyword to get more help.
+
+False               class               from                or
+None                continue            global              pass
+True                def                 if                  raise
+and                 del                 import              return
+as                  elif                in                  try
+assert              else                is                  while
+async               except              lambda              with
+await               finally             nonlocal            yield
+break               for                 not                 
+
+help> symbols
+
+Here is a list of the punctuation symbols which Python assigns special meaning
+to. Enter any symbol to get more help.
+
+!=                  +                   <<=                 _
+"                   +=                  <=                  __
+"""                 ,                   <>                  `
+%                   -                   ==                  b"
+%=                  -=                  >                   b'
+&                   .                   >=                  f"
+&=                  ...                 >>                  f'
+'                   /                   >>=                 j
+'''                 //                  @                   r"
+(                   //=                 J                   r'
+)                   /=                  [                   u"
+*                   :                   \                   u'
+**                  :=                  ]                   |
+**=                 <                   ^                   |=
+*=                  <<                  ^=                  ~
+
+help> topics
+
+Here is a list of available topics.  Enter any topic name to get more help.
+
+ASSERTION           DEBUGGING           LITERALS            SEQUENCES
+ASSIGNMENT          DELETION            LOOPING             SHIFTING
+ASSIGNMENTEXPRESSIONS DICTIONARIES        MAPPINGMETHODS      SLICINGS
+ATTRIBUTEMETHODS    DICTIONARYLITERALS  MAPPINGS            SPECIALATTRIBUTES
+ATTRIBUTES          DYNAMICFEATURES     METHODS             SPECIALIDENTIFIERS
+AUGMENTEDASSIGNMENT ELLIPSIS            MODULES             SPECIALMETHODS
+BASICMETHODS        EXCEPTIONS          NAMESPACES          STRINGMETHODS
+BINARY              EXECUTION           NONE                STRINGS
+BITWISE             EXPRESSIONS         NUMBERMETHODS       SUBSCRIPTS
+BOOLEAN             FLOAT               NUMBERS             TRACEBACKS
+CALLABLEMETHODS     FORMATTING          OBJECTS             TRUTHVALUE
+CALLS               FRAMEOBJECTS        OPERATORS           TUPLELITERALS
+CLASSES             FRAMES              PACKAGES            TUPLES
+CODEOBJECTS         FUNCTIONS           POWER               TYPEOBJECTS
+COMPARISON          IDENTIFIERS         PRECEDENCE          TYPES
+COMPLEX             IMPORTING           PRIVATENAMES        UNARY
+CONDITIONAL         INTEGER             RETURNING           UNICODE
+CONTEXTMANAGERS     LISTLITERALS        SCOPING             
+CONVERSIONS         LISTS               SEQUENCEMETHODS     
+
+help> q
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+
+¡Excelente! Como desarrollador Python, conozco bien los métodos de la clase `str`. Aquí tienes una descripción de algunos de los más comunes y útiles, agrupados por su funcionalidad:
+
+**Manipulación y Formateo:**
+
+* `capitalize()`: Retorna una copia de la cadena con la primera letra en mayúscula y el resto en minúscula.
+* `lower()`: Retorna una copia de la cadena convertida a minúsculas.
+* `upper()`: Retorna una copia de la cadena convertida a mayúsculas.
+* `title()`: Retorna una copia de la cadena donde la primera letra de cada palabra está en mayúscula.
+* `strip([chars])`: Retorna una copia de la cadena eliminando los caracteres iniciales y finales especificados (espacios en blanco por defecto).
+* `lstrip([chars])`: Retorna una copia de la cadena eliminando los caracteres iniciales especificados (espacios en blanco por defecto).
+* `rstrip([chars])`: Retorna una copia de la cadena eliminando los caracteres finales especificados (espacios en blanco por defecto).
+* `removeprefix(prefix)` (Python 3.9+): Retorna una copia de la cadena sin el prefijo especificado si la cadena comienza con él.
+* `removesuffix(suffix)` (Python 3.9+): Retorna una copia de la cadena sin el sufijo especificado si la cadena termina con él.
+* `center(width[, fillchar])`: Retorna una cadena centrada en un campo de ancho `width`, rellenada con el carácter `fillchar` (espacio por defecto).
+* `ljust(width[, fillchar])`: Retorna una cadena justificada a la izquierda en un campo de ancho `width`, rellenada con el carácter `fillchar` (espacio por defecto).
+* `rjust(width[, fillchar])`: Retorna una cadena justificada a la derecha en un campo de ancho `width`, rellenada con el carácter `fillchar` (espacio por defecto).
+* `zfill(width)`: Retorna una copia de la cadena rellenada con ceros a la izquierda hasta alcanzar la longitud `width`.
+* `expandtabs(tabsize=8)`: Retorna una copia de la cadena donde los caracteres de tabulación se reemplazan por uno o más espacios, dependiendo del tamaño de tabulación especificado.
+* `format(*args, **kwargs)`: Realiza una operación de formateo de cadena. Es muy versátil y permite insertar valores en la cadena utilizando marcadores de posición.
+* `format_map(mapping)`: Similar a `format()`, pero acepta un diccionario para el mapeo de valores.
+
+**Búsqueda y Reemplazo:**
+
+* `count(sub[, start[, end]])`: Retorna el número de ocurrencias de la subcadena `sub` dentro del rango `[start, end]`.
+* `find(sub[, start[, end]])`: Retorna el índice más bajo en la cadena donde se encuentra la subcadena `sub` dentro del rango `[start, end]`. Retorna -1 si no se encuentra.
+* `index(sub[, start[, end]])`: Similar a `find()`, pero lanza una excepción `ValueError` si la subcadena no se encuentra.
+* `rfind(sub[, start[, end]])`: Retorna el índice más alto en la cadena donde se encuentra la subcadena `sub` dentro del rango `[start, end]`. Retorna -1 si no se encuentra.
+* `rindex(sub[, start[, end]])`: Similar a `rfind()`, pero lanza una excepción `ValueError` si la subcadena no se encuentra.
+* `replace(old, new[, count])`: Retorna una copia de la cadena donde todas las ocurrencias de la subcadena `old` son reemplazadas por la subcadena `new`. El argumento opcional `count` especifica el número máximo de reemplazos a realizar.
+
+**División y Unión:**
+
+* `split(sep=None, maxsplit=-1)`: Retorna una lista de las palabras en la cadena, usando `sep` como delimitador. Si `sep` no se especifica o es `None`, se utiliza cualquier espacio en blanco como delimitador. `maxsplit` especifica el número máximo de divisiones a realizar.
+* `rsplit(sep=None, maxsplit=-1)`: Similar a `split()`, pero comienza a dividir desde el final de la cadena.
+* `splitlines([keepends])`: Retorna una lista de las líneas en la cadena, dividiendo en los límites de las líneas. El argumento `keepends` (booleano) indica si se deben incluir los caracteres de fin de línea en la lista resultante.
+* `partition(sep)`: Divide la cadena en la primera ocurrencia de `sep` y retorna una tupla de 3 elementos: la parte antes del separador, el separador mismo y la parte después del separador. Si no se encuentra el separador, retorna una tupla con la cadena original y dos cadenas vacías.
+* `rpartition(sep)`: Similar a `partition()`, pero divide en la última ocurrencia de `sep`.
+* `join(iterable)`: Retorna una cadena que es la concatenación de las cadenas en el iterable. La cadena en la que se llama este método se utiliza como separador entre los elementos del iterable.
+
+**Verificación:**
+
+* `startswith(prefix[, start[, end]])`: Retorna `True` si la cadena comienza con el prefijo especificado, `False` en caso contrario. También puede recibir una tupla de prefijos para verificar.
+* `endswith(suffix[, start[, end]])`: Retorna `True` si la cadena termina con el sufijo especificado, `False` en caso contrario. También puede recibir una tupla de sufijos para verificar.
+* `isalnum()`: Retorna `True` si todos los caracteres de la cadena son alfanuméricos (letras o números) y la cadena no está vacía, `False` en caso contrario.
+* `isalpha()`: Retorna `True` si todos los caracteres de la cadena son letras y la cadena no está vacía, `False` en caso contrario.
+* `isdigit()`: Retorna `True` si todos los caracteres de la cadena son dígitos y la cadena no está vacía, `False` en caso contrario.
+* `isdecimal()`: Retorna `True` si todos los caracteres de la cadena son caracteres decimales y la cadena no está vacía, `False` en caso contrario.
+* `isnumeric()`: Retorna `True` si todos los caracteres de la cadena son caracteres numéricos y la cadena no está vacía, `False` en caso contrario.
+* `isidentifier()`: Retorna `True` si la cadena es un identificador válido en Python, `False` en caso contrario.
+* `islower()`: Retorna `True` si todos los caracteres alfabéticos de la cadena están en minúsculas y la cadena contiene al menos un carácter alfabético, `False` en caso contrario.
+* `isupper()`: Retorna `True` si todos los caracteres alfabéticos de la cadena están en mayúsculas y la cadena contiene al menos un carácter alfabético, `False` en caso contrario.
+* `isspace()`: Retorna `True` si todos los caracteres de la cadena son espacios en blanco y la cadena no está vacía, `False` en caso contrario.
+* `istitle()`: Retorna `True` si la cadena tiene el formato de título (la primera letra de cada palabra en mayúscula y el resto en minúscula) y la cadena contiene al menos un carácter alfabético, `False` en caso contrario.
+* `isprintable()`: Retorna `True` si todos los caracteres de la cadena son imprimibles o la cadena está vacía, `False` en caso contrario.
+
+**Codificación:**
+
+* `encode(encoding='utf-8', errors='strict')`: Retorna una versión codificada en bytes de la cadena. El argumento `encoding` especifica la codificación a utilizar (por defecto es 'utf-8'), y `errors` especifica el esquema de manejo de errores.
+
+Estos son algunos de los métodos más importantes y utilizados de la clase `str` en Python. ¡Con ellos puedes realizar una gran variedad de operaciones con cadenas de texto! ¿Hay alguno en particular que te interese explorar más a fondo o tienes alguna tarea específica en mente donde quieras aplicar alguno de estos métodos? ¡Estoy aquí para ayudarte!
+
+
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+print('Dannysa, Orlanys, Carla')
+Dannysa, Orlanys, Carla
+print('Dannysa, Orlanys, Carla, Henry')
+Dannysa, Orlanys, Carla, Henry
+help()
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.45.3
+__future__          _thread             getopt              runpy
+__hello__           _threading_local    getpass             runscript
+__main__            _tkinter            gettext             sched
+__phello__          _tokenize           glob                scrolledlist
+_abc                _tracemalloc        graphlib            search
+_aix_support        _typing             grep                searchbase
+_android_support    _uuid               gzip                searchengine
+_ast                _warnings           hashlib             secrets
+_asyncio            _weakref            heapq               select
+_bisect             _weakrefset         help                selectors
+_blake2             _winapi             help_about          shelve
+_bz2                _wmi                history             shlex
+_codecs             _zoneinfo           hmac                shutil
+_codecs_cn          abc                 html                sidebar
+_codecs_hk          antigravity         http                signal
+_codecs_iso2022     argparse            hyperparser         site
+_codecs_jp          array               idle                smtplib
+_codecs_kr          asgiref             idle_test           socket
+_codecs_tw          ast                 idlelib             socketserver
+_collections        asyncio             imaplib             sqlite3
+_collections_abc    atexit              importlib           sqlparse
+_colorize           autocomplete        inspect             squeezer
+_compat_pickle      autocomplete_w      io                  sre_compile
+_compression        autoexpand          iomenu              sre_constants
+_contextvars        base64              ipaddress           sre_parse
+_csv                bdb                 itertools           ssl
+_ctypes             binascii            json                stackviewer
+_ctypes_test        bisect              keyword             stat
+_datetime           browser             linecache           statistics
+_decimal            builtins            locale              statusbar
+_elementtree        bz2                 logging             string
+_functools          cProfile            lzma                stringprep
+_hashlib            calendar            macosx              struct
+_heapq              calltip             mailbox             subprocess
+_imp                calltip_w           mainmenu            symtable
+_interpchannels     cmath               marshal             sys
+_interpqueues       cmd                 math                sysconfig
+_interpreters       code                mimetypes           tabnanny
+_io                 codecontext         mmap                tarfile
+_ios_support        codecs              modulefinder        tempfile
+_json               codeop              msvcrt              test
+_locale             collections         multicall           textview
+_lsprof             colorizer           multiprocessing     textwrap
+_lzma               colorsys            netrc               this
+_markupbase         compileall          nt                  threading
+_md5                concurrent          ntpath              time
+_multibytecodec     config              nturl2path          timeit
+_multiprocessing    config_key          numbers             tkinter
+_opcode             configdialog        opcode              token
+_opcode_metadata    configparser        operator            tokenize
+_operator           contextlib          optparse            tomllib
+_osx_support        contextvars         os                  tooltip
+_overlapped         copy                outwin              trace
+_pickle             copyreg             parenmatch          traceback
+_py_abc             csv                 pathbrowser         tracemalloc
+_pydatetime         ctypes              pathlib             tree
+_pydecimal          curses              pdb                 tty
+_pyio               dataclasses         percolator          turtle
+_pylong             datetime            pickle              turtledemo
+_pyrepl             dbm                 pickletools         types
+_queue              debugger            pip                 typing
+_random             debugger_r          pkgutil             tzdata
+_sha1               debugobj            platform            undo
+_sha2               debugobj_r          plistlib            unicodedata
+_sha3               decimal             poplib              unittest
+_signal             delegator           posixpath           urllib
+_sitebuiltins       difflib             pprint              util
+_socket             dis                 profile             uuid
+_sqlite3            django              pstats              venv
+_sre                doctest             pty                 warnings
+_ssl                dynoption           py_compile          wave
+_stat               editor              pyclbr              weakref
+_statistics         email               pydoc               webbrowser
+_string             encodings           pydoc_data          window
+_strptime           ensurepip           pyexpat             winreg
+_struct             enum                pyparse             winsound
+_symtable           errno               pyshell             wsgiref
+_sysconfig          faulthandler        query               xml
+_testbuffer         filecmp             queue               xmlrpc
+_testcapi           fileinput           quopri              xxsubtype
+_testclinic         filelist            random              zipapp
+_testclinic_limited fnmatch             re                  zipfile
+_testconsole        format              redirector          zipimport
+_testimportmultiple fractions           replace             zlib
+_testinternalcapi   ftplib              reprlib             zoneinfo
+_testlimitedcapi    functools           rlcompleter         zoomheight
+_testmultiphase     gc                  rpc                 zzdummy
+_testsinglephase    genericpath         run                 
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> keywords
+
+Here is a list of the Python keywords.  Enter any keyword to get more help.
+
+False               class               from                or
+None                continue            global              pass
+True                def                 if                  raise
+and                 del                 import              return
+as                  elif                in                  try
+assert              else                is                  while
+async               except              lambda              with
+await               finally             nonlocal            yield
+break               for                 not                 
+
+help> symbols
+
+Here is a list of the punctuation symbols which Python assigns special meaning
+to. Enter any symbol to get more help.
+
+!=                  +                   <<=                 _
+"                   +=                  <=                  __
+"""                 ,                   <>                  `
+%                   -                   ==                  b"
+%=                  -=                  >                   b'
+&                   .                   >=                  f"
+&=                  ...                 >>                  f'
+'                   /                   >>=                 j
+'''                 //                  @                   r"
+(                   //=                 J                   r'
+)                   /=                  [                   u"
+*                   :                   \                   u'
+**                  :=                  ]                   |
+**=                 <                   ^                   |=
+*=                  <<                  ^=                  ~
+
+help> topics
+
+Here is a list of available topics.  Enter any topic name to get more help.
+
+ASSERTION           DEBUGGING           LITERALS            SEQUENCES
+ASSIGNMENT          DELETION            LOOPING             SHIFTING
+ASSIGNMENTEXPRESSIONS DICTIONARIES        MAPPINGMETHODS      SLICINGS
+ATTRIBUTEMETHODS    DICTIONARYLITERALS  MAPPINGS            SPECIALATTRIBUTES
+ATTRIBUTES          DYNAMICFEATURES     METHODS             SPECIALIDENTIFIERS
+AUGMENTEDASSIGNMENT ELLIPSIS            MODULES             SPECIALMETHODS
+BASICMETHODS        EXCEPTIONS          NAMESPACES          STRINGMETHODS
+BINARY              EXECUTION           NONE                STRINGS
+BITWISE             EXPRESSIONS         NUMBERMETHODS       SUBSCRIPTS
+BOOLEAN             FLOAT               NUMBERS             TRACEBACKS
+CALLABLEMETHODS     FORMATTING          OBJECTS             TRUTHVALUE
+CALLS               FRAMEOBJECTS        OPERATORS           TUPLELITERALS
+CLASSES             FRAMES              PACKAGES            TUPLES
+CODEOBJECTS         FUNCTIONS           POWER               TYPEOBJECTS
+COMPARISON          IDENTIFIERS         PRECEDENCE          TYPES
+COMPLEX             IMPORTING           PRIVATENAMES        UNARY
+CONDITIONAL         INTEGER             RETURNING           UNICODE
+CONTEXTMANAGERS     LISTLITERALS        SCOPING             
+CONVERSIONS         LISTS               SEQUENCEMETHODS     
+
+help> q
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+"""
+Python es un lenguaje de programación debilmente tipado
+esto significa que no requiere la declaración de un tipo
+de dato para definir una variable
+"""
+'\nPython es un lenguaje de programación debilmente tipado\nesto significa que no requiere la declaración de un tipo\nde dato para definir una variable\n'
+nombre = "ANA"
+apellido = "VASQUEZ"
+edad = 60
+estatura = 1.65
+trabaja = True
+nombre = "SUSANA"
+del edad
+edad = 25
+del edad # Borrar una variable
+edad = 25
+"La función type(objeto), permite identificar a qué clase
+SyntaxError: unterminated string literal (detected at line 1)
+"""La función type(objeto), permite identificar a qué clase
+corresponde el objeto"""
+'La función type(objeto), permite identificar a qué clase\ncorresponde el objeto'
+type(nombre)
+<class 'str'>
+type(edad)
+<class 'int'>
+type(trabaja)
+<class 'bool'>
+type(estatura)
+<class 'float'>
+nombre.
+SyntaxError: invalid syntax
+
+
+apellido
+'VASQUEZ'
+apellido = 'vasquez'
+apellido
+'vasquez'
+apellido.capitalize()
+'Vasquez'
+apellido = "VASQUEZ"
+apellido
+'VASQUEZ'
+apellido = 'vasquez'
+apellido
+'vasquez'
+apellido=apellido.capitalize()
+apellido
+'Vasquez'
+apellido.casefold()
+'vasquez'
+apellido
+'Vasquez'
+apellido.center(80,"*")
+'************************************Vasquez*************************************'
+"""
+Para entrada de datos, se utiliza la función input()
+"""
+'\nPara entrada de datos, se utiliza la función input()\n'
+nombre = input("INGRESE EL NOMBRE:")
+INGRESE EL NOMBRE:HENRY
+nombre
+'HENRY'
+edad = input("INGRESE LA EDAD:")
+INGRESE LA EDAD:56
+edad
+'56'
+edad = int(input("INGRESE LA EDAD:"))
+INGRESE LA EDAD:56
+edad
+56
+type(edad)
+<class 'int'>
+estatura = input("INGRESE SU ESTATURA:")
+INGRESE SU ESTATURA:1.71
+type(estatura)
+<class 'str'>
+estatura = float(input("INGRESE SU ESTATURA:"))
+INGRESE SU ESTATURA:1.71
+type(estatura)
+<class 'float'>
+estatura
+1.71
+"""
+Estructuras de control condicional y estructuras
+de control repetitivas
+
+Condicionales
+--------------
+* Simple
+if expresión:
+    instrucciones
+
+* Compuesto
+if expresión_a:
+    instrucciones
+    ...
+else:
+    instrucciones
+
+* Múltiple
+if expresión_a:
+    instrucciones
+    ...
+elif expresión_b:
+    instrucciones
+    ...
+elif expresión_c:
+    ...
+    ...
+else:
+    instrucciones
+
+* Anidado
+(Un condicional, contenido en otro condicional)
+if expresión:
+    instrucciones
+    ...
+    if expresión_secundaria:
+        instrucciones
+        ...
+else:
+    instrucciones
+
+    """
+'\nEstructuras de control condicional y estructuras\nde control repetitivas\n\nCondicionales\n--------------\n* Simple\nif expresión:\n    instrucciones\n\n* Compuesto\nif expresión_a:\n    instrucciones\n    ...\nelse:\n    instrucciones\n\n* Múltiple\nif expresión_a:\n    instrucciones\n    ...\nelif expresión_b:\n    instrucciones\n    ...\nelif expresión_c:\n    ...\n    ...\nelse:\n    instrucciones\n\n* Anidado\n(Un condicional, contenido en otro condicional)\nif expresión:\n    instrucciones\n    ...\n    if expresión_secundaria:\n        instrucciones\n        ...\nelse:\n    instrucciones\n\n    '
+edad = 17
+if edad > 17:
+    print("Es mayor de edad")
+
+    
+edad > 17
+False
+edad = 18
+if edad > 17:
+    print("Es mayor de edad")
+
+    
+Es mayor de edad
+edad > 17
+True
+if edad > 17:
+    print("Es mayor de edad")
+else:
+    print("Es menor de edad")
+    print("No puede conducir")
+    print("No puede ingerir bebidas alcoholica")
+    print("No puede andar a altas horas de la noche en la calle")
+
+    
+Es mayor de edad
+edad = 16
+if edad > 17:
+    print("Es mayor de edad")
+else:
+    print("Es menor de edad")
+    print("No puede conducir")
+    print("No puede ingerir bebidas alcoholica")
+    print("No puede andar a altas horas de la noche en la calle")
+
+    
+Es menor de edad
+No puede conducir
+No puede ingerir bebidas alcoholica
+No puede andar a altas horas de la noche en la calle

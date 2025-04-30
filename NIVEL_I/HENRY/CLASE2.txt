@@ -1,0 +1,517 @@
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+i = 0
+type(i)
+<class 'int'>
+while i < 5:
+    print(i)
+    i = i + 1 # es equivalente a i += 1 (sobrecarga de operador)
+
+    
+0
+1
+2
+3
+4
+i
+5
+while i < 5:
+    print(i)
+    i = i + 1 # es equivalente a i += 1 (sobrecarga de operador)
+
+    
+i = 0
+while i < 5:
+    print(i)
+    i = i + 1 # es equivalente a i += 1 (sobrecarga de operador)
+
+    
+0
+1
+2
+3
+4
+i = 0
+for i in range(0:5):
+    
+SyntaxError: invalid syntax
+for i in range(0..5):
+    
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+for i in range(5):
+    print(i)
+
+    
+0
+1
+2
+3
+4
+i = 0
+i = 1
+while i < 10:
+    j = 1
+    while j < 10:
+        print(i, ' x ', j, ' = ', i*j)
+        j += 1
+    i += 1
+    print('')
+
+    
+1  x  1  =  1
+1  x  2  =  2
+1  x  3  =  3
+1  x  4  =  4
+1  x  5  =  5
+1  x  6  =  6
+1  x  7  =  7
+1  x  8  =  8
+1  x  9  =  9
+
+2  x  1  =  2
+2  x  2  =  4
+2  x  3  =  6
+2  x  4  =  8
+2  x  5  =  10
+2  x  6  =  12
+2  x  7  =  14
+2  x  8  =  16
+2  x  9  =  18
+
+3  x  1  =  3
+3  x  2  =  6
+3  x  3  =  9
+3  x  4  =  12
+3  x  5  =  15
+3  x  6  =  18
+3  x  7  =  21
+3  x  8  =  24
+3  x  9  =  27
+
+4  x  1  =  4
+4  x  2  =  8
+4  x  3  =  12
+4  x  4  =  16
+4  x  5  =  20
+4  x  6  =  24
+4  x  7  =  28
+4  x  8  =  32
+4  x  9  =  36
+
+5  x  1  =  5
+5  x  2  =  10
+5  x  3  =  15
+5  x  4  =  20
+5  x  5  =  25
+5  x  6  =  30
+5  x  7  =  35
+5  x  8  =  40
+5  x  9  =  45
+
+6  x  1  =  6
+6  x  2  =  12
+6  x  3  =  18
+6  x  4  =  24
+6  x  5  =  30
+6  x  6  =  36
+6  x  7  =  42
+6  x  8  =  48
+6  x  9  =  54
+
+7  x  1  =  7
+7  x  2  =  14
+7  x  3  =  21
+7  x  4  =  28
+7  x  5  =  35
+7  x  6  =  42
+7  x  7  =  49
+7  x  8  =  56
+7  x  9  =  63
+
+8  x  1  =  8
+8  x  2  =  16
+8  x  3  =  24
+8  x  4  =  32
+8  x  5  =  40
+8  x  6  =  48
+8  x  7  =  56
+8  x  8  =  64
+8  x  9  =  72
+
+9  x  1  =  9
+9  x  2  =  18
+9  x  3  =  27
+9  x  4  =  36
+9  x  5  =  45
+9  x  6  =  54
+9  x  7  =  63
+9  x  8  =  72
+9  x  9  =  81
+
+# Ciclo anidado para producir la tabla de multiplica
+# Ciclo anidado para producir la tabla de multiplicar
+i = 1
+for i in range(1,10):
+    j = 1
+    for j in range (1,10):
+        print(i, ' x ', j, ' = ', i*j)
+
+        
+1  x  1  =  1
+1  x  2  =  2
+1  x  3  =  3
+1  x  4  =  4
+1  x  5  =  5
+1  x  6  =  6
+1  x  7  =  7
+1  x  8  =  8
+1  x  9  =  
+9
+2  x  1  =  2
+2  x  2  =  4
+2  x  3  =  6
+2  x  4  =  8
+2  x  5  =  10
+2  x  6  =  12
+2  x  7  =  14
+2  x  8  =  16
+2  x  9  =  18
+3  x  1  =  3
+3  x  2  =  6
+3  x  3  =  9
+3  x  4  =  12
+3  x  5  =  15
+3  x  6  =  18
+3  x  7  =  21
+3  x  8  =  24
+3  x  9  =  27
+4  x  1  =  4
+4  x  2  =  8
+4  x  3  =  12
+4  x  4  =  16
+4  x  5  =  20
+4  x  6  =  24
+4  x  7  =  28
+4  x  8  =  32
+4  x  9  =  36
+5  x  1  =  5
+5  x  2  =  10
+5  x  3  =  15
+5  x  4  =  20
+5  x  5  =  25
+5  x  6  =  30
+5  x  7  =  35
+5  x  8  =  40
+5  x  9  =  45
+6  x  1  =  6
+6  x  2  =  12
+6  x  3  =  18
+6  x  4  =  24
+6  x  5  =  30
+6  x  6  =  36
+6  x  7  =  42
+6  x  8  =  48
+6  x  9  =  54
+7  x  1  =  7
+7  x  2  =  14
+7  x  3  =  21
+7  x  4  =  28
+7  x  5  =  35
+7  x  6  =  42
+7  x  7  =  49
+7  x  8  =  56
+7  x  9  =  63
+8  x  1  =  8
+8  x  2  =  16
+8  x  3  =  24
+8  x  4  =  32
+8  x  5  =  40
+8  x  6  =  48
+8  x  7  =  56
+8  x  8  =  64
+8  x  9  =  72
+9  x  1  =  9
+9  x  2  =  18
+9  x  3  =  27
+9  x  4  =  36
+9  x  5  =  45
+9  x  6  =  54
+9  x  7  =  63
+9  x  8  =  72
+9  x  9  =  81
+#Ciclo condicionado
+continuar = 'S'
+while continuar == 'S':
+    print('Acciones en ejecución...')
+    continuar = input('¿Usted desea continuar (S/N):?')
+    continuar.upper()
+    print("Usted eligió continuar...")
+print("Usted eligió salir...")
+SyntaxError: invalid syntax
+while continuar == 'S':
+    print('Acciones en ejecución...')
+    continuar = input('¿Usted desea continuar (S/N):?')
+    continuar.upper()
+    print("Usted eligió continuar...")
+print("Usted eligió salir...")
+SyntaxError: invalid syntax
+while continuar == 'S':
+    print('Acciones en ejecución...')
+    continuar = input('¿Usted desea continuar (S/N):?')
+    continuar.upper()
+    print("Usted eligió continuar...")
+
+    
+Acciones en ejecución...
+¿Usted desea continuar (S/N):?s
+'S'
+Usted eligió continuar...
+while continuar == 'S':
+    print('Acciones en ejecución...')
+    continuar = input('¿Usted desea continuar (S/N):?')
+    continuar = continuar.upper()
+    print("Usted eligió continuar...")
+
+    
+continuar = 'S'
+while continuar == 'S':
+    print('Acciones en ejecución...')
+    continuar = input('¿Usted desea continuar (S/N):?')
+    continuar = continuar.upper()
+    print("Usted eligió continuar...")
+
+    
+Acciones en ejecución...
+¿Usted desea continuar (S/N):?s
+Usted eligió continuar...
+Acciones en ejecución...
+¿Usted desea continuar (S/N):?s
+Usted eligió continuar...
+Acciones en ejecución...
+¿Usted desea continuar (S/N):?n
+Usted eligió continuar...
+while True:
+    print('Acciones en ejecución')
+    continuar = input('¿Continuar (S/N):?')
+    if continuar.upper() == 'S':
+        print('Continuan las acciones en ejecución')
+        continue
+    else:
+        print('Se detienen las acciones. Fin del ciclo.')
+        break
+
+    
+Acciones en ejecución
+¿Continuar (S/N):?s
+Continuan las acciones en ejecución
+Acciones en ejecución
+¿Continuar (S/N):?n
+Se detienen las acciones. Fin del ciclo.
+2+2
+4
+2/2
+1.0
+2*2
+4
+2-2
+0
+sqrt(4)
+Traceback (most recent call last):
+  File "<pyshell#66>", line 1, in <module>
+    sqrt(4)
+NameError: name 'sqrt' is not defined
+help()
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.45.3
+__future__          _thread             getopt              runpy
+__hello__           _threading_local    getpass             runscript
+__main__            _tkinter            gettext             sched
+__phello__          _tokenize           glob                scrolledlist
+_abc                _tracemalloc        graphlib            search
+_aix_support        _typing             grep                searchbase
+_android_support    _uuid               gzip                searchengine
+_ast                _warnings           hashlib             secrets
+_asyncio            _weakref            heapq               select
+_bisect             _weakrefset         help                selectors
+_blake2             _winapi             help_about          shelve
+_bz2                _wmi                history             shlex
+_codecs             _zoneinfo           hmac                shutil
+_codecs_cn          abc                 html                sidebar
+_codecs_hk          antigravity         http                signal
+_codecs_iso2022     argparse            hyperparser         site
+_codecs_jp          array               idle                smtplib
+_codecs_kr          asgiref             idle_test           socket
+_codecs_tw          ast                 idlelib             socketserver
+_collections        asyncio             imaplib             sqlite3
+_collections_abc    atexit              importlib           sqlparse
+_colorize           autocomplete        inspect             squeezer
+_compat_pickle      autocomplete_w      io                  sre_compile
+_compression        autoexpand          iomenu              sre_constants
+_contextvars        base64              ipaddress           sre_parse
+_csv                bdb                 itertools           ssl
+_ctypes             binascii            json                stackviewer
+_ctypes_test        bisect              keyword             stat
+_datetime           browser             linecache           statistics
+_decimal            builtins            locale              statusbar
+_elementtree        bz2                 logging             string
+_functools          cProfile            lzma                stringprep
+_hashlib            calendar            macosx              struct
+_heapq              calltip             mailbox             subprocess
+_imp                calltip_w           mainmenu            symtable
+_interpchannels     cmath               marshal             sys
+_interpqueues       cmd                 math                sysconfig
+_interpreters       code                mimetypes           tabnanny
+_io                 codecontext         mmap                tarfile
+_ios_support        codecs              modulefinder        tempfile
+_json               codeop              msvcrt              test
+_locale             collections         multicall           textview
+_lsprof             colorizer           multiprocessing     textwrap
+_lzma               colorsys            netrc               this
+_markupbase         compileall          nt                  threading
+_md5                concurrent          ntpath              time
+_multibytecodec     config              nturl2path          timeit
+_multiprocessing    config_key          numbers             tkinter
+_opcode             configdialog        opcode              token
+_opcode_metadata    configparser        operator            tokenize
+_operator           contextlib          optparse            tomllib
+_osx_support        contextvars         os                  tooltip
+_overlapped         copy                outwin              trace
+_pickle             copyreg             parenmatch          traceback
+_py_abc             csv                 pathbrowser         tracemalloc
+_pydatetime         ctypes              pathlib             tree
+_pydecimal          curses              pdb                 tty
+_pyio               dataclasses         percolator          turtle
+_pylong             datetime            pickle              turtledemo
+_pyrepl             dbm                 pickletools         types
+_queue              debugger            pip                 typing
+_random             debugger_r          pkgutil             tzdata
+_sha1               debugobj            platform            undo
+_sha2               debugobj_r          plistlib            unicodedata
+_sha3               decimal             poplib              unittest
+_signal             delegator           posixpath           urllib
+_sitebuiltins       difflib             pprint              util
+_socket             dis                 profile             uuid
+_sqlite3            django              pstats              venv
+_sre                doctest             pty                 warnings
+_ssl                dynoption           py_compile          wave
+_stat               editor              pyclbr              weakref
+_statistics         email               pydoc               webbrowser
+_string             encodings           pydoc_data          window
+_strptime           ensurepip           pyexpat             winreg
+_struct             enum                pyparse             winsound
+_symtable           errno               pyshell             wsgiref
+_sysconfig          faulthandler        query               xml
+_testbuffer         filecmp             queue               xmlrpc
+_testcapi           fileinput           quopri              xxsubtype
+_testclinic         filelist            random              zipapp
+_testclinic_limited fnmatch             re                  zipfile
+_testconsole        format              redirector          zipimport
+_testimportmultiple fractions           replace             zlib
+_testinternalcapi   ftplib              reprlib             zoneinfo
+_testlimitedcapi    functools           rlcompleter         zoomheight
+_testmultiphase     gc                  rpc                 zzdummy
+_testsinglephase    genericpath         run                 
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> 
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+import math
+math.sqrt(4)
+2.0
+# Todo program tendrá las siguientes secciones:
+# 1) Importación de módulos o librerías
+# 2) Declaración de funciones y procedimientos
+# 3) Declaración de variables y estructuras de datos
+# 4) Cuerpo principal del programa
+
+===== RESTART: C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/ej1_resolvente.py ====
+¿Valor de a:?0
+ERROR: El valor de 'a' debe ser diferente de 0
+¿Usted desea obtener la resolvente para otros valores (S/N):?n
+Fin del programa
+
+===== RESTART: C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/ej1_resolvente.py ====
+----------Solución a Ecuación Resolvente----------
+¿Valor de a:?0
+ERROR: El valor de 'a' debe ser diferente de 0
+¿Usted desea obtener la resolvente para otros valores (S/N):?s
+----------Solución a Ecuación Resolvente----------
+¿Valor de a:?1
+¿Valor de b:?1
+¿Valor de c:?1
+ERROR: Expresión subradical no puede ser negativa
+¿Usted desea obtener la resolvente para otros valores (S/N):?s
+----------Solución a Ecuación Resolvente----------
+¿Valor de a:?1
+¿Valor de b:?4
+¿Valor de c:?1
+x1 =  -0.2679491924311228
+x2 = -3.732050807568877
+¿Usted desea obtener la resolvente para otros valores (S/N):?n
+Fin del programa
+
+===== RESTART: C:\ESP_PYTHON_20250331\NIVEL_I\HENRY\ej1_resolvente.py ====
+----------Solución a Ecuación Resolvente----------
+¿Valor de a:?a
+Traceback (most recent call last):
+  File "C:\ESP_PYTHON_20250331\NIVEL_I\HENRY\ej1_resolvente.py", line 21, in <module>
+    a = float(input('¿Valor de a:?'))
+ValueError: could not convert string to float: 'a'
+
+===== RESTART: C:\ESP_PYTHON_20250331\NIVEL_I\HENRY\ej1_resolvente.py ====
+----------Solución a Ecuación Resolvente----------
+¿Valor de a:?lAJLDSJLakjd
+ERROR: Debe ingresar un valor numérico
+¿Valor de a:?7
+¿Valor de a:?
+Traceback (most recent call last):
+  File "C:\ESP_PYTHON_20250331\NIVEL_I\HENRY\ej1_resolvente.py", line 23, in <module>
+    a = float(input('¿Valor de a:?'))
+KeyboardInterrupt
+
+===== RESTART: C:\ESP_PYTHON_20250331\NIVEL_I\HENRY\ej1_resolvente.py ====
+----------Solución a Ecuación Resolvente----------
+¿Valor de a:?g
+ERROR: Debe ingresar un valor numérico
+¿Valor de a:?7
+¿Valor de b:?p
+ERROR: Debe ingresar un valor numérico
+¿Valor de b:?9
+¿Valor de c:?j
+ERROR: Debe ingresar un valor numérico
+¿Valor de c:?3
+ERROR: Expresión subradical no puede ser negativa
+¿Usted desea obtener la resolvente para otros valores (S/N):?s
+----------Solución a Ecuación Resolvente----------
+¿Valor de a:?3
+¿Valor de b:?15
+¿Valor de c:?3
+x1 =  -1.8784093726987194
+x2 = -43.12159062730128
+¿Usted desea obtener la resolvente para otros valores (S/N):?n
+Fin del programa
