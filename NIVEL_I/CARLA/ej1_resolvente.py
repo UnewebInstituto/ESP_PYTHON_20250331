@@ -21,6 +21,7 @@ while True:
     while True:
         try:
             a = float(input('¿Valor de a:?'))
+            break
         except ValueError:
             print('ERROR: Debe ingresar un valor numerico')
             continue
@@ -28,14 +29,14 @@ while True:
             print ('ERROR: El valor de \'a\' debe ser diferente de 0')
             break
     else:
-        while true:
+        while True:
             try:
                 b = float(input('¿Valor de b:?'))
                 break
             except ValueError:
                 print('ERROR: Debe ingresar un valor numerico')
                 continue
-        while true:
+        while True:
             try:
                 c = float(input('¿Valor de c:?'))
                 break
@@ -56,4 +57,5 @@ while True:
     else:
         print ('Fin del programa')
         break
+
     
