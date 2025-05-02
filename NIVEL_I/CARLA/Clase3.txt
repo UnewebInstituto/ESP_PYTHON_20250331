@@ -1,0 +1,123 @@
+ESTRUCTURAS DE DATOS
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+#Declaración de listas
+alumnos = []
+type(alumnos)
+<class 'list'>
+profesores = list()
+type(profesores)
+<class 'list'>
+estudiantes = ['DANNYSA','ORLANYS','CARLA']
+type(estudiantes)
+<class 'list'>
+estudiantes.append('ANA')
+estudiantes.append('SUSANA')
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'ANA', 'SUSANA']
+estudiantes.append('ANA')
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'ANA', 'SUSANA', 'ANA']
+estudiantes.count('ANA')
+2
+nuevos_ingresos = ['YOLANDA','VIVIANA']
+nuevos_ingresos
+['YOLANDA', 'VIVIANA']
+estudiantes.extend(nuevos_ingresos)
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'ANA', 'SUSANA', 'ANA', 'YOLANDA', 'VIVIANA']
+estudiantes.index('ANA')
+3
+estudiantes.index('ANA')
+3
+estudiantes.insert(3,'CAMILA')
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'CAMILA', 'ANA', 'SUSANA', 'ANA', 'YOLANDA', 'VIVIANA']
+estudiantes.sort()
+estudiantes
+['ANA', 'ANA', 'CAMILA', 'CARLA', 'DANNYSA', 'ORLANYS', 'SUSANA', 'VIVIANA', 'YOLANDA']
+estudiantes.reverse()
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes_backup = estudiantes.copy()
+estudiantes_backup
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes_backup1 = estudiantes
+estudiantes_backup1
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes.pop() #borra el último elemento de la lista
+'ANA'
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA']
+estudiantes.clear() #borra todo el contenido de la lista
+estudiantes
+[]
+estudiantes = estudiantes_backup1
+estudiantes
+[]
+estudiantes = ['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes[1]
+'VIVIANA'
+estudiantes[-1]
+'ANA'
+estudiantes[-2]
+'ANA'
+estudiantes[-3]
+'CAMILA'
+estudiantes[0]
+'YOLANDA'
+estudiantes[0:4]
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS']
+estudiantes[5:]
+['CARLA', 'CAMILA', 'ANA', 'ANA']
+i = 0
+len(estudiantes) #devuelve el tamaño de la lista estudiantes
+9
+while i < len(estudiantes):
+    i, estudiantes[i]
+    i = i + 1
+
+    
+(0, 'YOLANDA')
+(1, 'VIVIANA')
+(2, 'SUSANA')
+(3, 'ORLANYS')
+(4, 'DANNYSA')
+(5, 'CARLA')
+(6, 'CAMILA')
+(7, 'ANA')
+(8, 'ANA')
+# Caso for
+for nombre in estudiantes:
+    nombre
+
+    
+'YOLANDA'
+'VIVIANA'
+'SUSANA'
+'ORLANYS'
+'DANNYSA'
+'CARLA'
+'CAMILA'
+'ANA'
+'ANA'
+i = 0
+for nombre in estudiantes:
+    i, nombre
+    i = i + 1
+
+    
+(0, 'YOLANDA')
+(1, 'VIVIANA')
+(2, 'SUSANA')
+(3, 'ORLANYS')
+(4, 'DANNYSA')
+(5, 'CARLA')
+(6, 'CAMILA')
+(7, 'ANA')
+(8, 'ANA')
+# Lista de 2 dimensiones[]

@@ -1,0 +1,404 @@
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+#Declaración de listas
+alumnos = []
+type(alumnos)
+<class 'list'>
+profesores = list()
+type(profesores)
+<class 'list'>
+estudiantes = ['DANNYSA','ORLANYS','CARLA']
+type(estudiantes)
+<class 'list'>
+estudiantes.append('ANA')
+estudiantes.append('SUSANA')
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'ANA', 'SUSANA']
+estudiantes.append('ANA')
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'ANA', 'SUSANA', 'ANA']
+estudiantes.count('ANA')
+2
+nuevos_ingresos = ['YOLANDA','VIVIANA']
+nuevos_ingresos
+['YOLANDA', 'VIVIANA']
+estudiantes.extend(nuevos_ingresos)
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'ANA', 'SUSANA', 'ANA', 'YOLANDA', 'VIVIANA']
+estudiantes.index('ANA')
+3
+estudiantes.index('ANA')
+3
+estudiantes.insert(3,'CAMILA')
+estudiantes
+['DANNYSA', 'ORLANYS', 'CARLA', 'CAMILA', 'ANA', 'SUSANA', 'ANA', 'YOLANDA', 'VIVIANA']
+estudiantes.sort()
+estudiantes
+['ANA', 'ANA', 'CAMILA', 'CARLA', 'DANNYSA', 'ORLANYS', 'SUSANA', 'VIVIANA', 'YOLANDA']
+estudiantes.reverse()
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes_backup = estudiantes.copy()
+estudiantes_backup
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes_backup1 = estudiantes
+estudiantes_backup1
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes.pop() #borra el último elemento de la lista
+'ANA'
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA']
+estudiantes.clear() #borra todo el contenido de la lista
+estudiantes
+[]
+estudiantes = estudiantes_backup1
+estudiantes
+[]
+estudiantes = ['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS', 'DANNYSA', 'CARLA', 'CAMILA', 'ANA', 'ANA']
+estudiantes[1]
+'VIVIANA'
+estudiantes[-1]
+'ANA'
+estudiantes[-2]
+'ANA'
+estudiantes[-3]
+'CAMILA'
+estudiantes[0]
+'YOLANDA'
+estudiantes[0:4]
+['YOLANDA', 'VIVIANA', 'SUSANA', 'ORLANYS']
+estudiantes[5:]
+['CARLA', 'CAMILA', 'ANA', 'ANA']
+i = 0
+len(estudiantes) #devuelve el tamaño de la lista estudiantes
+9
+while i < len(estudiantes):
+    i, estudiantes[i]
+    i = i + 1
+
+    
+(0, 'YOLANDA')
+(1, 'VIVIANA')
+(2, 'SUSANA')
+(3, 'ORLANYS')
+(4, 'DANNYSA')
+(5, 'CARLA')
+(6, 'CAMILA')
+(7, 'ANA')
+(8, 'ANA')
+# Caso for
+for nombre in estudiantes:
+    nombre
+
+    
+'YOLANDA'
+'VIVIANA'
+'SUSANA'
+'ORLANYS'
+'DANNYSA'
+'CARLA'
+'CAMILA'
+'ANA'
+'ANA'
+i = 0
+for nombre in estudiantes:
+    i, nombre
+    i = i + 1
+
+    
+(0, 'YOLANDA')
+(1, 'VIVIANA')
+(2, 'SUSANA')
+(3, 'ORLANYS')
+(4, 'DANNYSA')
+(5, 'CARLA')
+(6, 'CAMILA')
+(7, 'ANA')
+(8, 'ANA')
+# Lista de 2 dimensiones
+encuesta = [['ANA',62,1.69],['VIVIANA',21,1.70],['CAMILA',18.1.65]]
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+encuesta = [['ANA',62,1.69],['VIVIANA',21,1.70],['CAMILA',18,1.65]]
+encuesta
+[['ANA', 62, 1.69], ['VIVIANA', 21, 1.7], ['CAMILA', 18, 1.65]]
+i = 0
+len(encuesta)
+3
+while i < len(encuesta):
+    encuesta[i]
+    i = i + 1
+
+    
+['ANA', 62, 1.69]
+['VIVIANA', 21, 1.7]
+['CAMILA', 18, 1.65]
+i = 0
+while i < len(encuesta):
+    j = 0
+    while j < len(encuesta[i]):
+        encuesta[i][j]
+        j = j + 1
+        print('---')
+    i = i + 1
+
+    
+'ANA'
+---
+62
+---
+1.69
+---
+'VIVIANA'
+---
+21
+---
+1.7
+---
+'CAMILA'
+---
+18
+---
+1.65
+---
+while i < len(encuesta):
+    j = 0
+    while j < len(encuesta[i]):
+        encuesta[i][j]
+        j = j + 1
+    print('---')
+    i = i + 1
+KeyboardInterrupt
+i = 0
+while i < len(encuesta):
+    j = 0
+    while j < len(encuesta[i]):
+        encuesta[i][j]
+        j = j + 1
+    print('---')
+    i = i + 1
+
+    
+'ANA'
+62
+1.69
+---
+'VIVIANA'
+21
+1.7
+---
+'CAMILA'
+18
+1.65
+---
+#Edad de Ana
+encuesta[0][1]
+62
+#Edad de Viviana
+encuesta[1][1]
+21
+#Estatura de Camila
+encuesta[2][2]
+1.65
+#Definción de Tuplas
+porcentajes = (0.1,0.25,0.5,0.75)
+porcentajes
+(0.1, 0.25, 0.5, 0.75)
+type(porcentajes)
+<class 'tuple'>
+porcentajes.index(0.25)
+1
+porcentajes.count(0.5)
+1
+porcentajes[0]
+0.1
+porcentajes[0] = 0.05
+Traceback (most recent call last):
+  File "<pyshell#95>", line 1, in <module>
+    porcentajes[0] = 0.05
+TypeError: 'tuple' object does not support item assignment
+encuesta
+[['ANA', 62, 1.69], ['VIVIANA', 21, 1.7], ['CAMILA', 18, 1.65]]
+encuesta[0][0] = 'MARIA'
+encuesta
+[['MARIA', 62, 1.69], ['VIVIANA', 21, 1.7], ['CAMILA', 18, 1.65]]
+seccion_a = (['ANA', 62, 1.69],['VIVIANA', 21, 1.7],['CAMILA', 18, 1.65])
+seccion_a
+(['ANA', 62, 1.69], ['VIVIANA', 21, 1.7], ['CAMILA', 18, 1.65])
+seccion_a[0][1] = 26
+seccion_a
+(['ANA', 26, 1.69], ['VIVIANA', 21, 1.7], ['CAMILA', 18, 1.65])
+seccion_a[0] = ['CARMEN',23,1.72]
+Traceback (most recent call last):
+  File "<pyshell#103>", line 1, in <module>
+    seccion_a[0] = ['CARMEN',23,1.72]
+TypeError: 'tuple' object does not support item assignment
+#Definición de diccionario
+edades = {'ANA':26,'VIVIANA':21,'CAMILA':18}
+type(edades)
+<class 'dict'>
+edades['ANA']
+26
+edades['CAMILA']
+18
+ED
+Traceback (most recent call last):
+  File "<pyshell#109>", line 1, in <module>
+    ED
+NameError: name 'ED' is not defined
+edades['MARIA']=20 #Añadir un valor al diccionario
+edades
+{'ANA': 26, 'VIVIANA': 21, 'CAMILA': 18, 'MARIA': 20}
+for edad in edades:
+    edad
+
+    
+'ANA'
+'VIVIANA'
+'CAMILA'
+'MARIA'
+edades['ANA']=36 #Sobre escribe el valor en el diccionario
+edades
+{'ANA': 36, 'VIVIANA': 21, 'CAMILA': 18, 'MARIA': 20}
+for edad in edades:
+    edades[edad]
+
+    
+36
+21
+18
+20
+for edad in edades:
+    edad, edades[edad]
+
+    
+('ANA', 36)
+('VIVIANA', 21)
+('CAMILA', 18)
+('MARIA', 20)
+palabra = 'ESTERNOCLEIDOMASTOIDEO'
+palabra[0]
+'E'
+palabra[0:7]
+'ESTERNO'
+palabra[7:]
+'CLEIDOMASTOIDEO'
+for letra in palabra:
+    letra
+
+    
+'E'
+'S'
+'T'
+'E'
+'R'
+'N'
+'O'
+'C'
+'L'
+'E'
+'I'
+'D'
+'O'
+'M'
+'A'
+'S'
+'T'
+'O'
+'I'
+'D'
+'E'
+'O'
+palabra
+'ESTERNOCLEIDOMASTOIDEO'
+letra = palabra[0]
+letra
+'E'
+palabra.count(letra)
+4
+contar_letras = {}
+contar_letras[letra] = palabra.count(letra)
+contar_letras
+{'E': 4}
+letra = palabra[1]
+letra
+'S'
+palabra.count(letra)
+2
+contar_letras[letra] = palabra.count(letra)
+contar_letras
+{'E': 4, 'S': 2}
+# Conjuntos: Es una estructura de datos donde
+# se elimina la duplicidad de la información
+# Se define de manera similar al diccionario
+# pero sin asociación de valor, sólo el índice
+vocales = {'a','e','i','o','u','a','a','i','i','u'}
+vocales
+{'i', 'o', 'u', 'e', 'a'}
+consonantes = {'b','b','c','d','f','f'}
+consonantes
+{'b', 'd', 'f', 'c'}
+# Los conjuntos admiten unión, intercepción, diferencia de conjuntos
+vocales.union(consonantes)
+{'d', 'u', 'f', 'c', 'b', 'i', 'o', 'e', 'a'}
+vocales.add('f')
+vocales
+{'i', 'o', 'u', 'e', 'a', 'f'}
+vocales.intersection(consonantes)
+{'f'}
+consonantes.difference(vocales)
+{'b', 'd', 'c'}
+consonantes.add('a')
+consonantes
+{'d', 'f', 'c', 'b', 'a'}
+vocales.difference(consonantes)
+{'u', 'e', 'i', 'o'}
+c1 =consonantes.difference(vocales)
+c1
+{'d', 'c', 'b'}
+c2 =vocales.difference(consonantes)
+c2
+{'u', 'e', 'i', 'o'}
+c1.union(c2)
+{'d', 'b', 'i', 'o', 'u', 'e', 'c'}
+vocales
+{'i', 'o', 'u', 'e', 'a', 'f'}
+consonantes
+{'d', 'f', 'c', 'b', 'a'}
+vocales.symmetric_difference(consonantes)
+{'d', 'u', 'c', 'b', 'i', 'o', 'e'}
+r1 = list(vocales.symmetric_difference(consonantes))
+r1
+['d', 'u', 'c', 'b', 'i', 'o', 'e']
+#definición de función
+#Es una entidad de programación, que permite descomponer
+#la complejidad del código, se declara de la siguiente manera:
+def sumar(arg_n1,arg_n2):
+    return (arg_n1 + arg_n2)
+
+sumar(2,3)
+5
+def restar(arg_n1,arg_n2):
+    return (arg_n1 - arg_n2)
+
+def multiplicar(arg_n1,arg_n2):
+    return (arg_n1 * arg_n2)
+
+def dividir(arg_n1,arg_n2):
+    if arg_n2 == 0:
+        return 'ERROR'
+    else:
+        return (arg_n1 / arg_n2)
+
+    
+restar(7,4)
+3
+multiplicar(7,7)
+49
+dividir(1,0)
+'ERROR'
+dividir(1,2)
+0.5
