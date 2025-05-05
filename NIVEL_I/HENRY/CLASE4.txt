@@ -1,0 +1,275 @@
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+base = 0
+expo = 0
+base = int(input("Ingrese el valor de la base:"))
+Ingrese el valor de la base:2
+base
+2
+expo = int(input("Ingrese el valor del exponente:"))
+Ingrese el valor del exponente:3
+expo
+3
+producto = 1
+producto 1
+SyntaxError: invalid syntax
+producto
+1
+i = 1
+while i <= expo:
+    producto = producto * base
+    i = i + 1
+
+    
+
+producto
+8
+def potencia(base, expo):
+    producto = 1
+    i = 0
+    while i < expo:
+        producto = producto * base
+        i = i + 1
+    return producto
+
+potencia(2,10)
+1024
+potencia(2,3)
+8
+import modulo_calculadora
+Traceback (most recent call last):
+  File "<pyshell#26>", line 1, in <module>
+    import modulo_calculadora
+ModuleNotFoundError: No module named 'modulo_calculadora'
+help()
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.45.3
+__future__          _thread             getopt              runpy
+__hello__           _threading_local    getpass             runscript
+__main__            _tkinter            gettext             sched
+__phello__          _tokenize           glob                scrolledlist
+_abc                _tracemalloc        graphlib            search
+_aix_support        _typing             grep                searchbase
+_android_support    _uuid               gzip                searchengine
+_ast                _warnings           hashlib             secrets
+_asyncio            _weakref            heapq               select
+_bisect             _weakrefset         help                selectors
+_blake2             _winapi             help_about          shelve
+_bz2                _wmi                history             shlex
+_codecs             _zoneinfo           hmac                shutil
+_codecs_cn          abc                 html                sidebar
+_codecs_hk          antigravity         http                signal
+_codecs_iso2022     argparse            hyperparser         site
+_codecs_jp          array               idle                smtplib
+_codecs_kr          asgiref             idle_test           socket
+_codecs_tw          ast                 idlelib             socketserver
+_collections        asyncio             imaplib             sqlite3
+_collections_abc    atexit              importlib           sqlparse
+_colorize           autocomplete        inspect             squeezer
+_compat_pickle      autocomplete_w      io                  sre_compile
+_compression        autoexpand          iomenu              sre_constants
+_contextvars        base64              ipaddress           sre_parse
+_csv                bdb                 itertools           ssl
+_ctypes             binascii            json                stackviewer
+_ctypes_test        bisect              keyword             stat
+_datetime           browser             linecache           statistics
+_decimal            builtins            locale              statusbar
+_elementtree        bz2                 logging             string
+_functools          cProfile            lzma                stringprep
+_hashlib            calendar            macosx              struct
+_heapq              calltip             mailbox             subprocess
+_imp                calltip_w           mainmenu            symtable
+_interpchannels     cmath               marshal             sys
+_interpqueues       cmd                 math                sysconfig
+_interpreters       code                mimetypes           tabnanny
+_io                 codecontext         mmap                tarfile
+_ios_support        codecs              modulefinder        tempfile
+_json               codeop              msvcrt              test
+_locale             collections         multicall           textview
+_lsprof             colorizer           multiprocessing     textwrap
+_lzma               colorsys            netrc               this
+_markupbase         compileall          nt                  threading
+_md5                concurrent          ntpath              time
+_multibytecodec     config              nturl2path          timeit
+_multiprocessing    config_key          numbers             tkinter
+_opcode             configdialog        opcode              token
+_opcode_metadata    configparser        operator            tokenize
+_operator           contextlib          optparse            tomllib
+_osx_support        contextvars         os                  tooltip
+_overlapped         copy                outwin              trace
+_pickle             copyreg             parenmatch          traceback
+_py_abc             csv                 pathbrowser         tracemalloc
+_pydatetime         ctypes              pathlib             tree
+_pydecimal          curses              pdb                 tty
+_pyio               dataclasses         percolator          turtle
+_pylong             datetime            pickle              turtledemo
+_pyrepl             dbm                 pickletools         types
+_queue              debugger            pip                 typing
+_random             debugger_r          pkgutil             tzdata
+_sha1               debugobj            platform            undo
+_sha2               debugobj_r          plistlib            unicodedata
+_sha3               decimal             poplib              unittest
+_signal             delegator           posixpath           urllib
+_sitebuiltins       difflib             pprint              util
+_socket             dis                 profile             uuid
+_sqlite3            django              pstats              venv
+_sre                doctest             pty                 warnings
+_ssl                dynoption           py_compile          wave
+_stat               editor              pyclbr              weakref
+_statistics         email               pydoc               webbrowser
+_string             encodings           pydoc_data          window
+_strptime           ensurepip           pyexpat             winreg
+_struct             enum                pyparse             winsound
+_symtable           errno               pyshell             wsgiref
+_sysconfig          faulthandler        query               xml
+_testbuffer         filecmp             queue               xmlrpc
+_testcapi           fileinput           quopri              xxsubtype
+_testclinic         filelist            random              zipapp
+_testclinic_limited fnmatch             re                  zipfile
+_testconsole        format              redirector          zipimport
+_testimportmultiple fractions           replace             zlib
+_testinternalcapi   ftplib              reprlib             zoneinfo
+_testlimitedcapi    functools           rlcompleter         zoomheight
+_testmultiphase     gc                  rpc                 zzdummy
+_testsinglephase    genericpath         run                 
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> 
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+import sys
+sys.path
+['', 'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\idlelib', 'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\python313.zip', 'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\DLLs', 'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib', 'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313', 'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages']
+for ruta in sys.path:
+    ruta
+
+    
+''
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\idlelib'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\python313.zip'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\DLLs'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages'
+sys.path.append('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY')
+for ruta in sys.path:
+    ruta
+
+    
+''
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\idlelib'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\python313.zip'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\DLLs'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313'
+'C:\\Users\\Profesor\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages'
+'C:/ESP_PYTHON_20250331/NIVEL_I/HENRY'
+import modulo_calculadora
+modulo_calculadora.potencia(7,9)
+40353607
+alumnos = ['CARLA','ORLANYS','DANNYSA']
+alumnos.count('DANNYSA')
+1
+sys.path.count('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY')
+1
+sys.path.count('C:/ESP_PYTHON_20250331/NIVEL_I/LILA')
+0
+Python 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','w')
+type(estudiantes)
+<class '_io.TextIOWrapper'>
+estudiantes
+<_io.TextIOWrapper name='C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt' mode='w' encoding='cp1252'>
+estudiantes.write('CARLA,DANNYSA,ORLANYS')
+21
+estudiantes.close()
+estudiantes
+<_io.TextIOWrapper name='C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt' mode='w' encoding='cp1252'>
+estudiantes.write('CARLA,DANNYSA,ORLANYS')
+Traceback (most recent call last):
+  File "<pyshell#6>", line 1, in <module>
+    estudiantes.write('CARLA,DANNYSA,ORLANYS')
+ValueError: I/O operation on closed file.
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','w')
+estudiantes.write('CARLA,DANNYSA,ORLANYS')
+21
+estudiantes.close()
+
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','w')
+estudiantes.write('ANA,SUSANA')
+10
+estudiantes.close()
+# Apertura del archivo en modo de añadir
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','a')
+estudiantes.write('CARLA,DANNYSA,ORLANYS')
+21
+estudiantes.close()
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','r')
+estudiantes.read()
+'ANA,SUSANACARLA,DANNYSA,ORLANYS'
+estudiantes.read()
+''
+estudiantes.seek(0)
+0
+estudiantes.read()
+'ANA,SUSANACARLA,DANNYSA,ORLANYS'
+estudiantes.read()
+''
+# Ubicarse a partir de la posición 4
+estudiantes.seek(4)
+4
+estudiantes.read()
+'SUSANACARLA,DANNYSA,ORLANYS'
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','a')
+estudiantes.close()
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','w')
+estudiantes.close()
+# Con las 2 instrucciones anteriores se ha reiniciado el archivo
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','a')
+estudiantes.writelines(['DANNYSA','ORLANYS','CARLA'])
+estudiantes.close()
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','w')
+estudiantes.close()
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','a')
+estudiantes.writelines(['DANNYSA\n','ORLANYS\n','CARLA\n'])
+estudiantes.close()
+# Se abre el archivo en modo lectura
+estudiantes = open('C:/ESP_PYTHON_20250331/NIVEL_I/HENRY/estudiantes.txt','r')
+estudiantes.readlines()
+['DANNYSA\n', 'ORLANYS\n', 'CARLA\n']
+estudiantes.readlines()
+[]
+estudiantes.seek(0)
+0
+estudiantes.readline()
+'DANNYSA\n'
+estudiantes.readline()
+'ORLANYS\n'
+estudiantes.readline()
+'CARLA\n'
+estudiantes.close()
