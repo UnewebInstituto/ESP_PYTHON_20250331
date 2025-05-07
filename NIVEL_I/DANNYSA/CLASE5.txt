@@ -1,0 +1,88 @@
+1) Acceder al sistema operativo e instalar el paquete pyinstaller,
+de la siguiente forma:
+>pip install pyinstaller --force
+
+2) Una vez instalado, ir al directorio donde se encuentra la
+aplicación o programa fuente python y desde ese directorio correr
+el paquete pyinstaller, de la siguiente forma, debe indicar la
+extensión del programa fuente:
+   
+midirectorio\>pyinstaller miprograma.py
+Nota: Muestra la consola al correr el programa (todos)
+
+midirectorio\>pyinstaller --windowed miprograma.py
+Nota: No muestra la consola al correr, para el caso de
+aplicaciones que presentan interfaces gráficas, al utilizar
+el módulos como: Tkinter, PyQt, EasyGUI, IPython, otros
+(no aplica para programas tipo consola)
+
+midirectorio\>pyinstaller --windowed  --onefile miprograma.py
+
+midirectorio\>pyinstaller --onefile miprograma.py
+
+Nota: En los dos casos anteriores, generará un solo archivo
+con el ejecutable y no el conjunto de archivos que acompaña
+al proceso de compilación.
+En cualquiera de los casos de compilación, antes descritos
+vaya al directorio:
+midirectorio\dist\miprograma\> Donde se generó el archivo miprograma.exe.
+Ya este programa, puede ser ejecutado directamente o a través de un acceso
+directo.
+
+EN CASO DE PROBLEMAS CON pip establecer la ruta de ubicación, desde
+la consola de comandos del sistema operativo:
+   
+set path=%path%;C:\ruta
+
+Por ejemplo:
+
+C:\Users\hduqu\AppData\Local\Programs\Python\Python38\Scripts\
+C:\Users\hduqu\AppData\Local\Programs\Python\Python38\
+
+Acceso a bases de datos de desde Python
+
+Para Python, el paquete recomendado para establecer una conexión con una base de datos PostgreSQL es `psycopg2`. Puedes instalarlo ejecutando uno de los siguientes comandos:
+
+1. **Versión estándar:**
+   ```bash
+   pip install psycopg2
+   ```
+
+   Esta versión requiere que tengas las bibliotecas de desarrollo de PostgreSQL instaladas en tu sistema.
+
+2. **Versión binaria (recomendada si no quieres instalar dependencias adicionales):**
+   ```bash
+   pip install psycopg2-binary
+   ```
+
+   La versión `psycopg2-binary` incluye las dependencias necesarias para funcionar en la mayoría de los entornos.
+
+### Ejemplo de uso:
+Una vez instalado, puedes usarlo para conectarte a PostgreSQL como sigue:
+
+```python
+import psycopg2
+
+# Conexión a la base de datos
+conn = psycopg2.connect(
+    dbname="tu_base_de_datos",
+    user="tu_usuario",
+    password="tu_contraseña",
+    host="localhost",  # Cambia si usas otro host
+    port="5432"        # Puerto por defecto de PostgreSQL
+)
+
+# Crear un cursor
+cur = conn.cursor()
+
+# Ejecutar consultas
+cur.execute("SELECT version();")
+print(cur.fetchone())
+
+# Cerrar la conexión
+cur.close()
+conn.close()
+```
+
+¿Necesitas ayuda con algún paso adicional?
+

@@ -1,0 +1,13 @@
+# Se importa libreria que fue cargada en el entorno virtual
+
+import psycopg2
+
+# Establecer conexiòn a la base de datos
+
+conexion = psycop2.connect(
+  dbname="bd_ic_orlanys",
+  user="postgres",
+  password="123456",
+  host="localhost",
+  port="5432"
+)

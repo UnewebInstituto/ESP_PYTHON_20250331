@@ -19,7 +19,8 @@ while True:
                 print("Error: Opción no válida")
             elif opcion == 6:
                 print("Fin del programa calculadora...")
-                quit() #salir del programa
+                # quit() #salir del programa, pero sólo para consola interactiva
+                sys.exit() #salir del sistema a la consola del terminal
             else:
                 break
         except ValueError:

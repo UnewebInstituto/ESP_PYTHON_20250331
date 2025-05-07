@@ -1,0 +1,24 @@
+# Se importa libreria que fue cargada en el entorno virtual
+import psycopg2
+
+# Establecer conexion a la base de datos 
+
+conexion= psycopg2.connect(
+  dbname="bd_ic_henry",
+  user="postgres",
+  password="123456",
+  host="localhost",
+  port="5432"
+)
+# Se crea el cursor para ejecutar comandos
+
+instruccion = conexion.cursor()
+
+# Ejecucion de instruccion de prueba
+instruccion.execute("SELECT * from proveedores;")
+# Mostrar el resultado en pantalla 
+for resultado in resultado:
+    print(resultado)
+# Cerrar conexion a la base de datos 
+instruccion.close()
+conexion.close() 
