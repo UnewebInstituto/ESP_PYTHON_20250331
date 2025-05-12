@@ -1,0 +1,792 @@
+Microsoft Windows [Versión 10.0.19045.4170]      
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\ESP_PYTHON_20250331>cd \
+
+C:\>cd ESP_PYTHON_20250331
+
+C:\ESP_PYTHON_20250331>cd NIVEL_II
+
+C:\ESP_PYTHON_20250331\NIVEL_II>cd hrnty
+El sistema no puede encontrar la ruta especificada.
+
+C:\ESP_PYTHON_20250331\NIVEL_II>cd HENRY
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>md CLASE1  
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>DIR 
+ El volumen de la unidad C no tiene etiqueta.    
+ El número de serie del volumen es: 0022-50E4    
+
+ Directorio de C:\ESP_PYTHON_20250331\NIVEL_II\HENRY
+
+12/05/2025  14:37    <DIR>          .
+12/05/2025  14:37    <DIR>          ..
+12/05/2025  14:37    <DIR>          CLASE1       
+               0 archivos              0 bytes   
+               3 dirs  627,749,072,896 bytes libres
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>R 
+"R" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>rd clase1
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 0022-50E4    
+
+ Directorio de C:\ESP_PYTHON_20250331\NIVEL_II\HENRY
+
+12/05/2025  14:39    <DIR>          .
+12/05/2025  14:39    <DIR>          ..
+               0 archivos              0 bytes   
+               2 dirs  627,749,818,368 bytes libres
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>md clase1
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 0022-50E4    
+
+ Directorio de C:\ESP_PYTHON_20250331\NIVEL_II\HENRY
+
+12/05/2025  14:39    <DIR>          .
+12/05/2025  14:39    <DIR>          ..
+12/05/2025  14:39    <DIR>          clase1       
+               0 archivos              0 bytes   
+               3 dirs  627,749,818,368 bytes libres
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>dir 
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 0022-50E4    
+
+ Directorio de C:\ESP_PYTHON_20250331\NIVEL_II\HENRY
+
+12/05/2025  14:39    <DIR>          .
+12/05/2025  14:39    <DIR>          ..
+12/05/2025  14:39    <DIR>          clase1       
+               0 archivos              0 bytes   
+               3 dirs  627,749,609,472 bytes libres
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 0022-50E4    
+
+ Directorio de C:\ESP_PYTHON_20250331\NIVEL_II\HENRY
+
+12/05/2025  14:40    <DIR>          .
+12/05/2025  14:40    <DIR>          ..
+12/05/2025  14:40    <DIR>          clase1       
+12/05/2025  14:39                 0 clase1.txt   
+               1 archivos              0 bytes   
+               3 dirs  627,749,601,280 bytes libres
+
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>
+
+
+Para instalar IDLE (el entorno de desarrollo integrado de Python) dentro de un entorno virtual, puedes seguir estos pasos:
+
+### Paso 1: Crear un entorno virtual
+Primero, crea un entorno virtual si no lo has hecho ya. Esto se puede hacer con el siguiente comando:
+
+```bash
+python -m venv nombre_del_entorno
+```
+
+Reemplaza `nombre_del_entorno` con el nombre que prefieras para tu entorno virtual.
+
+### Paso 2: Activar el entorno virtual
+Activa el entorno virtual. El comando varía dependiendo de tu sistema operativo:
+
+- **Windows**:
+  ```bash
+  nombre_del_entorno\Scripts\activate
+  ```
+
+- **Linux/Mac**:
+  ```bash
+  source nombre_del_entorno/bin/activate
+  ```
+
+### Paso 3: Instalar IDLE
+Una vez activado el entorno virtual, puedes instalar IDLE utilizando `pip`. Ejecuta el siguiente comando:
+
+```bash
+pip install idlelib
+```
+
+### Paso 4: Ejecutar IDLE
+Para ejecutar IDLE desde el entorno virtual, utiliza el siguiente comando:
+
+```bash
+python -m idlelib.idle
+```
+
+Esto abrirá la interfaz gráfica de IDLE.
+
+---
+
+**Nota**: En algunos sistemas, IDLE ya está incluido con la instalación estándar de Python. Si recibes un error indicando que `idlelib` no se puede instalar, es probable que necesites asegurarte de tener Python correctamente configurado en tu sistema.
+
+
+El error ocurre porque `idlelib` no es un paquete instalable a través de `pip`. En su lugar, `idlelib` es un módulo estándar que ya viene incluido en la instalación de Python, por lo que no puedes instalarlo directamente usando `pip`.
+
+### Solución:
+
+#### 1. Verificar la instalación de Python
+Asegúrate de que tienes Python instalado en tu sistema y que incluye IDLE. Para verificarlo, puedes usar el siguiente comando en tu terminal o consola:
+
+```bash
+python --version
+```
+
+#### 2. Instalar IDLE usando el gestor de paquetes del sistema operativo
+Si IDLE no está disponible, es posible que tengas que instalarlo desde el gestor de paquetes de tu sistema operativo. Aquí están las instrucciones para diferentes sistemas operativos:
+
+- **En Debian o Ubuntu**:
+  ```bash
+  sudo apt-get install idle-python3.10
+  ```
+  (Reemplaza `python3.10` con la versión de Python que estés utilizando).
+
+- **En Fedora**:
+  ```bash
+  sudo dnf install python3-tools
+  ```
+
+- **En Windows**:
+  En Windows, IDLE generalmente se instala automáticamente con Python. Si no lo encuentras, asegúrate de haber seleccionado la opción "instalar IDLE" durante la instalación de Python.
+
+#### 3. Ejecutar IDLE desde el entorno virtual
+Aunque no puedes instalar IDLE específicamente en tu entorno virtual, puedes ejecutarlo desde el entorno global de Python y luego usarlo para trabajar con tu entorno virtual. Asegúrate de activar tu entorno virtual antes de usarlo:
+
+```bash
+source nombre_del_entorno/bin/activate  # En Linux/Mac
+nombre_del_entorno\Scripts\activate    # En Windows
+```
+
+Luego, ejecuta IDLE desde la instalación global de Python:
+
+```bash
+*************************
+python -m idlelib.idle
+*************************
+```
+
+Esto abrirá IDLE y podrás trabajar con los paquetes de tu entorno virtual.
+
+#### Alternativa: Usar otro editor o IDE
+Si no puedes usar IDLE, considera usar otros editores o entornos de desarrollo como:
+
+- [VS Code](https://code.visualstudio.com/) (con la extensión de Python).
+- [PyCharm](https://www.jetbrains.com/pycharm/).
+- [Jupyter Notebook](https://jupyter.org/).
+
+
+El error `CREATE DATABASE no puede ser ejecutado dentro de un bloque de transacción` ocurre porque algunos motores de bases de datos, como PostgreSQL, no permiten ejecutar el comando `CREATE DATABASE` dentro de una transacción activa.
+
+Cuando utilizas `psycopg2` para ejecutar comandos SQL, de manera predeterminada, se inicia una transacción. Por ello, al intentar ejecutar `CREATE DATABASE`, PostgreSQL arroja este error.
+
+### Solución
+
+Para resolver este problema, debes asegurarte de que el comando `CREATE DATABASE` se ejecute fuera de un bloque de transacción. A continuación, te explico cómo puedes hacerlo:
+
+---
+
+#### **1. Usar una conexión sin transacciones**
+Puedes crear una conexión directa al servidor de PostgreSQL y ejecutar el comando `CREATE DATABASE` sin iniciar una transacción. Para lograr esto, utiliza el parámetro `autocommit` de `psycopg2`:
+
+```python
+import psycopg2
+
+# Conectar al servidor PostgreSQL
+connection = psycopg2.connect(
+    host="localhost",
+    user="tu_usuario",
+    password="tu_contraseña"
+)
+
+# Habilitar el modo autocommit
+connection.autocommit = True
+
+# Crear un cursor y ejecutar el comando CREATE DATABASE
+with connection.cursor() as cursor:
+    cursor.execute('CREATE DATABASE bd_nivel2_henry')
+
+# Cerrar la conexión
+connection.close()
+
+print("Base de datos creada exitosamente.")
+```
+
+En este código:
+- Se habilita `autocommit`, lo cual evita que se inicie una transacción.
+- El comando `CREATE DATABASE` se ejecuta correctamente.
+
+---
+
+#### **2. Ejecutar el comando desde una herramienta externa**
+Si prefieres no manejar la creación de la base de datos desde tu código Python, puedes usar herramientas externas como `psql` (el cliente de línea de comandos de PostgreSQL) o una interfaz gráfica como pgAdmin.
+
+En `psql`, puedes ejecutar directamente el comando:
+
+```sql
+CREATE DATABASE bd_nivel2_henry;
+```
+
+---
+
+#### **3. Crear la base de datos desde Python con `subprocess`**
+Otra alternativa es invocar el comando directamente desde el sistema operativo usando `subprocess`. Esto es útil si necesitas automatizar el proceso pero no quieres manejar manualmente el modo `autocommit`.
+
+```python
+import subprocess
+
+# Ejecutar el comando CREATE DATABASE usando psql
+subprocess.run(
+    ["psql", "-U", "tu_usuario", "-c", "CREATE DATABASE bd_nivel2_henry"],
+    check=True
+)
+
+print("Base de datos creada exitosamente.")
+```
+
+---
+
+### Nota
+- Asegúrate de que el usuario que estás utilizando tenga los permisos necesarios para crear bases de datos.
+- Si estás trabajando en un entorno virtual, asegúrate de que `psycopg2` esté instalado en tu entorno. Puedes instalarlo con:
+  ```bash
+  pip install psycopg2
+  ```
+
+Siguiendo cualquiera de estas soluciones, deberías poder crear la base de datos sin problemas. ¡Avísame si necesitas más ayuda!
+
+En PostgreSQL, no existe un comando directo equivalente a `SHOW DATABASES` de MySQL. Sin embargo, puedes listar las bases de datos disponibles utilizando la vista del sistema `pg_database`. Aquí está el comando equivalente:
+
+```sql
+SELECT datname FROM pg_database;
+```
+
+Este comando muestra el nombre de todas las bases de datos en el servidor PostgreSQL.
+
+---
+
+### Alternativa con `psql`
+Si estás utilizando la herramienta de línea de comandos `psql`, puedes listar las bases de datos simplemente ejecutando el comando:
+
+```bash
+\l
+```
+
+Este comando en `psql` muestra una lista de todas las bases de datos junto con información adicional, como el propietario y la codificación.
+
+
+
+
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+help()
+
+Welcome to Python 3.12's help utility!
+
+If this is your first time using Python, you should definitely check out
+the tutorial on the internet at https://docs.python.org/3.12/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To quit this help utility and
+return to the interpreter, just type "quit".
+
+To get a list of available modules, keywords, symbols, or topics, type
+"modules", "keywords", "symbols", or "topics".  Each module also comes
+with a one-line summary of what it does; to list the modules whose name
+or summary contain a given string such as "spam", type "modules spam".
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.42.0
+__future__          _testmultiphase     genericpath         sched
+__hello__           _testsinglephase    getopt              secrets
+__phello__          _thread             getpass             select
+_abc                _threading_local    gettext             selectors
+_aix_support        _tkinter            glob                shelve
+_ast                _tokenize           graphlib            shlex
+_asyncio            _tracemalloc        gzip                shutil
+_bisect             _typing             hashlib             signal
+_blake2             _uuid               heapq               site
+_bz2                _warnings           hmac                smtplib
+_codecs             _weakref            html                sndhdr
+_codecs_cn          _weakrefset         http                socket
+_codecs_hk          _winapi             idlelib             socketserver
+_codecs_iso2022     _wmi                imaplib             sqlite3
+_codecs_jp          _xxinterpchannels   imghdr              sre_compile
+_codecs_kr          _xxsubinterpreters  importlib           sre_constants
+_codecs_tw          _zoneinfo           inspect             sre_parse
+_collections        abc                 io                  ssl
+_collections_abc    aifc                ipaddress           stat
+_compat_pickle      antigravity         itertools           statistics
+_compression        argparse            json                string
+_contextvars        array               keyword             stringprep
+_csv                ast                 lib2to3             struct
+_ctypes             asyncio             linecache           subprocess
+_ctypes_test        atexit              locale              sunau
+_datetime           audioop             logging             symtable
+_decimal            base64              lzma                sys
+_elementtree        bdb                 mailbox             sysconfig
+_functools          binascii            mailcap             tabnanny
+_hashlib            bisect              marshal             tarfile
+_heapq              builtins            math                telnetlib
+_imp                bz2                 mimetypes           tempfile
+_io                 cProfile            mmap                test
+_json               calendar            modulefinder        textwrap
+_locale             cgi                 msilib              this
+_lsprof             cgitb               msvcrt              threading
+_lzma               chunk               multiprocessing     time
+_markupbase         cmath               netrc               timeit
+_md5                cmd                 nntplib             tkinter
+_msi                code                nt                  token
+_multibytecodec     codecs              ntpath              tokenize
+_multiprocessing    codeop              nturl2path          tomllib
+_opcode             collections         numbers             trace
+_operator           colorsys            opcode              traceback
+_osx_support        compileall          operator            tracemalloc
+_overlapped         concurrent          optparse            tty
+_pickle             configparser        os                  turtle
+_py_abc             contextlib          pathlib             turtledemo
+_pydatetime         contextvars         pdb                 types
+_pydecimal          copy                pickle              typing
+_pyio               copyreg             pickletools         unicodedata
+_pylong             crypt               pip                 unittest
+_queue              csv                 pipes               urllib
+_random             ctypes              pkgutil             uu
+_sha1               curses              platform            uuid
+_sha2               dataclasses         plistlib            venv
+_sha3               datetime            poplib              warnings
+_signal             dbm                 posixpath           wave
+_sitebuiltins       decimal             pprint              weakref
+_socket             difflib             profile             webbrowser
+_sqlite3            dis                 pstats              winreg
+_sre                doctest             psycopg2            winsound
+_ssl                email               pty                 wsgiref
+_stat               encodings           py_compile          xdrlib
+_statistics         ensurepip           pyclbr              xml
+_string             enum                pydoc               xmlrpc
+_strptime           errno               pydoc_data          xxsubtype
+_struct             faulthandler        pyexpat             zipapp
+_symtable           filecmp             queue               zipfile
+_testbuffer         fileinput           quopri              zipimport
+_testcapi           fnmatch             random              zlib
+_testclinic         fractions           re                  zoneinfo
+_testconsole        ftplib              reprlib             
+_testimportmultiple functools           rlcompleter         
+_testinternalcapi   gc                  runpy               
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> 
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+import psycopg2
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+mydb
+<connection object at 0x000002A4052C8370; dsn: 'user=postgres password=xxx dbname=bd_ic_henry host=localhost port=5432', closed: 0>
+# Interface de comandos a través del objeto de bases de datos
+mycursor = mydb.cursor()
+# Ejecución de comando sql a través de la interface
+mycursor.execute('CREATE DATABASE bd_nivel2_henry')
+Traceback (most recent call last):
+  File "<pyshell#13>", line 1, in <module>
+    mycursor.execute('CREATE DATABASE bd_nivel2_henry')
+psycopg2.errors.ActiveSqlTransaction: CREATE DATABASE no puede ser ejecutado dentro de un bloque de transacción
+
+mydb.autocommit = True
+Traceback (most recent call last):
+  File "<pyshell#14>", line 1, in <module>
+    mydb.autocommit = True
+psycopg2.ProgrammingError: set_session cannot be used inside a transaction
+mycursor.close()
+mydb.close()
+)
+SyntaxError: unmatched ')'
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+mydb.autocommit = True
+with mydb.cursor() as cursor:
+    cursor.execute('CREATE DATABASE BD_NIVEL2_HENRY')
+
+    
+mydb.close()
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+mycursor = mydb.cursor()
+mydb.close()
+mycursor.close()
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+mydb.autocommit = True
+with mydb.cursor() as cursor:
+    cursor.execute('SELECT datname from pg_database')
+
+    
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname where datbane like '%nivel2%")
+
+    
+Traceback (most recent call last):
+  File "<pyshell#33>", line 2, in <module>
+    cursor.execute("SELECT datname from pg_database where datname where datbane like '%nivel2%")
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «where»
+LINE 1: SELECT datname from pg_database where datname where datbane ...
+                                                      ^
+
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datbane like '%nivel2%'")
+
+    
+Traceback (most recent call last):
+  File "<pyshell#35>", line 2, in <module>
+    cursor.execute("SELECT datname from pg_database where datbane like '%nivel2%'")
+psycopg2.errors.UndefinedColumn: no existe la columna «datbane»
+LINE 1: SELECT datname from pg_database where datbane like '%nivel2%...
+                                              ^
+HINT:  Probablemente quiera hacer referencia a la columna «pg_database.datname».
+
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname like '%nivel2%'")
+
+    
+for nombre_bd in cursor:
+    print(nombre_bd)
+
+    
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    for nombre_bd in cursor:
+psycopg2.InterfaceError: cursor already closed
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname like '%nivel2%'")
+
+    
+for nombre_bd in mydb.cursor():
+    print(nombre_bd)
+
+    
+Traceback (most recent call last):
+  File "<pyshell#44>", line 1, in <module>
+    for nombre_bd in mydb.cursor():
+psycopg2.ProgrammingError: no results to fetch
+# Crear tabla en base de datos
+mydb.close()
+cursor.close()
+mydb = psycopg2.connect(
+    dbname='bd_nivel2_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+mycursor = mydb.cursor()
+mycursor.execute("create table personas(cedula varchar(10),\
+nombre varchar(30),\
+apellido varchar(30),\
+direccion text,\
+fechanac date)")
+mydb.commit()
+# commit aplica para toda modificación, entiendase INSERT, UPDATE, DELETE
+# Ahora se modificará la tabla para añadir un campo
+# este campo se llama "id" de tipo "serial" y será "primary key"
+mycursor.execute("alter table personas add column id serial primary key")
+mydb.commit()
+# Ingreso de un registro
+sql = "insert into personas(cedula,nombre,apellido,direccion,fechanac) values (%s,%s,%s,%s,%s)"
+valores = ('V1234','ANA','VASQUEZ','SANTA FE','1965/08/15')
+mycursor.execute(sql, valores)
+mydb.commit()
+mycursor.lastrowid
+0
+valores1 = [('E8101','JACKY','CHAN','CARICUAO','1950/09/01'),('V5678','NELLY','CONTRERAS','PALO VERDE','1968/07/16'),('V9012','SUSANA','PEREZ','MONTALBAN','1970/05/20')]
+valores1
+[('E8101', 'JACKY', 'CHAN', 'CARICUAO', '1950/09/01'), ('V5678', 'NELLY', 'CONTRERAS', 'PALO VERDE', '1968/07/16'), ('V9012', 'SUSANA', 'PEREZ', 'MONTALBAN', '1970/05/20')]
+mycursor.executemany(sql, valores1)
+mycursor.commit()
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    mycursor.commit()
+AttributeError: 'psycopg2.extensions.cursor' object has no attribute 'commit'
+mydb.commit()
+mycursor.rowcount
+3
+# Consulta del contenido del contenido de una tabla
+sqlconsulta = "select * from personas"
+mycursor.execute(sqlconsulta)
+resultado = mycursor.fetchall()
+for datos in resultado:
+    print(datos)
+
+    
+('V1234', 'ANA', 'VASQUEZ', 'SANTA FE', datetime.date(1965, 8, 15), 1)
+('E8101', 'JACKY', 'CHAN', 'CARICUAO', datetime.date(1950, 9, 1), 2)
+('V5678', 'NELLY', 'CONTRERAS', 'PALO VERDE', datetime.date(1968, 7, 16), 3)
+('V9012', 'SUSANA', 'PEREZ', 'MONTALBAN', datetime.date(1970, 5, 20), 4)
+sqlconsulta1 = "select cedula, nombre, apellido from personas"
+mycursor.execute(sqlconsulta1)
+resultado = mycursor.fetchall()
+for datos in resultado:
+    print(datos)
+
+    
+('V1234', 'ANA', 'VASQUEZ')
+('E8101', 'JACKY', 'CHAN')
+('V5678', 'NELLY', 'CONTRERAS')
+('V9012', 'SUSANA', 'PEREZ')
+dato1 = ('E8101',)
+sqlconsulta1 = "select cedula, nombre, apellido from personas where cedula = %s%"
+mycursor.execute(sqlconsulta1,dato1)
+Traceback (most recent call last):
+  File "<pyshell#87>", line 1, in <module>
+    mycursor.execute(sqlconsulta1,dato1)
+IndexError: tuple index out of range
+sqlconsulta1 = "select cedula, nombre, apellido from personas where cedula = %s"
+mycursor.execute(sqlconsulta1,dato1)
+resultado = mycursor.fetchall()
+for datos in resultado:
+    print(datos)
+
+    
+('E8101', 'JACKY', 'CHAN')
+
+
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# \l bd_nivel2*;
+                                                                      Listado de base de datos
+      Nombre       |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+-------------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd_nivel2_carla   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_nivel2_dannysa | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_nivel2_henry   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_nivel2_orlanys | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(4 filas)
+
+
+postgres=# select datname from pg_database;
+        datname
+------------------------
+ postgres
+ template1
+ template0
+ bd20231209_ricardo
+ bd20231209_manuelt
+ bd20231209_henry
+ bd20231209_diego
+ gbd20231209_ricardo
+ gbd20231209_henry
+ gbd20231209_manuelt
+ gbd20231209_diego
+ dvdrental
+ bd20240610_m_henry
+ bd20240610_m_rafael
+ bd20240610_m_luis
+ bd20240610_t_henry
+ bd20240610_t_ronald
+ bd20240610_t_uandy
+ bd20240610_henry1
+ bd20240610_t_ronald1
+ bd20240610_t_uandy1
+ bd20240610_m_henry1
+ bd20240610_m_luis1
+ bd20240610_m_rafael1
+ prueba
+ transporte
+ Empresa
+ tst_clase_02
+ mascota
+ camiones_test
+ Camioneros
+ prueba_carrito_zayleth
+ shopping_cart
+ ejercicio1
+ 1A
+ bd_00
+ bd_01
+ bd_03
+ bd02
+ bd_0000
+ personas_hd
+ personas_eb
+ personas_jp
+ personas_dc
+ personas_md
+ personas_hd1
+ bd_ic_henry
+ bd_ic_dannysa
+ bd_ic_orlanys
+ bd_ig_henry
+ bd_ig_orlanys
+ bd_ig_dannysa
+ bd_ig_henry_r
+ bd_ig_dannysa_r
+ db_ig_orlanys_r
+ bd_ig_henry_r1
+ bd_ig_orlanys_r1
+ bd_ig_dannysa_r1
+ bd_ic_dannysa_r
+ bd_ic_henry_r
+ bd_ic_orlanys_r
+ bd_nivel2_henry
+ bd_nivel2_orlanys
+ bd_nivel2_dannysa
+ bd_nivel2_carla
+(65 filas)
+
+
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=#
+postgres=# select datname from pg_database like '%nivel2%';
+ERROR:  error de sintaxis en o cerca de «like»
+LÍNEA 1: select datname from pg_database like '%nivel2%';
+                                         ^
+postgres=# select datname from pg_database where datname like '%nivel2%';
+      datname
+-------------------
+ bd_nivel2_henry
+ bd_nivel2_orlanys
+ bd_nivel2_dannysa
+ bd_nivel2_carla
+(4 filas)
+
+
+postgres=# \c bd_nivel2_henry
+Ahora está conectado a la base de datos «bd_nivel2_henry» con el usuario «postgres».
+bd_nivel2_henry=# \d
+No se encontró ninguna relación.
+bd_nivel2_henry=# \d
+         Listado de relaciones
+ Esquema |  Nombre  | Tipo  |  Due±o
+---------+----------+-------+----------
+ public  | personas | tabla | postgres
+(1 fila)
+
+
+bd_nivel2_henry=# \d personas;
+                         Tabla ½public.personas╗
+  Columna  |         Tipo          | Ordenamiento | Nulable | Por omisi¾n
+-----------+-----------------------+--------------+---------+-------------
+ cedula    | character varying(10) |              |         |
+ nombre    | character varying(30) |              |         |
+ apellido  | character varying(30) |              |         |
+ direccion | text                  |              |         |
+ fechanac  | date                  |              |         |
+
+
+bd_nivel2_henry=# \c bd_nivel2_carla
+Ahora está conectado a la base de datos «bd_nivel2_carla» con el usuario «postgres».
+bd_nivel2_carla=# \d personas;
+                         Tabla ½public.personas╗
+  Columna  |         Tipo          | Ordenamiento | Nulable | Por omisi¾n
+-----------+-----------------------+--------------+---------+-------------
+ cedula    | character varying(10) |              |         |
+ nombre    | character varying(30) |              |         |
+ apellido  | character varying(30) |              |         |
+ direccion | text                  |              |         |
+ fechanac  | date                  |              |         |
+
+
+bd_nivel2_carla=# \c bd_nivel2_henry
+Ahora está conectado a la base de datos «bd_nivel2_henry» con el usuario «postgres».
+bd_nivel2_henry=# \d personas;
+                         Tabla ½public.personas╗
+  Columna  |         Tipo          | Ordenamiento | Nulable | Por omisi¾n
+-----------+-----------------------+--------------+---------+-------------
+ cedula    | character varying(10) |              |         |
+ nombre    | character varying(30) |              |         |
+ apellido  | character varying(30) |              |         |
+ direccion | text                  |              |         |
+ fechanac  | date                  |              |         |
+
+
+bd_nivel2_henry=# \d personas;
+                                      Tabla ½public.personas╗
+  Columna  |         Tipo          | Ordenamiento | Nulable  |             Por omisi¾n
+-----------+-----------------------+--------------+----------+--------------------------------------
+ cedula    | character varying(10) |              |          |
+ nombre    | character varying(30) |              |          |
+ apellido  | character varying(30) |              |          |
+ direccion | text                  |              |          |
+ fechanac  | date                  |              |          |
+ id        | integer               |              | not null | nextval('personas_id_seq'::regclass)
+═ndices:
+    "personas_pkey" PRIMARY KEY, btree (id)
+
+
+bd_nivel2_henry=# select * from personas;
+ cedula | nombre | apellido | direccion | fechanac | id
+--------+--------+----------+-----------+----------+----
+(0 filas)
+
+
+bd_nivel2_henry=# select * from personas;
+ cedula | nombre | apellido | direccion |  fechanac  | id
+--------+--------+----------+-----------+------------+----
+ V1234  | ANA    | VASQUEZ  | SANTA FE  | 1965-08-15 |  1
+(1 fila)
+
+
+bd_nivel2_henry=# select * from personas;
+ cedula | nombre | apellido  | direccion  |  fechanac  | id
+--------+--------+-----------+------------+------------+----
+ V1234  | ANA    | VASQUEZ   | SANTA FE   | 1965-08-15 |  1
+ E8101  | JACKY  | CHAN      | CARICUAO   | 1950-09-01 |  2
+ V5678  | NELLY  | CONTRERAS | PALO VERDE | 1968-07-16 |  3
+ V9012  | SUSANA | PEREZ     | MONTALBAN  | 1970-05-20 |  4
+(4 filas)
+
+
+bd_nivel2_henry=#

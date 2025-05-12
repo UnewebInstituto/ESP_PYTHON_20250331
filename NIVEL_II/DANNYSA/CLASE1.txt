@@ -1,0 +1,381 @@
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+import psycopg2
+mybd = psycopg2.connect(
+    dbname='bd_ic_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost'
+    port='5432'
+    
+SyntaxError: '(' was never closed
+)
+SyntaxError: unmatched ')'
+mybd = psycopg2.connect(
+    dbname='bd_ic_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost'
+    port='5432'
+    
+SyntaxError: '(' was never closed
+mybd = psycopg2.connect(
+    dbname='bd_ic_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost'
+    port='5432')
+    
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+mydb = psycopg2.connect(
+    dbname='bd_ic_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+    
+mydb
+    
+<connection object at 0x00000278E6B5E130; dsn: 'user=postgres password=xxx dbname=bd_ic_dannysa host=localhost port=5432', closed: 0>
+# interface de comandos a traves de objeto de bdd
+    
+mycursor = mydb.cursor()
+    
+#elecucion de comando sql a traves de la interface
+    
+mycursor.execute('CREATE DATABASE bd_nivel2_dannysa')
+    
+Traceback (most recent call last):
+  File "<pyshell#15>", line 1, in <module>
+    mycursor.execute('CREATE DATABASE bd_nivel2_dannysa')
+psycopg2.errors.ActiveSqlTransaction: CREATE DATABASE no puede ser ejecutado dentro de un bloque de transacción
+
+mycursor.execute("CREATE DATABASE bd_nivel2_dannysa")
+    
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    mycursor.execute("CREATE DATABASE bd_nivel2_dannysa")
+psycopg2.errors.InFailedSqlTransaction: transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+mycursor.execute('CREATE DATABASE bd_nivel2_dannysa')
+    
+Traceback (most recent call last):
+  File "<pyshell#17>", line 1, in <module>
+    mycursor.execute('CREATE DATABASE bd_nivel2_dannysa')
+psycopg2.errors.InFailedSqlTransaction: transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+mydb.autocommit = True
+    
+Traceback (most recent call last):
+  File "<pyshell#18>", line 1, in <module>
+    mydb.autocommit = True
+psycopg2.ProgrammingError: set_session cannot be used inside a transaction
+mycursor.close()
+    
+mydb.close()
+    
+mydb = psycopg2.connect(
+    dbname='bd_ic_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+    
+mydb.autocommit = True
+    
+with mydb.cursor() as cursor:
+    cursor.execute('CREATE DATABASE BD_NIVEL2_DANNYSA')
+
+    
+mydb.close()
+    
+mydb = psycopg2.connect(
+    dbname='bd_ic_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+    
+mydb.close()
+    
+mycursor.close()
+    
+mydb = psycopg2.connect(
+    dbname='bd_ic_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+    
+mydb.autocommit = True
+    
+with mydb.cursor() as cursor:
+    cursor.execute('SELECT datname from pg_database')
+
+    
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname where datname like '%nivel2%'")
+
+    
+Traceback (most recent call last):
+  File "<pyshell#35>", line 2, in <module>
+    cursor.execute("SELECT datname from pg_database where datname where datname like '%nivel2%'")
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «where»
+LINE 1: SELECT datname from pg_database where datname where datname ...
+                                                      ^
+
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname like '%nivel2%'")
+
+    
+for nombre_bd in cursor:
+    print(nombre_bd)
+
+    
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    for nombre_bd in cursor:
+psycopg2.InterfaceError: cursor already closed
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname like '%nivel2%'")
+
+    
+for nombre_bd in mydb.cursor():
+    print(nombre_bd)
+
+    
+Traceback (most recent call last):
+  File "<pyshell#44>", line 1, in <module>
+    for nombre_bd in mydb.cursor():
+psycopg2.ProgrammingError: no results to fetch
+#crear tabla en base de datos
+    
+mydb.close()
+    
+cursor.close()
+    
+mydb = psycopg2.connect(
+    dbname='bd_nivel2_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+    
+mycursor = mydb.cursor()
+    
+mycursor.execute("create table personas(cedula varchar(10),\nombre varchar(30),\apellido varchar(30),\direccion text,\fechanac date)")
+    
+Traceback (most recent call last):
+  File "<pyshell#50>", line 1, in <module>
+    mycursor.execute("create table personas(cedula varchar(10),\nombre varchar(30),\apellido varchar(30),\direccion text,\fechanac date)")
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «»
+LINE 2: ombre varchar(30),pellido varchar(30),\direccion text,echa...
+                          ^
+
+mycursor.execute("create table personas(cedula varchar(10),\nombre varchar(30),\apellido varchar(30),\direccion text,\fechanac date)")
+    
+Traceback (most recent call last):
+  File "<pyshell#51>", line 1, in <module>
+    mycursor.execute("create table personas(cedula varchar(10),\nombre varchar(30),\apellido varchar(30),\direccion text,\fechanac date)")
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «»
+LINE 2: ombre varchar(30),pellido varchar(30),\direccion text,echa...
+                          ^
+
+mycursor.execute("create table personas(cedula varchar(10),\ nombre varchar(30),\ apellido varchar(30),\ direccion text,\ fechanac date)")
+    
+Traceback (most recent call last):
+  File "<pyshell#52>", line 1, in <module>
+    mycursor.execute("create table personas(cedula varchar(10),\ nombre varchar(30),\ apellido varchar(30),\ direccion text,\ fechanac date)")
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «\»
+LINE 1: create table personas(cedula varchar(10),\ nombre varchar(30...
+                                                 ^
+
+mycursor.execute("create table personas(cedula varchar(10), \nombre varchar(30),\ apellido varchar(30),\ direccion text,\ fechanac date)")
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#53>", line 1, in <module>
+    mycursor.execute("create table personas(cedula varchar(10), \nombre varchar(30),\ apellido varchar(30),\ direccion text,\ fechanac date)")
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «\»
+LINE 2: ombre varchar(30),\ apellido varchar(30),\ direccion text,\ ...
+                          ^
+
+mycursor = mydb.cursor()
+                                                                  
+mycursor.close()
+                                                                  
+mydb.close()
+                                                                  
+mydb = psycopg2.connect(
+    dbname='bd_nivel2_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+                                                                  
+mycursor =mydb.cursor()
+                                                                  
+mycursor.execute("create table personas(cedula varchar(10), \nombre varchar(30),\ apellido varchar(30),\ direccion text,\ fechanac date)")
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#59>", line 1, in <module>
+    mycursor.execute("create table personas(cedula varchar(10), \nombre varchar(30),\ apellido varchar(30),\ direccion text,\ fechanac date)")
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «\»
+LINE 2: ombre varchar(30),\ apellido varchar(30),\ direccion text,\ ...
+                          ^
+
+mydb.close()
+                                                                  
+mycursor.close()
+                                                                  
+mydb = psycopg2.connect(
+    dbname='bd_nivel2_dannysa',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432')
+                                                                  
+mycursor =mydb.cursor()
+                                                                  
+mycursor.execute("create table personas(cedula varchar(10), nombre varchar(30), apellido varchar(30), direccion text,fechanac date)")
+                                                                  
+mydb.commit()
+                                                                  
+#commit aplica para toda modificacion, entiendase insert, update, delete
+                                                                  
+#ahora se modificara la tabla para a;adir un campo, este se llama id de tipo serial y es clave primaria
+                                                                  
+mycursor.execute("alter table personas add column id serial primary key")
+                                                                  
+mydb.commit()
+                                                                  
+#ingreso de un registro
+                                                                  
+sql = "insert into personas(cedula, nombre, apellido, direccion, fechanac) values (%s,%s,%s,%s,%S)"
+                                                                  
+valores = ('V1234','ANA','VASQUEZ','SANTA LUCIA','1965/08/15')
+                                                                  
+mycursor.execute(sql, valores)
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#73>", line 1, in <module>
+    mycursor.execute(sql, valores)
+ValueError: unsupported format character 'S' (0x53) at index 89
+mycursor.execute(sql, valores)
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#74>", line 1, in <module>
+    mycursor.execute(sql, valores)
+ValueError: unsupported format character 'S' (0x53) at index 89
+mycursor.execute(sql, valores)sql = "insert into personas(cedula, nombre, apellido, direccion, fechanac) values (%s,%s,%s,%s,%s)"
+                                                                  
+SyntaxError: invalid syntax
+sql = "insert into personas(cedula, nombre, apellido, direccion, fechanac) values (%s,%s,%s,%s,%s)"
+                                                                  
+mycursor.execute(sql, valores)
+                                                                  
+mydb.commit()
+                                                                  
+mycursor.lastrowid
+                                                                  
+0
+valores1 = [('E8101','JACKY','CHAN','CARICUAO','1950/9/1'),('V5678','NELLY','CONTRERAS','PALO VERDE','1968/7/16'),('V1902','SUSANA','PEREZ','MONTALBAL','1970/5/20')]
+                                                                  
+valores1
+                                                                  
+[('E8101', 'JACKY', 'CHAN', 'CARICUAO', '1950/9/1'), ('V5678', 'NELLY', 'CONTRERAS', 'PALO VERDE', '1968/7/16'), ('V1902', 'SUSANA', 'PEREZ', 'MONTALBAL', '1970/5/20')]
+mycursor.executemany(sql, valores1)
+                                                                  
+mydb.commit()
+                                                                  
+mycursor.rowcount
+                                                                  
+3
+#consulta del contenido de una tabla
+                                                                  
+sqlconsulta = "select * from personas"
+                                                                  
+mycursor.execute(sqlconsulta)
+                                                                  
+resultado = mycursor.fetchall()
+                                                                  
+for datos in resultado:
+for datos in resultado:
+                                                                  
+SyntaxError: expected an indented block after 'for' statement on line 1
+for datos in resultado:
+    print(datos)
+
+                                                                  
+('V1234', 'ANA', 'VASQUEZ', 'SANTA LUCIA', datetime.date(1965, 8, 15), 1)
+('E8101', 'JACKY', 'CHAN', 'CARICUAO', datetime.date(1950, 9, 1), 2)
+('V5678', 'NELLY', 'CONTRERAS', 'PALO VERDE', datetime.date(1968, 7, 16), 3)
+('V1902', 'SUSANA', 'PEREZ', 'MONTALBAL', datetime.date(1970, 5, 20), 4)
+sqlconsulta1 = "select cedula, nombre, apellido from personas"
+                                                                  
+mycursor.execute(sqlconsulta1)
+                                                                  
+resultado = mycursor.fetchall()
+                                                                  
+for datos in resultado:
+    print(datos)
+
+                                                                  
+('V1234', 'ANA', 'VASQUEZ')
+('E8101', 'JACKY', 'CHAN')
+('V5678', 'NELLY', 'CONTRERAS')
+('V1902', 'SUSANA', 'PEREZ')
+dato1 = ('E8101',)
+                                                                  
+sqlconsulta1 = "select cedula, nombre, apellido from personas where cedula= '%s%'"
+                                                                  
+sqlconsulta1 = "select cedula, nombre, apellido from personas where cedula= '%s'"
+                                                                  
+mycursor.execute(sqlconsulta1, dato1)
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#104>", line 1, in <module>
+    mycursor.execute(sqlconsulta1, dato1)
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «E8101»
+LINE 1: ...dula, nombre, apellido from personas where cedula= ''E8101''
+                                                                ^
+
+mycursor.execute(sqlconsulta1,dato1)
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#105>", line 1, in <module>
+    mycursor.execute(sqlconsulta1,dato1)
+psycopg2.errors.SyntaxError: error de sintaxis en o cerca de «E8101»
+LINE 1: ...dula, nombre, apellido from personas where cedula= ''E8101''
+                                                                ^
+
+sqlconsulta1 = "select cedula, nombre, apellido from personas where cedula = %s"
+                                                                  
+mycursor.execute(sqlconsulta1, dato1)
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#107>", line 1, in <module>
+    mycursor.execute(sqlconsulta1, dato1)
+psycopg2.errors.InFailedSqlTransaction: transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+dato1 = ('E8101',)
+                                                                  
+mycursor.execute(sqlconsulta1, dato1)
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#109>", line 1, in <module>
+    mycursor.execute(sqlconsulta1, dato1)
+psycopg2.errors.InFailedSqlTransaction: transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+sqlconsulta1
+                                                                  
+'select cedula, nombre, apellido from personas where cedula = %s'
+dato1
+                                                                  
+('E8101',)
+mycursor.execute(sqlconsulta1, dato1)
+                                                                  
+Traceback (most recent call last):
+  File "<pyshell#112>", line 1, in <module>
+    mycursor.execute(sqlconsulta1, dato1)
+psycopg2.errors.InFailedSqlTransaction: transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+

@@ -1,0 +1,415 @@
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+help ()
+
+Welcome to Python 3.12's help utility!
+
+If this is your first time using Python, you should definitely check out
+the tutorial on the internet at https://docs.python.org/3.12/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To quit this help utility and
+return to the interpreter, just type "quit".
+
+To get a list of available modules, keywords, symbols, or topics, type
+"modules", "keywords", "symbols", or "topics".  Each module also comes
+with a one-line summary of what it does; to list the modules whose name
+or summary contain a given string such as "spam", type "modules spam".
+
+help> help()
+No Python documentation found for 'help()'.
+Use help() to get the interactive help utility.
+Use help(str) for help on the str class.
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.42.0
+__future__          _testmultiphase     genericpath         sched
+__hello__           _testsinglephase    getopt              secrets
+__phello__          _thread             getpass             select
+_abc                _threading_local    gettext             selectors
+_aix_support        _tkinter            glob                shelve
+_ast                _tokenize           graphlib            shlex
+_asyncio            _tracemalloc        gzip                shutil
+_bisect             _typing             hashlib             signal
+_blake2             _uuid               heapq               site
+_bz2                _warnings           hmac                smtplib
+_codecs             _weakref            html                sndhdr
+_codecs_cn          _weakrefset         http                socket
+_codecs_hk          _winapi             idlelib             socketserver
+_codecs_iso2022     _wmi                imaplib             sqlite3
+_codecs_jp          _xxinterpchannels   imghdr              sre_compile
+_codecs_kr          _xxsubinterpreters  importlib           sre_constants
+_codecs_tw          _zoneinfo           inspect             sre_parse
+_collections        abc                 io                  ssl
+_collections_abc    aifc                ipaddress           stat
+_compat_pickle      antigravity         itertools           statistics
+_compression        argparse            json                string
+_contextvars        array               keyword             stringprep
+_csv                ast                 lib2to3             struct
+_ctypes             asyncio             linecache           subprocess
+_ctypes_test        atexit              locale              sunau
+_datetime           audioop             logging             symtable
+_decimal            base64              lzma                sys
+_elementtree        bdb                 mailbox             sysconfig
+_functools          binascii            mailcap             tabnanny
+_hashlib            bisect              marshal             tarfile
+_heapq              builtins            math                telnetlib
+_imp                bz2                 mimetypes           tempfile
+_io                 cProfile            mmap                test
+_json               calendar            modulefinder        textwrap
+_locale             cgi                 msilib              this
+_lsprof             cgitb               msvcrt              threading
+_lzma               chunk               multiprocessing     time
+_markupbase         cmath               netrc               timeit
+_md5                cmd                 nntplib             tkinter
+_msi                code                nt                  token
+_multibytecodec     codecs              ntpath              tokenize
+_multiprocessing    codeop              nturl2path          tomllib
+_opcode             collections         numbers             trace
+_operator           colorsys            opcode              traceback
+_osx_support        compileall          operator            tracemalloc
+_overlapped         concurrent          optparse            tty
+_pickle             configparser        os                  turtle
+_py_abc             contextlib          pathlib             turtledemo
+_pydatetime         contextvars         pdb                 types
+_pydecimal          copy                pickle              typing
+_pyio               copyreg             pickletools         unicodedata
+_pylong             crypt               pip                 unittest
+_queue              csv                 pipes               urllib
+_random             ctypes              pkgutil             uu
+_sha1               curses              platform            uuid
+_sha2               dataclasses         plistlib            venv
+_sha3               datetime            poplib              warnings
+_signal             dbm                 posixpath           wave
+_sitebuiltins       decimal             pprint              weakref
+_socket             difflib             profile             webbrowser
+_sqlite3            dis                 pstats              winreg
+_sre                doctest             psycopg2            winsound
+_ssl                email               pty                 wsgiref
+_stat               encodings           py_compile          xdrlib
+_statistics         ensurepip           pyclbr              xml
+_string             enum                pydoc               xmlrpc
+_strptime           errno               pydoc_data          xxsubtype
+_struct             faulthandler        pyexpat             zipapp
+_symtable           filecmp             queue               zipfile
+_testbuffer         fileinput           quopri              zipimport
+_testcapi           fnmatch             random              zlib
+_testclinic         fractions           re                  zoneinfo
+_testconsole        ftplib              reprlib             
+_testimportmultiple functools           rlcompleter         
+_testinternalcapi   gc                  runpy               
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> 
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+import psycopg2
+mydb = psycopg2.connect (
+    dbname='bd_ic_henry'
+    user='postgres',
+    
+SyntaxError: '(' was never closed
+mydb = psycopg2.connect (
+    dbname='bd_ic_henry'
+    user='postgres',mydb = psycopg2.connect (
+        dbname='bd_ic_henry'
+        user='postgres',mydb = psycopg2.connect (
+            dbname='bd_ic_henry',
+            user='postgres',
+            
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+mydb = psycopg2.connect (
+    dbname='bd_ic_henry'
+    user='postgres',mydb = psycopg2.connect (
+        dbname='bd_ic_henry'
+        user='postgres',mydb = psycopg2.connect (
+            dbname='bd_ic_henry',
+            user='postgres',
+            
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    passsword='123456',
+    host='localhost',
+    port='5432'
+    )
+            
+Traceback (most recent call last):
+  File "<pyshell#11>", line 1, in <module>
+    mydb = psycopg2.connect(
+  File "C:\ESP_PYTHON_20250331\NIVEL_II\CARLA\.venv\Lib\site-packages\psycopg2\__init__.py", line 121, in connect
+    dsn = _ext.make_dsn(dsn, **kwargs)
+  File "C:\ESP_PYTHON_20250331\NIVEL_II\CARLA\.venv\Lib\site-packages\psycopg2\extensions.py", line 167, in make_dsn
+    parse_dsn(dsn)
+psycopg2.ProgrammingError: invalid dsn: invalid connection option "passsword"
+
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+  
+mydb
+  
+<connection object at 0x00000224A6328370; dsn: 'user=postgres password=xxx dbname=bd_ic_henry host=localhost port=5432', closed: 0>
+# Interfaces de comandos a traves del objeto de base de datos
+  
+mycursor = mydb.cursor()
+  
+# Ejecucion de comando sql a traves de la interface
+  
+mycursor.execute('CREATE DATABASE bd_nivel2_CARLA')
+  
+Traceback (most recent call last):
+  File "<pyshell#17>", line 1, in <module>
+    mycursor.execute('CREATE DATABASE bd_nivel2_CARLA')
+psycopg2.errors.ActiveSqlTransaction: CREATE DATABASE no puede ser ejecutado dentro de un bloque de transacción
+
+mydb.autocommit = True
+  
+Traceback (most recent call last):
+  File "<pyshell#18>", line 1, in <module>
+    mydb.autocommit = True
+psycopg2.ProgrammingError: set_session cannot be used inside a transaction
+mycursor.close()
+  
+
+mydb.close()
+  
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+  
+mydb.autocommit = True
+  
+with mydb.cursor() as cursor:
+    cursor.execute('CREATE DATABASE bd_nivel2_CARLA')
+
+  
+mydb.close()
+  
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+  
+mycursor = mydb.cursor()
+  
+mydb.close()
+  
+mycursor.close()
+  
+mydb.autocommit = True
+  
+Traceback (most recent call last):
+  File "<pyshell#31>", line 1, in <module>
+    mydb.autocommit = True
+psycopg2.InterfaceError: connection already closed
+mydb = psycopg2.connect(
+    dbname='bd_ic_henry',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+  
+mydb.autocommit = True
+  
+with mydb.cursor() as cursor:
+    cursor.execute('SELECT datname from pg_database')
+
+  
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname like '%nivel2%'")
+
+  
+for nombre_bd in cursor:
+    print(nombre_bd)
+
+  
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    for nombre_bd in cursor:
+psycopg2.InterfaceError: cursor already closed
+with mydb.cursor() as cursor:
+    cursor.execute("SELECT datname from pg_database where datname like '%nivel2%'")
+
+  
+for nombre_bd in mydb.cursor():
+    print(nombre_bd)
+
+  
+Traceback (most recent call last):
+  File "<pyshell#44>", line 1, in <module>
+    for nombre_bd in mydb.cursor():
+psycopg2.ProgrammingError: no results to fetch
+# Crear tabla en base de datos
+  
+mydb.close()
+  
+mycursor.close()
+  
+mydb = psycopg2.connect(
+    dbname='bd_nivel2_CARLA',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+  
+Traceback (most recent call last):
+  File "<pyshell#48>", line 1, in <module>
+    mydb = psycopg2.connect(
+  File "C:\ESP_PYTHON_20250331\NIVEL_II\CARLA\.venv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xab in position 96: invalid start byte
+mydb = psycopg2.connect(
+    dbname='bd_nivel2_CARLA',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+  
+Traceback (most recent call last):
+  File "<pyshell#49>", line 1, in <module>
+    mydb = psycopg2.connect(
+  File "C:\ESP_PYTHON_20250331\NIVEL_II\CARLA\.venv\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xab in position 96: invalid start byte
+mydb = psycopg2.connect(
+    dbname='bd_nivel2_carla',
+    user='postgres',
+    password='123456',
+    host='localhost',
+    port='5432'
+    )
+  
+mycursor = mydb.cursor()
+  
+mycursor.execute("create table personas(cedula varchar(10),\
+nombre varchar(30),\
+apellido varchar(30),\
+direccion text,\
+fechanac date)")
+  
+mydb.commit()
+  
+mydb.commit()
+  
+# Commit aplica para toda modificacion, entiendase INSERT, UPDATE Y DELETE
+  
+#Se modificara la tabla para anadir un campo
+  
+#este campo se llama "id" de tipo "serial" y sera "primary key"
+  
+mycursor.execute("alter table personas add column id serial primary key")
+  
+mydb.commit()
+  
+# Ingreso de un registro
+  
+sql = "insert into personas(cedula,nombre,apellido,direccion,fechanac) values
+  
+SyntaxError: incomplete input
+sql = "insert into personas(cedula,nombre,apellido,direccion,fechanac) values (%s,%s,%s,%s,%s)"
+  
+valores = ('V1234','ANA','VASQUEZ','SANTA FE',1965/08/15')
+           
+SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers
+valores = ('V1234','ANA','VASQUEZ','SANTA FE','1965/08/15')
+           
+mycursor.execute(sql, valores)
+           
+mydb.commit()
+           
+mydb.commit()
+           
+mycursor.lastrowid
+           
+0
+valores1 =[('E8101','JACKY','CHAN','CARICUAO','1950/09/01'),('V5678','NELLY','CONTRERAS','PALO VERDE','1968/07/16),('V9012','SUSANA','PEREZ','MONTALBAN','1970/05/20')]
+                                                             
+SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers
+valores1
+                                                             
+Traceback (most recent call last):
+  File "<pyshell#74>", line 1, in <module>
+    valores1
+NameError: name 'valores1' is not defined. Did you mean: 'valores'?
+valores1 =[('E8101','JACKY','CHAN','CARICUAO','1950/09/01'),('V5678','NELLY','CONTRERAS','PALO VERDE','1968/07/16'),('V9012','SUSANA','PEREZ','MONTALBAN','1970/05/20')]
+                                                             
+valores1
+                                                             
+[('E8101', 'JACKY', 'CHAN', 'CARICUAO', '1950/09/01'), ('V5678', 'NELLY', 'CONTRERAS', 'PALO VERDE', '1968/07/16'), ('V9012', 'SUSANA', 'PEREZ', 'MONTALBAN', '1970/05/20')]
+mycursor.executemany(sql,valores1)
+                                                             
+mydb.commit()
+                                                             
+mycursor.lastrowid
+                                                             
+0
+mycursor.rowcount
+                                                             
+3
+# Consulta del contenido del contenido de una tabla
+                                                             
+sqlconsulta = "select * from personas"
+                                                             
+mycursor.execute(sqlconsulta)
+                                                             
+resultado = mycursor.fetchall()
+                                                             
+for datos in resultado:
+    print(datos)
+
+                                                             
+('V1234', 'ANA', 'VASQUEZ', 'SANTA FE', datetime.date(1965, 8, 15), 1)
+('E8101', 'JACKY', 'CHAN', 'CARICUAO', datetime.date(1950, 9, 1), 2)
+('V5678', 'NELLY', 'CONTRERAS', 'PALO VERDE', datetime.date(1968, 7, 16), 3)
+('V9012', 'SUSANA', 'PEREZ', 'MONTALBAN', datetime.date(1970, 5, 20), 4)
+sqlconsulta1 = "select cedula, nombre, apellido from personas"
+                                                             
+mycursor.execute(sqlconsulta1)
+                                                             
+resultado = mycursor.fetchall()
+                                                             
+for datos in resultado:
+    print(datos)
+
+                                                             
+('V1234', 'ANA', 'VASQUEZ')
+('E8101', 'JACKY', 'CHAN')
+('V5678', 'NELLY', 'CONTRERAS')
+('V9012', 'SUSANA', 'PEREZ')
+dato1 = ('E8101',)
+                                                             
+sqlconsulta1 = "select cedula, nombre, apellido from personas where cedula = %s"
+                                                             
+mycursor.execute(sqlconsulta1,dato1)
+                                                             
+resultado = mycursor.fetchall()
+                                                             
+for datos in resultado:
+    print(datos)
+
+                                                             
+('E8101', 'JACKY', 'CHAN')
