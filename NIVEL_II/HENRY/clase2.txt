@@ -1,0 +1,17 @@
+1-) Acceder al entorno virtual
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>.vvenv\scripts\activate
+
+2-) Levantar el idle
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_II\\HENRY>python -m idlelib.idle 
+
+3-) Importar módulo para conectar a base de datos PostgreSQL (Nota: previameente fue instalada la dependendencia al módulo )
+
+import psycopg2
+
+4-) Crear objeto de conexión a la base de datos.
+
+mibd = psycopg2.connect(dbname='bd_nivel2_henry', user='postgres', password='123456', host='localhost', port='5432')
+#Una vez creado el objeto de base de datos
+#se crea el cursor para realizar cambios al
+#contenido de la base de datos
+cursor = mibd.cursor()

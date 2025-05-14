@@ -1,0 +1,11 @@
+1-) Acceder al entorno virtual
+C:\ESP_PYTHON_20250331\NIVEL_II\HENRY>.vvenv\scripts\activate
+
+2-) Levantar el idle
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_II\\HENRY>python -m idlelib.idle 
+
+3-) Importar módulo para conectar a base de datos PostgreSQL (Nota: previameente fue instalada la dependencia al módulo )
+
+import psycopg2
+
+4-) Crear objeto de conexión a la base de datos.
