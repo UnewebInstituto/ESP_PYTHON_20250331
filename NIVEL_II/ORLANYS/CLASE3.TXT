@@ -1,0 +1,19 @@
+class Persona:
+    #atributos
+    self.nombre = ''
+    self.apellido = ''
+    self.sexo = ''
+    self.edad = 0
+    self.estatura = 0
+    self.peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]

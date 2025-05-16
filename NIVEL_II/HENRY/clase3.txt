@@ -1,0 +1,407 @@
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+Class Persona:
+    
+SyntaxError: invalid syntax
+class Persona:
+    #atributos
+    self.nombre = ''
+    self.apellido = ''
+    self.sexo = ''
+    self.edad = 0
+    self.estatura = 0
+    self.peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+Traceback (most recent call last):
+  File "<pyshell#21>", line 1, in <module>
+    class Persona:
+  File "<pyshell#21>", line 3, in Persona
+    self.nombre = ''
+NameError: name 'self' is not defined
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+# Instancia de la clase Persona
+persona1 = Persona()
+persona2 = Persona()
+persona3 = Persona()
+type(persona1)
+<class '__main__.Persona'>
+type(Persona)
+<class 'type'>
+# A partir del objeto, se ejecuta el método asignar_datos()
+persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+  File "<pyshell#25>", line 14, in asignar_datos
+    self.edad = arg_edad
+NameError: name 'arg_edad' is not defined. Did you mean: 'arg_eda'?
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_eda
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+persona1 = Persona()
+persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+Traceback (most recent call last):
+  File "<pyshell#37>", line 1, in <module>
+    persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+  File "<pyshell#35>", line 16, in asignar_datos
+    self.peso = arg.pes
+NameError: name 'arg' is not defined
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_eda
+        self.estatura = arg_est
+        self.peso = arg_pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+persona1 = Persona()
+persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+'Datos asignados'
+persona2 = Persona()
+persona2.asignar_datos('NELLY','CONTRERAS','F',56,1.60,50)
+'Datos asignados'
+persona3 = Persona()
+persona3.asignar_datos('YOLANDA','TORTOZA','F',50,1.58,49)
+'Datos asignados'
+persona1.obtener_datos()
+['ANA', 'VASQUEZ', 'F', 60, 1.65, 55]
+persona2.obtener_datos()
+['NELLY', 'CONTRERAS', 'F', 56, 1.6, 50]
+persona3.obtener_datos()
+['YOLANDA', 'TORTOZA', 'F', 50, 1.58, 49]
+personas = []
+personas.append(Persona())
+personas.append(Persona())
+personas.append(Persona())
+personas[0].asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+'Datos asignados'
+personas[1].asignar_datos('NELLY','CONTRERAS','F',56,1.60,50)
+'Datos asignados'
+personas[2].asignar_datos('YOLANDA','TORTOZA','F',50,1.58,49)
+'Datos asignados'
+for datos in personas:
+    datos.obtener_datos()
+
+    
+['ANA', 'VASQUEZ', 'F', 60, 1.65, 55]
+['NELLY', 'CONTRERAS', 'F', 56, 1.6, 50]
+['YOLANDA', 'TORTOZA', 'F', 50, 1.58, 49]
+
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+Class Persona:
+    
+SyntaxError: invalid syntax
+class Persona:
+    #atributos
+    self.nombre = ''
+    self.apellido = ''
+    self.sexo = ''
+    self.edad = 0
+    self.estatura = 0
+    self.peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+Traceback (most recent call last):
+  File "<pyshell#21>", line 1, in <module>
+    class Persona:
+  File "<pyshell#21>", line 3, in Persona
+    self.nombre = ''
+NameError: name 'self' is not defined
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_edad
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+# Instancia de la clase Persona
+persona1 = Persona()
+persona2 = Persona()
+persona3 = Persona()
+type(persona1)
+<class '__main__.Persona'>
+type(Persona)
+<class 'type'>
+# A partir del objeto, se ejecuta el método asignar_datos()
+persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+  File "<pyshell#25>", line 14, in asignar_datos
+    self.edad = arg_edad
+NameError: name 'arg_edad' is not defined. Did you mean: 'arg_eda'?
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_eda
+        self.estatura = arg_est
+        self.peso = arg.pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+persona1 = Persona()
+persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+Traceback (most recent call last):
+  File "<pyshell#37>", line 1, in <module>
+    persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+  File "<pyshell#35>", line 16, in asignar_datos
+    self.peso = arg.pes
+NameError: name 'arg' is not defined
+class Persona:
+    #atributos
+    nombre = ''
+    apellido = ''
+    sexo = ''
+    edad = 0
+    estatura = 0
+    peso = 0
+    #métodos
+    def asignar_datos(self,arg_nom,arg_ape,arg_sex,arg_eda,arg_est,arg_pes):
+        self.nombre = arg_nom
+        self.apellido = arg_ape
+        self.sexo = arg_sex
+        self.edad = arg_eda
+        self.estatura = arg_est
+        self.peso = arg_pes
+        return 'Datos asignados'
+    def obtener_datos(self):
+        return [self.nombre,self.apellido,self.sexo,self.edad,self.estatura,self.peso]
+
+    
+persona1 = Persona()
+persona1.asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+'Datos asignados'
+persona2 = Persona()
+persona2.asignar_datos('NELLY','CONTRERAS','F',56,1.60,50)
+'Datos asignados'
+persona3 = Persona()
+persona3.asignar_datos('YOLANDA','TORTOZA','F',50,1.58,49)
+'Datos asignados'
+persona1.obtener_datos()
+['ANA', 'VASQUEZ', 'F', 60, 1.65, 55]
+persona2.obtener_datos()
+['NELLY', 'CONTRERAS', 'F', 56, 1.6, 50]
+persona3.obtener_datos()
+['YOLANDA', 'TORTOZA', 'F', 50, 1.58, 49]
+personas = []
+personas.append(Persona())
+personas.append(Persona())
+personas.append(Persona())
+personas[0].asignar_datos('ANA','VASQUEZ','F',60,1.65,55)
+'Datos asignados'
+personas[1].asignar_datos('NELLY','CONTRERAS','F',56,1.60,50)
+'Datos asignados'
+personas[2].asignar_datos('YOLANDA','TORTOZA','F',50,1.58,49)
+'Datos asignados'
+for datos in personas:
+    datos.obtener_datos()
+
+    
+['ANA', 'VASQUEZ', 'F', 60, 1.65, 55]
+['NELLY', 'CONTRERAS', 'F', 56, 1.6, 50]
+['YOLANDA', 'TORTOZA', 'F', 50, 1.58, 49]
+from tkinter import *
+ventana = Tk()
+etiqueta = Label(ventana,text='Hola mundo en Python')
+etiqueta.pack()
+ventana.mainloop()
+ventana.title = "Esta es mi primera ventana"
+ventana = Tk()
+ventana.title = "Esta es mi primera ventana"
+ventana.title('Esta es mi primera ventana')
+Traceback (most recent call last):
+  File "<pyshell#68>", line 1, in <module>
+    ventana.title('Esta es mi primera ventana')
+TypeError: 'str' object is not callable
+ventana = Tk()
+ventana.title('Esta es mi primera ventana')
+''
+boton = Button(ventana, text='Minimizar', command=ventana.iconify)
+boton.pack()
+def parpadear:
+    
+SyntaxError: incomplete input
+import time
+def parpadear():
+    ventana.iconify()
+    time.sleep(3)
+    ventana.deiconify()
+
+    
+ventana = Tk()
+boton = Button(ventana, text='Evento', command=parpadear)
+boton.pack()
+ventana.mainloop()
+Traceback (most recent call last):
+  File "<pyshell#85>", line 1, in <module>
+    ventana.mainloop()
+  File "C:\Python\Lib\tkinter\__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+KeyboardInterrupt
+
+
+
+
