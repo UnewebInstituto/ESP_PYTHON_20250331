@@ -1,0 +1,87 @@
+Claro, aquí tienes la explicación y la solución paso a paso, como experto en PostgreSQL:
+
+## Problema
+
+El error:
+
+```
+ERROR:  faltan datos en la columna «cod_pagador»
+```
+
+significa que el comando `COPY` está esperando delimitadores (por defecto, el delimitador es tabulador) para separar columnas. Sin embargo, tu archivo es de **longitud variable sin delimitadores**: es decir, cada columna ocupa posiciones fijas dentro de la línea, y no hay separador entre columnas.
+
+**El comando COPY estándar no puede leer archivos de ancho fijo directamente.**
+
+---
+
+## Soluciones
+
+### 1. **Pre-procesar el archivo plano**
+
+La forma más sencilla, rápida y confiable es procesar previamente el archivo para insertar delimitadores (como una coma o tabulador), o convertirlo en formato CSV antes de hacer el COPY.
+
+#### Ejemplo de procesamiento con Python:
+
+```python
+input_file = 'C:/ESP_PYTHON_20250331/NIVEL_II/data/K40L410_250505.txt'
+output_file = 'C:/ESP_PYTHON_20250331/NIVEL_II/data/K40L410_250505.csv'
+
+with open(input_file, 'r', encoding='utf-8') as infile, open(output_file, 'w', encoding='utf-8') as outfile:
+    for line in infile:
+        c1 = line[0:5].strip()
+        cod_pagador = line[5:9].strip()
+        c2 = line[9:15].strip()
+        id_pagador = line[15:31].strip()
+        c3 = line[31:267].strip()
+        outfile.write(f'{c1},{cod_pagador},{c2},{id_pagador},{c3}\n')
+```
+
+Ahora puedes hacer:
+
+```sql
+COPY pago_movil FROM 'C:/ESP_PYTHON_20250331/NIVEL_II/data/K40L410_250505.csv' WITH (FORMAT csv);
+```
+
+---
+
+### 2. **Cargar el archivo como una sola columna y luego dividir**
+
+Si no puedes modificar el archivo original, puedes cargarlo a una tabla temporal así:
+
+```sql
+CREATE TEMP TABLE temp_pagos(linea TEXT);
+COPY temp_pagos FROM 'C:/ESP_PYTHON_20250331/NIVEL_II/data/K40L410_250505.txt';
+```
+
+Luego, inserta en tu tabla final usando `SUBSTRING`:
+
+```sql
+INSERT INTO pago_movil
+SELECT
+    SUBSTRING(linea FROM 1 FOR 5) AS c1,
+    SUBSTRING(linea FROM 6 FOR 4) AS cod_pagador,
+    SUBSTRING(linea FROM 10 FOR 6) AS c2,
+    SUBSTRING(linea FROM 16 FOR 16) AS id_pagador,
+    SUBSTRING(linea FROM 32 FOR 236) AS c3
+FROM temp_pagos;
+```
+
+---
+
+### 3. **¿Por qué ocurre el error?**
+
+El comando `COPY` por defecto espera archivos delimitados (CSV o tab), y si encuentra menos columnas de las esperadas por línea, lanza el error de "faltan datos".  
+En archivos de ancho fijo, los datos no están delimitados, así que COPY estándar no sirve directamente.
+
+---
+
+## Recomendación
+
+**La opción más robusta y profesional es la opción 2:**  
+- Cargar el archivo a una tabla temporal y luego hacer la inserción con SUBSTRING.
+
+Si necesitas el script listo para tu caso, dime y te armo todo el flujo completo.
+
+---
+
+¿Deseas que te entregue los scripts completos para alguna de estas opciones?
