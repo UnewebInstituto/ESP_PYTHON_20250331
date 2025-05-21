@@ -20,5 +20,5 @@ boton1 = Button(ventana, text='Saludar',command=saludar).place(x=10,y=10)
 etiqueta1 = Label(ventana, text='Posicionamiento diferente 1').place(x=200,y=10)
 boton2 = Button(ventana, text='Salir',command=salir).place(x=10,y=50)
 
-boton3 = Button(ventana, text='Minimizar',command=minimizar).place(x=200, y=50)                                                     
+boton3 = Button(ventana, text='Minimizar',command=minimizar).place(x=200, y=50)                                                    
 ventana.mainloop()

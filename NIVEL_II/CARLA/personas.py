@@ -5,7 +5,7 @@ if sys.path.count('C:\\ESP_PYTHON_20250331\\NIVEL_II\\CARLA') == 0:
 
 
 # Definicion de funciones
-def personas_con():
+def guardar_datos():
     import conexion # Se establece conexion a la base de datos
     cursor = conexion.mibd.cursor()
     sql = "select * from personas"
