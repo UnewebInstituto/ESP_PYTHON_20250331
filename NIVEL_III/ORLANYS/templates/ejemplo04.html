@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo04</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='ejemplo04.css')}}">
+</head>
+<body>
+  <h1>Ejemplo04</h1>
+  <h2>Uso de plantillas en Flask, con los directorios \templates y \static</h2>
+  <h3>Enlace de interès</h3>
+  <ul>
+      <!--
+          Las lìneas de instrucciòn a continuaciòn son del manejador de plantillas jinja 
+          https://jinja.palletsprojects.com/en/stable/
+            -->
+   {% for nombre, enlace in lista %}
+      <li><a href="{{enlace}}" target="_blank">{{nombre.capitalize()}}</a></li>
+   {% endfor %}
+  </ul>  
+</body>
+</html>

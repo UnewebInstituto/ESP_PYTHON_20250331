@@ -1,0 +1,21 @@
+from flask import *
+from flask import Flask, render_template
+
+# Definir una instancia de la clase Flask 
+
+app = Flask(__name__) 
+
+#Establecer un decorador de ruta 
+@app.route('/')
+def inicio():
+  enlaces = [['uneweb sitio oficial','https://www.uneweb.edu.ve'],['uneweb sitio de tutoriales','https://www.uneweb.edu.ve/tutoriales'],['uneweb plataforma online','https://www.uneweb.com/cursos']]
+  return render_template('ejemplo04.html',lista= enlaces)  
+
+# Ejecutar la aplicacion
+if __name__ == '__main__':
+  """
+  Dannysa , 
+  Carla , port= 5003
+  """
+app.run(port=5003)
+ 

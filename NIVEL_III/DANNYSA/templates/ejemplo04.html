@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo03</title>
+  <style>
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1,h2,h3{
+      text-align: center;
+    }
+    h1{
+
+            color:yellow;
+            padding: 20px;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 25px;
+            width:50%;
+            margin-left: 25%;
+      ;
+    }
+</head>
+<body>
+  <h1>Ejemplo03</h1>
+  <h2>Uso de plantillas en Flask</h2>
+  <h3>Enlace de interes</h3>
+  <ul>
+      {% for nombre, enlace in lista %}
+        <li><a href="{{enlace}}" target="_blank">{{nombre.capitalize()}}</a></li>
+      {% endfor %}
+HENRY/templates/ejemplo04.html
+

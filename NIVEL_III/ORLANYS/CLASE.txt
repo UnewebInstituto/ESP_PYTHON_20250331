@@ -1,0 +1,15 @@
+https://flask.palletsprojects.com/en/stable/
+
+Para instalar Flask:
+
+1) Definir el entorno virtual
+virtualenv .virtualenv
+
+2) Activar entorno virtual
+
+3) Instalar Flask
+Desde el entorno virtual activo:
+pip install flask
+
+4) Instalar mòdulo para PostgreSQL:
+pip install psycopg2

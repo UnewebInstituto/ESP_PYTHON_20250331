@@ -1,0 +1,10 @@
+
+Para instalar Flask 
+1) definir el entorno virtual .venv
+2) activar el entorno virtual
+.venv\scripts\activate
+3)instalar Flask 
+Desde el entorno virtual activo:
+pip install flask
+4)instalar modulo para postgresql
+pip install psycopg2
