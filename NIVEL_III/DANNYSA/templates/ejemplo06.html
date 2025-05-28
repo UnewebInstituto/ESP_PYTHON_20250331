@@ -6,11 +6,16 @@
   <title>Ejemplo05</title>
 </head>
 <body>
-  <h1>Ejemplo05</h1>
-  <form action="" method="POST"><br>
+  <h1>Ejemplo06</h1>
+  <form action="" method="get"><br>
     <label for="">INGRESE UN TEXTO:</label><br>
     <input type="text" name="entrada"><br>
     <button type="submit">ENVIAR</button><br>
 </form>
+<hr>
+{% if texto_procesado_plantilla %}
+    <h2>Contenido texto procesado:</h2>
+    {{texto_procesado_plantilla}}
+{% endif %}
 </body>
 </html>

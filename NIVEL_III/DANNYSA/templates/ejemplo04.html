@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo03</title>
-  <style>
-    *{
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    h1,h2,h3{
-      text-align: center;
-    }
-    h1{
-
-            color:yellow;
-            padding: 20px;
-            border-style: solid;
-            border-width: 2px;
-            border-radius: 25px;
-            width:50%;
-            margin-left: 25%;
-      ;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo04</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='ejemplo04.css')}}">
 </head>
 <body>
-  <h1>Ejemplo03</h1>
-  <h2>Uso de plantillas en Flask</h2>
-  <h3>Enlace de interes</h3>
-  <ul>
-      {% for nombre, enlace in lista %}
-        <li><a href="{{enlace}}" target="_blank">{{nombre.capitalize()}}</a></li>
-      {% endfor %}
-HENRY/templates/ejemplo04.html
-
+    <h1>Ejemplo04</h1>
+    <h2>Uso de plantillas en Flask, con los directorios \templates y \static</h2>
+    <h3>Enlace de interés</h3>
+    <ul>
+        <!--
+            Las de líneas de instrucción a continuación son
+            del manejador de plantillas jinja
+            https://jinja.palletsprojects.com/en/stable/
+        -->
+        {% for nombre, enlace in lista %}
+            <li><a href="{{enlace}}" target="_blank">{{nombre.capitalize()}}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
