@@ -1,0 +1,279 @@
+https://getbootstrap.com/
+
+
+https://getbootstrap.com/docs/5.3/getting-started/introduction/
+
+
+https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css
+
+
+https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js
+
+
+https://www.w3schools.com/
+
+https://www.w3schools.com/bootstrap5/bootstrap_forms.php
+
+https://www.w3schools.com/bootstrap5/bootstrap_buttons.php
+
+https://www.w3schools.com/bootstrap5/bootstrap_alerts.php
+
+
+alter table personas 
+add constraint uk_cedula unique(cedula);
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Contraseña para usuario postgres:
+psql (16.3)
+ADVERTENCIA: El código de página de la consola (850) difiere del código
+            de página de Windows (1252).
+            Los caracteres de 8 bits pueden funcionar incorrectamente.
+            Vea la página de referencia de psql «Notes for Windows users»
+            para obtener más detalles.
+Digite «help» para obtener ayuda.
+
+postgres=# \l bd_*_henry*
+                                                                     Listado de base de datos
+     Nombre      |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+-----------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd_curso_henry  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_henry     | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ic_henry_r   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ig_henry     | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ig_henry_r   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_ig_henry_r1  | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_nivel2_henry | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(7 filas)
+
+
+postgres=# \l bd_nivel2*
+                                                                      Listado de base de datos
+      Nombre       |  Due±o   | Codificaci¾n | Proveedor de locale |        Collate         |         Ctype          | configuraci¾n ICU | Reglas ICU: | Privilegios
+-------------------+----------+--------------+---------------------+------------------------+------------------------+-------------------+-------------+-------------
+ bd_nivel2_carla   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_nivel2_dannysa | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_nivel2_henry   | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+ bd_nivel2_orlanys | postgres | UTF8         | libc                | Spanish_Venezuela.1252 | Spanish_Venezuela.1252 |                   |             |
+(4 filas)
+
+
+postgres=# \c bd_nivel2_henry
+Ahora está conectado a la base de datos «bd_nivel2_henry» con el usuario «postgres».
+bd_nivel2_henry=# \d
+              Listado de relaciones
+ Esquema |     Nombre      |   Tipo    |  Due±o
+---------+-----------------+-----------+----------
+ public  | pago_movil      | tabla     | postgres
+ public  | personas        | tabla     | postgres
+ public  | personas_id_seq | secuencia | postgres
+(3 filas)
+
+
+bd_nivel2_henry=# \d personas;
+                                      Tabla ½public.personas╗
+  Columna  |         Tipo          | Ordenamiento | Nulable  |             Por omisi¾n
+-----------+-----------------------+--------------+----------+--------------------------------------
+ cedula    | character varying(10) |              |          |
+ nombre    | character varying(30) |              |          |
+ apellido  | character varying(30) |              |          |
+ direccion | text                  |              |          |
+ fechanac  | date                  |              |          |
+ id        | integer               |              | not null | nextval('personas_id_seq'::regclass)
+═ndices:
+    "personas_pkey" PRIMARY KEY, btree (id)
+
+
+bd_nivel2_henry=# select * from personas;
+ cedula | nombre | apellido  |   direccion   |  fechanac  | id
+--------+--------+-----------+---------------+------------+----
+ V5678  | NELLY  | CONTRERAS | PALO VERDE    | 1968-07-16 |  3
+ V9012  | SUSANA | PEREZ     | MONTALBAN     | 1970-05-20 |  4
+ V1234  | ANA    | VASQUEZ   | CHACAITO      | 1965-08-15 |  1
+ V9876  | LINDA  | ROJAS     | LA CALIFORNIA | 1970-08-01 |  5
+ V6789  | MARIA  | FLORES    | CHACAO        | 2005-05-15 |  6
+ V1111  | LAURA  | PEREZ     | CAURIMARE     | 1970-08-01 |  7
+ V2222  | LINDA  | PEREZ     | CHACAO        | 1980-09-20 |  8
+ V3333  | JULIA  | ANDRADE   | LA VEGA       | 1980-11-19 |  9
+ V4444  | LAURA  | GONZALEZ  | PETARE        | 1990-04-19 | 10
+(9 filas)
+
+
+bd_nivel2_henry=# delete from personas where id = 11;
+DELETE 0
+bd_nivel2_henry=# alter table add unique(cedula);
+ERROR:  error de sintaxis en o cerca de «unique»
+LÍNEA 1: alter table add unique(cedula);
+                         ^
+bd_nivel2_henry=# alter table add unique key(cedula);
+ERROR:  error de sintaxis en o cerca de «unique»
+LÍNEA 1: alter table add unique key(cedula);
+                         ^
+bd_nivel2_henry=# alter table add key unique(cedula);
+ERROR:  error de sintaxis en o cerca de «key»
+LÍNEA 1: alter table add key unique(cedula);
+                         ^
+bd_nivel2_henry=# help alter table add
+bd_nivel2_henry-# ;
+ERROR:  error de sintaxis en o cerca de «help»
+LÍNEA 1: help alter table add
+         ^
+bd_nivel2_henry=# \h alter table
+Orden:       ALTER TABLE
+Descripci¾n: cambia la definici¾n de una tabla
+Sintaxis:
+ALTER TABLE [ IF EXISTS ] [ ONLY ] nombre [ * ]
+    acci¾n [, ... ]
+ALTER TABLE [ IF EXISTS ] [ ONLY ] nombre [ * ]
+    RENAME [ COLUMN ] nombre_de_columna TO nuevo_nombre_de_columna
+ALTER TABLE [ IF EXISTS ] [ ONLY ] nombre [ * ]
+    RENAME CONSTRAINT nombre_restricci¾n TO nuevo_nombre_restricci¾n
+ALTER TABLE [ IF EXISTS ] nombre
+    RENAME TO nuevo_nombre
+ALTER TABLE [ IF EXISTS ] nombre
+    SET SCHEMA nuevo_esquema
+ALTER TABLE ALL IN TABLESPACE nombre [ OWNED BY nombre_de_rol [, ... ] ]
+    SET TABLESPACE nuevo_tablespace [ NOWAIT ]
+ALTER TABLE [ IF EXISTS ] nombre
+    ATTACH PARTITION nombre_de_partici¾n { FOR VALUES borde_de_partici¾n | DEFAULT }
+ALTER TABLE [ IF EXISTS ] nombre
+    DETACH PARTITION nombre_de_partici¾n [ CONCURRENTLY | FINALIZE ]
+
+donde acci¾n es una de:
+
+    ADD [ COLUMN ] [ IF NOT EXISTS ] nombre_de_columna tipo_de_dato [ COLLATE ordenamiento ] [ restricci¾n_de_columna [ ... ] ]
+    DROP [ COLUMN ] [ IF EXISTS ] nombre_de_columna [ RESTRICT | CASCADE ]
+    ALTER [ COLUMN ] nombre_de_columna [ SET DATA ] TYPE tipo_de_dato [ COLLATE ordenamiento ] [ USING expresi¾n ]
+    ALTER [ COLUMN ] nombre_de_columna SET DEFAULT expresi¾n
+    ALTER [ COLUMN ] nombre_de_columna DROP DEFAULT
+    ALTER [ COLUMN ] nombre_de_columna { SET | DROP } NOT NULL
+    ALTER [ COLUMN ] nombre_de_columna DROP EXPRESSION [ IF EXISTS ]
+    ALTER [ COLUMN ] nombre_de_columna ADD GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( opciones_de_secuencia ) ]
+    ALTER [ COLUMN ] nombre_de_columna { SET GENERATED { ALWAYS | BY DEFAULT } | SET opci¾n_de_secuencia | RESTART [ [ WITH ] reinicio ] } [...]
+    ALTER [ COLUMN ] nombre_de_columna DROP IDENTITY [ IF EXISTS ]
+    ALTER [ COLUMN ] nombre_de_columna SET STATISTICS entero
+    ALTER [ COLUMN ] nombre_de_columna SET ( opci¾n_de_atributo = valor [, ... ] )
+    ALTER [ COLUMN ] nombre_de_columna RESET ( opci¾n_de_atributo [, ... ] )
+    ALTER [ COLUMN ] nombre_de_columna SET STORAGE { PLAIN | EXTERNAL | EXTENDED | MAIN | DEFAULT }
+    ALTER [ COLUMN ] nombre_de_columna SET COMPRESSION mÚtodo_de_compresi¾n
+    ADD restricci¾n_de_tabla [ NOT VALID ]
+    ADD restricci¾n_de_tabla_con_Ýndice
+    ALTER CONSTRAINT nombre_restricci¾n [ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+    VALIDATE CONSTRAINT nombre_restricci¾n
+    DROP CONSTRAINT [ IF EXISTS ]  nombre_restricci¾n [ RESTRICT | CASCADE ]
+    DISABLE TRIGGER [ nombre_disparador | ALL | USER ]
+    ENABLE TRIGGER [ nombre_disparador | ALL | USER ]
+    ENABLE REPLICA TRIGGER nombre_disparador
+    ENABLE ALWAYS TRIGGER nombre_disparador
+    DISABLE RULE nombre_regla_de_reescritura
+    ENABLE RULE nombre_regla_de_reescritura
+    ENABLE REPLICA RULE nombre_regla_de_reescritura
+    ENABLE ALWAYS RULE nombre_regla_de_reescritura
+    DISABLE ROW LEVEL SECURITY
+    ENABLE ROW LEVEL SECURITY
+    FORCE ROW LEVEL SECURITY
+    NO FORCE ROW LEVEL SECURITY
+    CLUSTER ON nombre_Ýndice
+    SET WITHOUT CLUSTER
+    SET WITHOUT OIDS
+    SET ACCESS METHOD nuevo_mÚtodo_de_acceso
+    SET TABLESPACE nuevo_tablespace
+    SET { LOGGED | UNLOGGED }
+    SET ( parßmetro_de_almacenamiento [= valor] [, ... ] )
+    RESET ( parßmetro_de_almacenamiento [, ... ] )
+    INHERIT tabla_padre
+    NO INHERIT tabla_padre
+    OF nombre_de_tipo
+    NOT OF
+    OWNER TO { nuevo_due±o | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+    REPLICA IDENTITY { DEFAULT | USING INDEX nombre_Ýndice | FULL | NOTHING }
+
+y borde_de_partici¾n es:
+
+IN ( expresi¾n_de_borde_de_partici¾n [, ...] ) |
+FROM ( { expresi¾n_de_borde_de_partici¾n | MINVALUE | MAXVALUE } [, ...] )
+  TO ( { expresi¾n_de_borde_de_partici¾n | MINVALUE | MAXVALUE } [, ...] ) |
+WITH ( MODULUS literal_numÚrico, REMAINDER literal_numÚrico )
+
+donde restricci¾n_de_columna es:
+
+[ CONSTRAINT nombre_restricci¾n ]
+{ NOT NULL |
+  NULL |
+  CHECK ( expresi¾n ) [ NO INHERIT ] |
+  DEFAULT expr_por_omisi¾n |
+  GENERATED ALWAYS AS ( expr_de_generaci¾n ) STORED |
+  GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( opciones_de_secuencia ) ] |
+  UNIQUE [ NULLS [ NOT ] DISTINCT ] parßmetros_de_Ýndice |
+  PRIMARY KEY parßmetros_de_Ýndice |
+  REFERENCES tabla_ref [ ( columna_ref ) ] [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
+    [ ON DELETE acci¾n_referencial ] [ ON UPDATE acci¾n_referencial ] }
+[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+
+y restricci¾n_de_tabla es:
+
+[ CONSTRAINT nombre_restricci¾n ]
+{ CHECK ( expresi¾n ) [ NO INHERIT ] |
+  UNIQUE [ NULLS [ NOT ] DISTINCT ] ( nombre_de_columna [, ... ] ) parßmetros_de_Ýndice |
+  PRIMARY KEY ( nombre_de_columna [, ... ] ) parßmetros_de_Ýndice |
+  EXCLUDE [ USING mÚtodo_de_Ýndice ] ( elemento_de_exclusi¾n WITH operador [, ... ] ) parßmetros_de_Ýndice [ WHERE ( predicado ) ] |
+  FOREIGN KEY ( nombre_de_columna [, ... ] ) REFERENCES tabla_ref [ ( columna_ref [, ... ] ) ]
+    [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ] [ ON DELETE acci¾n_referencial ] [ ON UPDATE acci¾n_referencial ] }
+[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+
+y restricci¾n_de_tabla_con_Ýndice es:
+
+    [ CONSTRAINT nombre_restricci¾n ]
+    { UNIQUE | PRIMARY KEY } USING INDEX nombre_Ýndice
+    [ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+
+parßmetros_de_Ýndice en UNIQUE, PRIMARY KEY y EXCLUDE son:
+
+[ INCLUDE ( nombre_de_columna [, ... ] ) ]
+[ WITH ( parßmetro_de_almacenamiento [= valor] [, ... ] ) ]
+[ USING INDEX TABLESPACE nombre_de_tablespace ]
+
+elemento_de_exclusi¾n en una restricci¾n EXCLUDE es:
+
+{ nombre_de_columna | ( expresi¾n ) } [ COLLATE ordenamiento ] [ clase_de_ops [ ( parßmetro_opclass = valor [, ... ] ) ] ] [ ASC | DESC ] [ NULLS { FIRST | LAST } ]
+
+acci¾n_referencial en una restricci¾n FOREIGN KEY/REFERENCES es:
+
+{ NO ACTION | RESTRICT | CASCADE | SET NULL [ ( nombre_de_columna [, ... ] ) ] | SET DEFAULT [ ( nombre_de_columna [, ... ] ) ] }
+
+URL: https://www.postgresql.org/docs/16/sql-altertable.html
+
+
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=#
+bd_nivel2_henry=# alter table personas
+bd_nivel2_henry-# add constraint uk_cedula unique(cedula);
+ALTER TABLE
+bd_nivel2_henry=# \d personas;
+                                      Tabla ½public.personas╗
+  Columna  |         Tipo          | Ordenamiento | Nulable  |             Por omisi¾n
+-----------+-----------------------+--------------+----------+--------------------------------------
+ cedula    | character varying(10) |              |          |
+ nombre    | character varying(30) |              |          |
+ apellido  | character varying(30) |              |          |
+ direccion | text                  |              |          |
+ fechanac  | date                  |              |          |
+ id        | integer               |              | not null | nextval('personas_id_seq'::regclass)
+═ndices:
+    "personas_pkey" PRIMARY KEY, btree (id)
+    "uk_cedula" UNIQUE CONSTRAINT, btree (cedula)
+
+
+bd_nivel2_henry=#

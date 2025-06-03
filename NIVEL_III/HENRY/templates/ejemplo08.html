@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+    <!-- La siguiente declaración debe efectuarse empleando
+        la función {{url_for('static', filename=' ')}} 
+                                ^                ^
+                                |                +--- nombre archivo
+                                +--- carpeta static
+    
+    -->
+    <script src="{{url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <title>Ejemplo08</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejemplo08</h1>
+        <h2>Resolvente</h2>
+        <h3>Ingrese los siguientes valores</h3>
+        <form action="" method="POST">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Valor de a:</label>
+                <input type="text" name="a" class="form-control">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Valor de b:</label>
+                <input type="text" name="b" class="form-control">
+            </div> 
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Valor de c:</label>
+                <input type="text" name="c" class="form-control">
+            </div> 
+            <button type="submit" class="btn btn-primary">Calcular</button>
+        </form>
+        <hr>
+        {% if resultado %}   
+            <div class="alert alert-secondary">
+                <strong>Resultado: </strong>{{resultado}}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
