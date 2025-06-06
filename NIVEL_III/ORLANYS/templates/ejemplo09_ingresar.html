@@ -1,16 +1,56 @@
-<!-- Se incluye encabezado -->
 {% include 'ejemplo09_encabezado.html' %}
+
 <form action="" method="POST">
-  <div class="mb-3 mt-3">
-      <label for="" class="form-label">Cèdula:</label>
-      <select name="documento" id="documento" class="form-control">
-        <option value="V">V</option>
-        <option value="E">E</option>
-        <option value="P">P</option>
-      </select>
-      <input type="text" name="numero" class="form-control">
-  </div>
-  <button type="submit">Guardar</button>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Cédula:</label>
+                <div class="input-group">
+                    <select name="documento" id="documento" class="form-control">
+                        <option value="V">V</option>
+                        <option value="E">E</option>
+                        <option value="P">P</option>
+                    </select>
+                    <span class="input-group-text">-</span>
+                    <input type="text" name="numero" id="numero" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Apellido:</label>
+                <input type="text" name="apellido" id="apellido"  class="form-control" required>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Fecha de nacimiento:</label>
+                <input type="date" name="fechanac" id="fechanac" class="form-control" requiered>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Dirección:</label>
+                <textarea name="direccion" id="direccion" cols="30" rows="3" class="form-control" required></textarea>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        </div>
+    </div>
 </form>
+
 <!-- Se incluye pie -->
 {% include 'ejemplo09_pie.html' %}

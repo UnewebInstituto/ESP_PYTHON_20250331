@@ -1,0 +1,25 @@
+_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ESP_PYTHON_20250331\NIVEL_III\HENRY\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ESP_PYTHON_20250331\NIVEL_III\HENRY\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ESP_PYTHON_20250331\NIVEL_III\HENRY\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ESP_PYTHON_20250331\NIVEL_III\HENRY\ejemplo09.py", line 37, in ingresar_01    
+    cursor.execute(sql, datos)
+psycopg2.errors.UniqueViolation: llave duplicada viola restricción de unicidad «uk_cedula»
+DETAIL:  Ya existe la llave (cedula)=(V5678).
+
+127.0.0.1 - - [06/Jun/2025 16:57:35] "POST /ingresar HTTP/1.1" 500 -
+
+
+import psycopg2
+try:
+    # operación que puede violar integridad
+except psycopg2.IntegrityError:
+    # manejar la excepción de integridad
