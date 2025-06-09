@@ -1,0 +1,49 @@
+{% include 'ejemplo09_encabezado.html' %}
+
+
+
+<form action="" method="POST">
+    {% for cedula, nombre, apellido, direccion, fechanac, id in detalle%}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Cédula:</label>
+                <div class="input-group">                
+                    <input type="text" name="numero" id="numero" class="form-control" value="{{cedula}}" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" value="{{nombre}}" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Apellido:</label>
+                <input type="text" name="apellido" id="apellido"  class="form-control" value="{{apellido}}" readonly>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Fecha de nacimiento:</label>
+                <input type="date" name="fechanac" id="fechanac" class="form-control" value="{{fechanac}}" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <label for="" class="form-label">Dirección:</label>
+                <textarea name="direccion" id="direccion" cols="30" rows="3" class="form-control" readonly>{{direccion}}</textarea>
+            </div>
+        </div>        
+    </div>
+    {% endfor %}
+</form>
+
+<!-- Se incluye pie -->
+{% include 'ejemplo09_pie.html' %}

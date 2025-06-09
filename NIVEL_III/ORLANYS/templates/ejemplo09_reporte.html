@@ -1,0 +1,31 @@
+{% include 'ejemplo09_encabezado.html' %}
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+          <TH>Id</TH>
+          <TH>Cèdula</TH>
+          <TH>Nombre</TH>
+          <TH>Apellido</TH>
+          <TH>Fecha nacimiento</TH>
+          <TH>Direcciòn</TH>
+    </tr>
+    </thead> 
+    <tbody>
+        {% for cedula, nombre, apellido, direccion, fechanac, id in detalle%}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{cedula}}</td>
+          <td>{{nombre}}</td>
+          <td>{{apellido}}</td>
+          <td>{{fechanac}}</td>
+          <td>{{direccion}}</td>
+        </tr>  
+        {% endfor %}
+    </tbody>    
+  </table>
+</div>
+
+
+<!-- Se incluye pie -->
+{% include 'ejemplo09_pie.html' %}

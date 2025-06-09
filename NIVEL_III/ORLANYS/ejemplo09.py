@@ -1,6 +1,7 @@
 # Importación de módulos
 from flask import Flask, request, render_template
 import math
+import psycopg2
 
 # Instancia de la clase Flask
 app = Flask(__name__)
@@ -11,28 +12,26 @@ app = Flask(__name__)
 def inicio():
     return render_template('ejemplo09.html')
 
-
 @app.route('/ingresar')
 def ingresar():
     return render_template('ejemplo09_ingresar.html')
 
-
 @app.route('/ingresar', methods=['GET', 'POST'])
 def ingresar_01():
-    if request.method =='POST':
+    if request.method == 'POST':
         import conexion
-        cursor = conexion.mibd.cursor()
+        cursor = conexion.mibd.cursor()        
 
         documento = request.form['documento']
         numero = request.form['numero']
-        # Se concatena identificador de documento y numero
+        # Se concatena identificador de documento y número
         cedula = documento + numero
         nombre = request.form['nombre']
         apellido = request.form['apellido']
         direccion = request.form['direccion']
         fechanac = request.form['fechanac']
 
-        datos =(cedula, nombre, apellido, direccion, fechanac)
+        datos = (cedula, nombre, apellido, direccion, fechanac)
 
         sql = "INSERT INTO personas(cedula, nombre, apellido, direccion, fechanac) VALUES (%s, %s, %s, %s, %s)"
 
@@ -40,12 +39,126 @@ def ingresar_01():
         try:
             cursor.execute(sql, datos)
             conexion.mibd.commit()
-            cursor.close()
-            conexion.mibd.close()
-            mensaje_tmp = 'Registro fue almacenado con èxito'
-        except (ValueError):
-            mensaje_tmp = 'Error. registro no pudo ser almacenado'
+            #cursor.close()
+            #conexion.mibd.close()
+            mensaje_tmp = 'Registro fué almacenado con éxito'
+        except psycopg2.IntegrityError:
+            mensaje_tmp = 'Error, registro no pudo ser almacenado'
         return render_template('ejemplo09_ingresar.html', mensaje=mensaje_tmp)
+
+@app.route('/consultar')
+def consultar():
+    return render_template('ejemplo09_consultar.html')
+
+@app.route('/consultar', methods=['GET', 'POST'])
+def consultar_01():
+    if request.method == 'POST':
+        import conexion
+        cursor = conexion.mibd.cursor()        
+
+        documento = request.form['documento']
+        numero = request.form['numero']
+        # Se concatena identificador de documento y número
+        cedula = documento + numero
+        
+        datos = (cedula,)
+
+        sql = "SELECT * FROM personas WHERE cedula = %s"
+        resultado = []    
+        mensaje_tmp = ''
+        try:
+            cursor.execute(sql, datos)
+            # Extracciòn de los resultados
+            resultado = cursor.fetchall()
+            # Cantidad de registros en la extracciòn
+            cantidad = len(resultado)
+            if cantidad == 0:
+                mensaje_tmp = "No se encontrò ningun registro con la cèdula de identidad suministrada."
+            else:
+                mensaje_tmp = "Consulta efectuada con èxito."
+        except psycopg2.IntegrityError:                
+                mensaje_tmp = 'Error, al acceder a la base de datos'        
+        #cursor.close()
+        #conexion.mibd.close()      
+        return render_template('ejemplo09_consultar01.html', mensaje=mensaje_tmp, detalle=resultado)
+
+
+@app.route('/reporte')
+def reporte():
+    import conexion
+    cursor = conexion.mibd.cursor()        
+
+    sql = "SELECT * FROM personas"
+    resultado = []    
+    mensaje_tmp = ''
+    try:
+        cursor.execute(sql)
+        # Extracciòn de los resultados
+        resultado = cursor.fetchall()
+        # Cantidad de registros en la extracciòn
+        cantidad = len(resultado)
+        if cantidad == 0:
+            mensaje_tmp = "No se encontrò ningun registro en la tabla persona."
+        else:
+            mensaje_tmp = "Reporte procesado con èxito."  
+    except psycopg2.IntegrityError:            
+            mensaje_tmp = 'Error, al acceder a la base de datos'    
+    #cursor.close()
+    #conexion.mibd.close()      
+    return render_template('ejemplo09_reporte.html', mensaje=mensaje_tmp, detalle=resultado)
+    
+
+@app.route('/borrar')
+def borrar():
+    import conexion
+    cursor = conexion.mibd.cursor()        
+
+    sql = "SELECT * FROM personas"
+    resultado = []    
+    mensaje_tmp = ''
+    try:
+        cursor.execute(sql)
+        # Extracciòn de los resultados
+        resultado = cursor.fetchall()
+        # Cantidad de registros en la extracciòn
+        cantidad = len(resultado)
+        if cantidad == 0:
+            mensaje_tmp = "No se encontrò ningun registro en la tabla persona."
+        else:
+            mensaje_tmp = "Reporte procesado con èxito."  
+    except psycopg2.IntegrityError:            
+            mensaje_tmp = 'Error, al acceder a la base de datos'    
+    #cursor.close()
+    #conexion.mibd.close()      
+    return render_template('ejemplo09_borrar.html', mensaje=mensaje_tmp, detalle=resultado)
+
+@app.route('/actualizar')
+def actualizar():
+    import conexion
+    cursor = conexion.mibd.cursor()        
+
+    sql = "SELECT * FROM personas"
+    resultado = []    
+    mensaje_tmp = ''
+    try:
+        cursor.execute(sql)
+        # Extracciòn de los resultados
+        resultado = cursor.fetchall()
+        # Cantidad de registros en la extracciòn
+        cantidad = len(resultado)
+        if cantidad == 0:
+            mensaje_tmp = "No se encontrò ningun registro en la tabla persona."
+        else:
+            mensaje_tmp = "Reporte procesado con èxito."  
+    except psycopg2.IntegrityError:            
+            mensaje_tmp = 'Error, al acceder a la base de datos'    
+    #cursor.close()
+    #conexion.mibd.close()      
+    return render_template('ejemplo09_actualizar.html', mensaje=mensaje_tmp, detalle=resultado)
+    
+
+@app.route('/borrar01')
+def borrar01():
 
 
 # Ejecutar la aplicación
