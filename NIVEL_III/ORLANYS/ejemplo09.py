@@ -60,28 +60,27 @@ def consultar_01():
         numero = request.form['numero']
         # Se concatena identificador de documento y número
         cedula = documento + numero
-        
+
         datos = (cedula,)
 
         sql = "SELECT * FROM personas WHERE cedula = %s"
-        resultado = []    
+        resultado = []
         mensaje_tmp = ''
         try:
             cursor.execute(sql, datos)
-            # Extracciòn de los resultados
+            # Extracción de los resultados
             resultado = cursor.fetchall()
-            # Cantidad de registros en la extracciòn
+            # Cantidad de registros en la extracción
             cantidad = len(resultado)
             if cantidad == 0:
-                mensaje_tmp = "No se encontrò ningun registro con la cèdula de identidad suministrada."
+                mensaje_tmp = "No se encontro ningún registro con la cédula de identidad suministrada."
             else:
-                mensaje_tmp = "Consulta efectuada con èxito."
-        except psycopg2.IntegrityError:                
-                mensaje_tmp = 'Error, al acceder a la base de datos'        
+                mensaje_tmp = "Consulta efectuada con éxito."
+        except psycopg2.IntegrityError:
+            mensaje_tmp = 'Error, al acceder a la base de datos.'
         #cursor.close()
-        #conexion.mibd.close()      
+        #conexion.mibd.close()
         return render_template('ejemplo09_consultar01.html', mensaje=mensaje_tmp, detalle=resultado)
-
 
 @app.route('/reporte')
 def reporte():
@@ -89,24 +88,23 @@ def reporte():
     cursor = conexion.mibd.cursor()        
 
     sql = "SELECT * FROM personas"
-    resultado = []    
+    resultado = []
     mensaje_tmp = ''
     try:
         cursor.execute(sql)
-        # Extracciòn de los resultados
+        # Extracción de los resultados
         resultado = cursor.fetchall()
-        # Cantidad de registros en la extracciòn
+        # Cantidad de registros en la extracción
         cantidad = len(resultado)
         if cantidad == 0:
-            mensaje_tmp = "No se encontrò ningun registro en la tabla persona."
+            mensaje_tmp = "No se encontro ningún registro en la tabla personas."
         else:
-            mensaje_tmp = "Reporte procesado con èxito."  
-    except psycopg2.IntegrityError:            
-            mensaje_tmp = 'Error, al acceder a la base de datos'    
+            mensaje_tmp = "Reporte procesado con éxito."
+    except psycopg2.IntegrityError:
+        mensaje_tmp = 'Error, al acceder a la base de datos.'
     #cursor.close()
-    #conexion.mibd.close()      
+    #conexion.mibd.close()
     return render_template('ejemplo09_reporte.html', mensaje=mensaje_tmp, detalle=resultado)
-    
 
 @app.route('/borrar')
 def borrar():
@@ -114,22 +112,22 @@ def borrar():
     cursor = conexion.mibd.cursor()        
 
     sql = "SELECT * FROM personas"
-    resultado = []    
+    resultado = []
     mensaje_tmp = ''
     try:
         cursor.execute(sql)
-        # Extracciòn de los resultados
+        # Extracción de los resultados
         resultado = cursor.fetchall()
-        # Cantidad de registros en la extracciòn
+        # Cantidad de registros en la extracción
         cantidad = len(resultado)
         if cantidad == 0:
-            mensaje_tmp = "No se encontrò ningun registro en la tabla persona."
+            mensaje_tmp = "No se encontro ningún registro en la tabla personas."
         else:
-            mensaje_tmp = "Reporte procesado con èxito."  
-    except psycopg2.IntegrityError:            
-            mensaje_tmp = 'Error, al acceder a la base de datos'    
+            mensaje_tmp = "Reporte procesado con éxito."
+    except psycopg2.IntegrityError:
+        mensaje_tmp = 'Error, al acceder a la base de datos.'
     #cursor.close()
-    #conexion.mibd.close()      
+    #conexion.mibd.close()
     return render_template('ejemplo09_borrar.html', mensaje=mensaje_tmp, detalle=resultado)
 
 @app.route('/actualizar')
@@ -138,28 +136,107 @@ def actualizar():
     cursor = conexion.mibd.cursor()        
 
     sql = "SELECT * FROM personas"
-    resultado = []    
+    resultado = []
     mensaje_tmp = ''
     try:
         cursor.execute(sql)
-        # Extracciòn de los resultados
+        # Extracción de los resultados
         resultado = cursor.fetchall()
-        # Cantidad de registros en la extracciòn
+        # Cantidad de registros en la extracción
         cantidad = len(resultado)
         if cantidad == 0:
-            mensaje_tmp = "No se encontrò ningun registro en la tabla persona."
+            mensaje_tmp = "No se encontro ningún registro en la tabla personas."
         else:
-            mensaje_tmp = "Reporte procesado con èxito."  
-    except psycopg2.IntegrityError:            
-            mensaje_tmp = 'Error, al acceder a la base de datos'    
+            mensaje_tmp = "Reporte procesado con éxito."
+    except psycopg2.IntegrityError:
+        mensaje_tmp = 'Error, al acceder a la base de datos.'
     #cursor.close()
-    #conexion.mibd.close()      
+    #conexion.mibd.close()
     return render_template('ejemplo09_actualizar.html', mensaje=mensaje_tmp, detalle=resultado)
+
+
+@app.route('/borrar01/<tmp_id>')     
+def borrar01(tmp_id):
+    import conexion
+    cursor = conexion.mibd.cursor()
+
+    sql = "DELETE FROM personas WHERE id = %s"
+    datos = (tmp_id,)
+
+    try:
+        cursor.execute(sql, datos)
+        conexion.mibd.commit()
+
+        sql = "SELECT * FROM personas"
+        resultado = []
+        cursor.execute(sql)
+        
+        # Extracción de los resultados
+        resultado = cursor.fetchall()
+        # Cantidad de registros en la extracción
+        cantidad = len(resultado)
+        if cantidad == 0:
+            mensaje_tmp = "No se encontro ningún registro en la tabla personas."
+        else:
+            mensaje_tmp = 'Registro fué borrado con éxito'
+    except psycopg2.IntegrityError:
+        mensaje_tmp = 'Error, registro no pudo ser borrado'
+    return render_template('ejemplo09_borrar.html', mensaje=mensaje_tmp, detalle=resultado)
+
+@app.route('/actualizar01/<tmp_id>')     
+def actualizar01(tmp_id):
+    import conexion
+    cursor = conexion.mibd.cursor()
+
+    sql = "SELECT * FROM personas WHERE id = %s"
+    datos = (tmp_id,)
+
+    try:
+        cursor.execute(sql, datos)
+        resultado = []
+        
+        # Extracción de los resultados
+        resultado = cursor.fetchall()
     
+        mensaje_tmp = 'Registro ubicado con éxito'
+    except psycopg2.IntegrityError:
+        mensaje_tmp = 'Error, registro no pudo ser ubicado'
+    return render_template('ejemplo09_actualizar01.html', mensaje=mensaje_tmp, detalle=resultado)
 
-@app.route('/borrar01')
-def borrar01():
 
+@app.route('/actualizar02', methods=['GET', 'POST'])
+def actualizar_02():
+    if request.method == 'POST':
+        import conexion
+        cursor = conexion.mibd.cursor()
+
+        # Se concatena identificador de documento y número
+        tmp_id = request.form['tmp_id']
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        direccion = request.form['direccion']
+        fechanac = request.form['fechanac']
+
+        datos = (nombre, apellido, direccion, fechanac, tmp_id)
+
+        sql = "UPDATE personas SET nombre = %s, apellido = %s, direccion = %s, fechanac = %s WHERE id = %s"
+
+        mensaje_tmp = ''
+        try:
+            cursor.execute(sql, datos)
+            conexion.mibd.commit()
+
+            sql = "SELECT * FROM personas"
+            resultado = []
+            cursor.execute(sql)
+        
+            # Extracción de los resultados
+            resultado = cursor.fetchall()
+            
+            mensaje_tmp = 'Registro fué actualizado con éxito'
+        except psycopg2.IntegrityError:
+            mensaje_tmp = 'Error, registro no pudo ser actualizado'
+        return render_template('ejemplo09_actualizar.html', mensaje=mensaje_tmp, detalle=resultado)
 
 # Ejecutar la aplicación
 if __name__ == '__main__':
@@ -170,5 +247,3 @@ if __name__ == '__main__':
     Henry  , port = 5004
     """
     app.run(port=5002)
-
-

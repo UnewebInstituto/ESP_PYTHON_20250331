@@ -21,7 +21,7 @@
                 <td>{{apellido}}</td>
                 <td>{{fechanac}}</td>
                 <td>{{direccion}}</td>
-                <td><a href="{{ url_for('actualizar01', tmp_id=id) }}" class="btn btn-info">Actualizar</a></td>
+                <td><a href="{{ url_for('borrar01', tmp_id=id) }}" class="btn btn-warning">Borrar</a></td>
             </tr>
             {% endfor %}
         </tbody>

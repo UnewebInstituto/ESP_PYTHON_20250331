@@ -1,21 +1,21 @@
 {% include 'ejemplo09_encabezado.html' %}
 
 
-<form action="" method="POST">
+<form action="/actualizar02" method="POST">
     {% for cedula, nombre, apellido, direccion, fechanac, id in detalle %}
     <div class="row">
         <div class="col-sm-6">
             <div class="mb-3 mt-3">
                 <label for="" class="form-label">Cédula:</label>
                 <div class="input-group">
-                    <input type="text" name="numero" id="numero" class="form-control" value="{{cedula}}" readonly>
+                    <input type="text" name="numero" id="numero" class="form-control" value="{{cedula}}" disabled>
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="mb-3 mt-3">
                 <label for="" class="form-label">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" class="form-control" value={{nombre}} readonly>
+                <input type="text" name="nombre" id="nombre" class="form-control" value={{nombre}}>
             </div>
         </div>
     </div>
@@ -23,13 +23,13 @@
         <div class="col-sm-6">
             <div class="mb-3 mt-3">
                 <label for="" class="form-label">Apellido:</label>
-                <input type="text" name="apellido" id="apellido"  class="form-control" value={{apellido}} readonly>
+                <input type="text" name="apellido" id="apellido"  class="form-control" value={{apellido}}>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="mb-3 mt-3">
                 <label for="" class="form-label">Fecha de nacimiento:</label>
-                <input type="date" name="fechanac" id="fechanac" class="form-control" value="{{fechanac}}" readonly>
+                <input type="date" name="fechanac" id="fechanac" class="form-control" value="{{fechanac}}">
             </div>
         </div>
     </div>
@@ -37,7 +37,13 @@
         <div class="col-sm-6">
             <div class="mb-3 mt-3">
                 <label for="" class="form-label">Dirección:</label>
-                <textarea name="direccion" id="direccion" cols="30" rows="3" class="form-control" readonly>{{direccion}}</textarea>
+                <textarea name="direccion" id="direccion" cols="30" rows="3" class="form-control">{{direccion}}</textarea>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="mb-3 mt-3">
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <input type="hidden" name="tmp_id" value="{{id}}">
             </div>
         </div>
     </div>

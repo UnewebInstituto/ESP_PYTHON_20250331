@@ -9,7 +9,6 @@
                 <th>Apellido</th>
                 <th>Fecha nacimiento</th>
                 <th>Dirección</th>
-                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -21,7 +20,6 @@
                 <td>{{apellido}}</td>
                 <td>{{fechanac}}</td>
                 <td>{{direccion}}</td>
-                <td><a href="{{ url_for('actualizar01', tmp_id=id) }}" class="btn btn-info">Actualizar</a></td>
             </tr>
             {% endfor %}
         </tbody>
