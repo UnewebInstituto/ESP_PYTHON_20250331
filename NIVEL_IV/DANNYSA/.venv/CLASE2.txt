@@ -1,0 +1,5 @@
+CREACION DE PROYECTO
+1 definir entorno virtual
+2 instalar dependencias django, postgresql
+3 django-admin startproject aplicacion curso
+4 

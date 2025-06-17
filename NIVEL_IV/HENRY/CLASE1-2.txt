@@ -1,0 +1,176 @@
+Como desarrollador Django, es una práctica **altamente recomendada** ejecutar `pip` para instalar un entorno virtual, aunque estrictamente hablando, no es `pip` el que crea el entorno virtual directamente. Permíteme explicar:
+
+1.  **¿Qué es un Entorno Virtual?**
+    Un entorno virtual es un directorio aislado que contiene su propia copia de Python y de los paquetes instalados. Esto evita conflictos entre las dependencias de diferentes proyectos de Python en tu sistema. Por ejemplo, si un proyecto necesita Django 3.2 y otro necesita Django 4.2, los entornos virtuales permiten que ambos coexistan sin problemas.
+
+2.  **¿Quién crea el Entorno Virtual?**
+    La herramienta principal para crear entornos virtuales en Python es `venv` (que viene incorporado con Python 3.3+) o `virtualenv` (una herramienta de terceros que es más común en sistemas antiguos o cuando se necesitan características más avanzadas).
+
+    * **Usando `venv` (Recomendado para Python 3.3+):**
+        ```bash
+        python -m venv nombre_de_mi_entorno
+        ```
+        Después de crear el entorno, necesitas activarlo:
+        * En Linux/macOS: `source nombre_de_mi_entorno/bin/activate`
+        * En Windows (CMD): `nombre_de_mi_entorno\Scripts\activate.bat`
+        * En Windows (PowerShell): `nombre_de_mi_entorno\Scripts\Activate.ps1`
+
+    * **Usando `virtualenv` (Si no tienes `venv` o necesitas más control):**
+        Primero, necesitas instalar `virtualenv` globalmente:
+        ```bash
+        pip install virtualenv
+        ```
+        Luego, crea el entorno virtual:
+        ```bash
+        virtualenv nombre_de_mi_entorno
+        ```
+        Y lo activas de la misma manera que con `venv`.
+
+3.  **¿Por qué `pip` entra en juego?**
+    Una vez que has creado y activado tu entorno virtual, la copia de `pip` que utilizas es la que está **dentro de ese entorno virtual**. Es entonces cuando usas `pip` para instalar las dependencias de tu proyecto Django **dentro de ese entorno aislado**.
+
+    Por ejemplo, después de activar el entorno:
+    ```bash
+    pip install Django
+    pip install djangorestframework
+    pip install -r requirements.txt
+    ```
+    Si no activas el entorno virtual, cuando ejecutes `pip install Django`, Django se instalará globalmente en tu sistema Python, lo cual es lo que queremos evitar.
+
+**En resumen:**
+
+* **No, no ejecutas `pip` para *crear* el entorno virtual.** Para eso usas `python -m venv` o `virtualenv`.
+* **Sí, una vez que el entorno virtual está *activado*, usas `pip` para *instalar* Django y todas las demás dependencias de tu proyecto *dentro de ese entorno aislado*.**
+
+Es una distinción importante que garantiza un desarrollo limpio y sin conflictos para tus proyectos Django.
+
+CREACIÓN DE UN NUEVO PROYECTO:
+1) SE DEFINE ENTORNO Virtual
+2) SE INSTALAN LAS DEPENDENCIAS (DJANGO Y EL MANEJADOR DE BBDD
+
+3) Crear el directorio de curso, con el comando: 
+md curso
+4) django-admin startproject aplicacion curso
+                                 
+Donde "aplicacion", es el nombre del proyecto 
+y "curso", el directorio en el cual se crea.
+
+5) CONFIGURAR EL ENTORNO DE BBDD QUE SE ESTÁ UTILIZANDO.
+
+6) A PARTIR DE LOS ARCHIVOS DE CONFIGURACIÓN DE LAS 
+APLICACIONES PRE INSTALADAS, SE VAN A GENERAR LAS TABLAS 
+EN LA BASE DE DATOS ELEGIDA.
+>python manage.py migrate
+
+7) CREACIÓN DE SUPERUSUARIO PARA APLICACIÓN DE ADMINISTRADOR:
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py createsuperuser
+Username (leave blank to use 'profesor'): admin
+Email address: hduqueuneweb@gmail.com
+Password: 
+Password (again):
+Superuser created successfully.
+
+CLAVE : Uneweb*1
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>
+
+Aquí te detallo el procedimiento para crear el superusuario de la aplicación de administración de Django y establecer su contraseña, junto con algunas consideraciones importantes:
+
+**Requisitos Previos:**
+
+1.  **Proyecto Django Configurador:** Debes tener un proyecto Django ya creado y configurado, con su `settings.py` apuntando a una base de datos (SQLite, PostgreSQL, MySQL, etc.).
+2.  **Entorno Virtual Activado:** Es fundamental que tu entorno virtual esté activado para que los comandos de Django se ejecuten con las dependencias correctas.
+3.  **Migraciones Aplicadas:** Asegúrate de que las migraciones iniciales de Django estén aplicadas a tu base de datos. Esto crea las tablas necesarias para el sistema de autenticación y la aplicación de administración. Si no lo has hecho, ejecuta:
+    ```bash
+    python manage.py migrate
+    ```
+
+---
+
+**Procedimiento para la Creación del Superusuario:**
+
+Una vez que los requisitos previos están cumplidos, el proceso es muy sencillo:
+
+1.  **Ejecuta el comando `createsuperuser`:**
+    Abre tu terminal (asegurándote de que tu entorno virtual esté activado y estés en el directorio raíz de tu proyecto Django, donde se encuentra `manage.py`) y ejecuta el siguiente comando:
+
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+2.  **Sigue las indicaciones en la terminal:**
+    El comando te guiará a través de una serie de preguntas:
+
+    * **Username (leave blank to use 'tu_nombre_de_usuario_actual'):**
+        * Aquí puedes escribir el nombre de usuario que desees para tu superusuario (por ejemplo, `admin`, `superadmin`, `tu_nombre`).
+        * Si lo dejas en blanco y presionas Enter, Django intentará usar tu nombre de usuario del sistema operativo como valor por defecto.
+        * **Importante:** Este nombre de usuario será el que usarás para iniciar sesión en el panel de administración de Django.
+
+    * **Email address:**
+        * Puedes introducir una dirección de correo electrónico válida para el superusuario (por ejemplo, `admin@example.com`).
+        * Este campo es opcional, pero es una buena práctica incluirlo, ya que puede ser útil para la recuperación de contraseña o notificaciones futuras.
+
+    * **Password:**
+        * Aquí debes escribir la contraseña para tu superusuario.
+        * **¡Atención!** Mientras escribes la contraseña, **no verás los caracteres en la terminal** (ni asteriscos, ni puntos). Esto es un comportamiento de seguridad normal. Escribe la contraseña y presiona Enter.
+
+    * **Password (again):**
+        * Se te pedirá que repitas la contraseña para confirmación.
+        * Asegúrate de que coincidan para evitar errores. Si no coinciden, Django te lo indicará y te pedirá que las ingreses de nuevo.
+
+3.  **Confirmación de Creación:**
+    Si todo sale bien y las contraseñas coinciden, verás un mensaje similar a este:
+
+    ```
+    Superuser created successfully.
+    ```
+
+    ¡Felicidades! Has creado exitosamente tu superusuario.
+
+---
+
+**Verificación y Acceso al Panel de Administración:**
+
+Una vez creado el superusuario, puedes acceder al panel de administración de Django:
+
+1.  **Inicia el servidor de desarrollo de Django:**
+    ```bash
+    python manage.py runserver
+    ```
+
+2.  **Abre tu navegador:**
+    Ve a la URL `http://127.0.0.1:8000/admin/` (o la dirección y puerto que te indique `runserver`).
+
+3.  **Inicia sesión:**
+    * Introduce el **Username** que creaste.
+    * Introduce la **Password** que estableciste.
+
+Ahora deberías tener acceso completo al panel de administración de Django, donde podrás gestionar tus modelos, usuarios, grupos, etc.
+
+---
+
+**Consideraciones Importantes:**
+
+* **Seguridad de la Contraseña:** Elige una contraseña fuerte y única para tu superusuario. ¡Es la llave maestra de tu aplicación!
+* **Solo un Superusuario al Principio:** Aunque puedes crear múltiples superusuarios, generalmente es suficiente con uno al inicio.
+* **Permisos:** El superusuario tiene todos los permisos en la aplicación de administración de Django, lo que le permite crear, editar y eliminar cualquier dato.
+* **Entornos de Producción:** Para entornos de producción, además de la contraseña fuerte, considera medidas de seguridad adicionales como la autenticación de dos factores si tu aplicación lo soporta o si usas librerías que la proveen.
+* **Roles y Permisos de Usuarios Normales:** Para usuarios que no necesitan acceso completo al panel de administración, crea usuarios regulares y asígnales los permisos específicos que necesiten a través de la interfaz de administración.
+
+http://127.0.0.1:5001/admin/login/?next=/admin/
+
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py shell  
+6 objects imported automatically (use -v 2 for details).
+
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.      
+(InteractiveConsole)
+>>> from django import template
+>>> t = template.Template('Mi nombres es:{{nombre}}')       
+>>> c = template.Context({'nombre':'HENRY DUQUE'}) 
+>>> print(t.render(c))
+Mi nombres es:HENRY DUQUE
+>>>
+
+
