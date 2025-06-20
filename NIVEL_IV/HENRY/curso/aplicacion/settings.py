@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+# Se importa módulo del sistema operativo para acceder a 
+# la ruta del directorio \template
+import os.path 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'persona'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +55,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'aplicacion.urls'
 
+"""
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -65,6 +70,27 @@ TEMPLATES = [
         },
     },
 ]
+"""
+# El argumento DIRS de la estructura TEMPLATES, se ajusta a los efectos de
+# resolver la ubicación de archivos en entorno WINDOWS
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+
 
 WSGI_APPLICATION = 'aplicacion.wsgi.application'
 
@@ -126,9 +152,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+"""
 STATIC_URL = 'static/'
+"""
+# Corresponde a la ubicación en entorno WINDOWS de la carpeta /static/
+# para los archivos CSS, JS e IMAGENES
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Declaración de ruta para la carpeta /static
+STATICFILES_DIRS = [ 
+BASE_DIR / "aplicacion/static", 
+] 
+

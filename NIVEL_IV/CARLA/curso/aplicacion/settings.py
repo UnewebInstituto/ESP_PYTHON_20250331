@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-# Se importa mòdulo del sistema operativo para acceder a la ruta
-# del directorio \template
+# Se importa módulo del sistema operativo para acceder a 
+# la ruta del directorio \template
 import os.path 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&g@zn7*mla9zh^)tg(h8tm7_q4&q4ija(#28el*szd@in@cg+j'
+SECRET_KEY = 'django-insecure-6&e&ke^ygyhqmj)fk7d31@pa5**2ey#*hi=%4c9i($2^_n3n_v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -71,9 +71,8 @@ TEMPLATES = [
     },
 ]
 """
-# El argumento DIRS de la estructura TEMPLATES, se ajusta a los efectos de resolver la ubicaciòn de archivos en entorno WINDOWS
-
-
+# El argumento DIRS de la estructura TEMPLATES, se ajusta a los efectos de
+# resolver la ubicación de archivos en entorno WINDOWS
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -89,6 +88,9 @@ TEMPLATES = [
     },
 ]
 
+
+
+
 WSGI_APPLICATION = 'aplicacion.wsgi.application'
 
 
@@ -103,11 +105,10 @@ DATABASES = {
     }
 }
 """
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bd_nivel2_orlanys',
+        'NAME': 'bd_nivel2_carla',
         'USER': 'postgres',
         'PASSWORD': '123456',
         'HOST': 'localhost',
@@ -149,12 +150,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
 """
 STATIC_URL = 'static/'
 """
-# Corresponde a la ubicaciòn en entorno WINDOWS de la carpeta /static/
-# para los archivos CCS, JS e IMAGENES
+# Corresponde a la ubicación en entorno WINDOWS de la carpeta /static/
+# para los archivos CSS, JS e IMAGENES
 STATIC_URL = '/static/'
 
 # Default primary key field type
@@ -162,7 +162,10 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Declaraciòn de ruta para la carpeta /static
+# Declaración de ruta para la carpeta /static
 STATICFILES_DIRS = [ 
 BASE_DIR / "aplicacion/static", 
 ] 
+
+
+
