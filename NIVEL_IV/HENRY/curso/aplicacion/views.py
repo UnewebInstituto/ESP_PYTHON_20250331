@@ -6,3 +6,6 @@ def saludo(request):
 
 def otrosaludo(request):
     return render(request, 'saludo.html')
+
+def principal(request):
+    return render(request, 'index.html')

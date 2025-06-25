@@ -1,0 +1,191 @@
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY>cd curso
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>dor
+"dor" no se reconoce como un comando interno 
+o externo,
+programa o archivo por lotes ejecutable.     
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY      688 manage.py20/06/2025  16:58    <DIR>        
+  persona
+               1 archivos            688 bytes        
+               4 dirs  610,516,549,632 bytes libres
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>
+dir
+RY\curso
+
+20/06/2025  16:38    <DIR>          .
+20/06/2025  16:38    <DIR>          ..            RY\curso
+20/06/2025  17:00    <DIR>          aplicacion    
+17/06/2025  15:06               688 manage.py     
+20/06/2025  16:58    <DIR>          persona       
+               1 archivos            688 bytes
+               4 dirs  610,385,616,896 bytes libres
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py shell
+7 objects imported automatically (use -v 2 for details).
+
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.(InteractiveConsole)
+>>> from persona.models import Inviduos
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ImportError: cannot import name 'Inviduos' from 'persona.models' (C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso\persona\models.py)        
+>>> from persona.models import Individuos
+>>> I1 = Individuos(cedula='V1234',nombre='ANA',apellido='VASQUEZ',direccion='SANTA FE',fecha_nac='1960-08-15')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\.venv\Lib\site-packages\django\db\models\base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Individuos() got unexpected keyword arguments: 'fecha_nac'
+>>> I1 = Individuos(cedula='V1234',nombre='ANA',apellido='VASQUEZ',direccion='SANTA FE',fechanac='1960-08-15')
+>>> I1.save()
+>>> I2 = Individuos(cedula='V5678',nombre='YOLANDA',apellido='TORTOZA', direccion='CATIA LA MAR', fechanac='1970-09-01')
+>>> I2.save()
+>>> 
+
+>>> lista_individuos = Individuos.objects.all()
+>>> type(lista_individuos)
+<class 'django.db.models.query.QuerySet'>
+>>> lista_individuos
+<QuerySet [<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>, <Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>]>
+>>> for registro in lista_individuos:
+...     registro
+... 
+<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>
+<Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>
+>>> for registro in lista_individuos:
+...     registro.cedula
+... 
+'V1234'
+'V5678'
+>>>
+
+>>> # Consulta en función del valor contenido en un campo
+>>> lista_individuos.filter(cedula='V1234')
+<QuerySet [<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>]>
+>>> resultado = lista_individuos.filter(nombre='YOLANDA') 
+>>> resultado
+<QuerySet [<Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>]>
+>>> resultado.cedula
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'cedula'
+>>> for data in resultado:
+...     data
+... 
+<Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>
+>>> for data in resultado:
+...     data.cedula, data.nombre, data.apellido
+... 
+('V5678', 'YOLANDA', 'TORTOZA')
+
+>>> # Consulta al contenido del conjunto de datos a través
+>>> # de un índice
+>>> Individuos.objects.all()[1]                 
+<Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>
+>>> Individuos.objects.all()[0] 
+<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>
+>>> resultado1 = Individuos.objects.all()[0] 
+>>> for data1 in resultado1:
+...     data1.nombre, data1.apellido
+... 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: 'Individuos' object is not iterable
+>>> resultado1
+<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>
+>>> data1.cedula
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'data1' is not defined. Did you mean: 'data'?
+>>> resultado1.cedula 
+'V1234'
+>>> lista_todos = Individuos.objects.all()
+>>> lista_todos
+<QuerySet [<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>, <Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>]>
+>>> lista_todos[0]
+<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>
+>>> lista_todos[0].nombre
+'ANA'
+>>> lista_0 = Individuos.objects.all()[0]
+>>> lista_0.nombre
+'ANA'
+>>>
+
+>>> # Consulta ordenada por parte del contenido de un campo
+>>> I3 = Individuos(cedula='V9012',nombre='ABIGAIL',apellido='PEREZ',direccion='CHACAITO',fechanac='1980-04-22')
+>>> I4 = Individuos(cedula='V3456',nombre='ARCADIO',apellido='VIVAS',direccion='LA VEGA',fechanac='1975-10-10')
+>>> I5 = Individuos(cedula='V7896',nombre='AMADOR',apellido='RIVAS',direccion='CARICUAO',fechanac='1995-11-28')
+>>> I3.save()
+>>> I4.save() 
+>>> I5.save() 
+>>> Individuos.objects.order_by('nombre')[0:2]
+<QuerySet [<Individuos: 3 V9012 ABIGAIL PEREZ CHACAITO 1980-04-22>, <Individuos: 5 V7896 AMADOR RIVAS CARICUAO 1995-11-28>]>
+>>> lista_ordenada1 = Individuos.objects.order_by('nombre')[0:2] 
+>>> for data_ordenada1 in lista_ordenada1:
+...     data_ordenada1
+... 
+<Individuos: 3 V9012 ABIGAIL PEREZ CHACAITO 1980-04-22>
+<Individuos: 5 V7896 AMADOR RIVAS CARICUAO 1995-11-28>
+>>> lista_ordenada1 = Individuos.objects.order_by('nombre')[0:5] 
+>>> for data_ordenada1 in lista_ordenada1:
+...     data_ordenada1
+... 
+<Individuos: 3 V9012 ABIGAIL PEREZ CHACAITO 1980-04-22>
+<Individuos: 5 V7896 AMADOR RIVAS CARICUAO 1995-11-28>
+<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>
+<Individuos: 4 V3456 ARCADIO VIVAS LA VEGA 1975-10-10>
+<Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>
+>>>
+
+
+>>> lista_ordenada2 = Individuos.objects.order_by('-nombre')[0:5] 
+
+>>> for data_ordenada2 in lista_ordenada2: 
+...     data_ordenada2
+... 
+<Individuos: 2 V5678 YOLANDA TORTOZA CATIA LA MAR 1970-09-01>
+<Individuos: 4 V3456 ARCADIO VIVAS LA VEGA 1975-10-10>
+<Individuos: 1 V1234 ANA VASQUEZ SANTA FE 1960-08-15>
+<Individuos: 5 V7896 AMADOR RIVAS CARICUAO 1995-11-28>
+<Individuos: 3 V9012 ABIGAIL PEREZ CHACAITO 1980-04-22>
+
+
+>>> # Actualización basado en el ORM
+>>> Iact = Individuos.objects.get(cedula='V1234')
+>>> Iact.nombre='ANA MARIA'
+>>> Iact.save()
+>>> 
+
+>>> # Actualización masiva de registros
+>>> Individuos.objects.all().update(direccion='CHACAITO')
+5   
+>>> # Borrar un registro
+>>> Ibor = Individuos.objects.get(cedula='V1234')
+>>> Ibor.delete()
+(1, {'persona.Individuos': 1})
+>>> Iact1 = Individuos.object.get(cedula='V5678')
+Traceback (most recent call last):     
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Individuos' has no attribute 'object'. Did you mean: 'objects'?
+>>> Iact1 = Individuos.objects.get(cedula='V5678') 
+>>> Iact1.direccion = 'PLAZA VENEZUELA' 
+>>> Iact1.save()
+>>> Iact1 = Individuos.objects.get(cedula='V7896') 
+>>> Iact1.direccion = 'SABANA GRANDE'   
+>>> Iact1.save()
+>>> # Eliminación masiva
+>>> Individuos.objects.filter(direccion='CHACAITO').delete()
+(2, {'persona.Individuos': 2})
+>>>
+
+
+MARCOS DE CSS
+
+https://tailwindcss.com/
+
+https://getbootstrap.com/docs/5.3/getting-started/introduction/
+
+https://www.w3schools.com/bootstrap5/index.php
