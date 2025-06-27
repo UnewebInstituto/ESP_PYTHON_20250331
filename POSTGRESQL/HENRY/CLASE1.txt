@@ -6,8 +6,8 @@ orlanyslemus@gmail.com;
 echo "# ESP_PYTHON_20250331" >> README.md
 git init
 git add README.md
-git commit -m "first commit"
-git branch -M main
+
+git commit -m "first commit"git branch -M main
 
 git remote remove origin
 
