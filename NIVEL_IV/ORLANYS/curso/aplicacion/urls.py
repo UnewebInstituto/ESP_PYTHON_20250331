@@ -19,10 +19,27 @@ from django.urls import path
 from aplicacion.views import saludo
 from aplicacion.views import otrosaludo
 from aplicacion.views import principal
+from aplicacion.views import persona_ingresar
+from aplicacion.views import persona_ingresar01
+from aplicacion.views import persona_reporte
+from aplicacion.views import persona_consultar
+from aplicacion.views import persona_consultar01
+from aplicacion.views import persona_borrar
+from aplicacion.views import persona_borrar01
+from aplicacion.views import persona_actualizar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', principal),
     path('saludar/', saludo),
-    path('saludar1/', otrosaludo)
+    path('saludar1/', otrosaludo),
+    path('persona_ingresar/', persona_ingresar),
+    path('persona_ingresar01/', persona_ingresar01),
+    path('persona_reporte/', persona_reporte),
+    path('persona_consultar/', persona_consultar),
+    path('persona_consultar01/', persona_consultar01),
+    path('persona_borrar/', persona_borrar),
+    path('persona_borrar01/', persona_borrar01),
+    path('persona_actualizar/', persona_actualizar),
 ]
+
