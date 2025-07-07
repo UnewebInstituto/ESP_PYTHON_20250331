@@ -1,0 +1,556 @@
+¡Claro\! Asumiendo el rol de desarrollador Django, aquí tienes una muestra de la sección `DATABASES` para tu archivo `settings.py`, configurando PostgreSQL como base de datos principal y MySQL como una base de datos secundaria.
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nombre_de_tu_bd_principal',
+        'USER': 'tu_usuario_postgres',
+        'PASSWORD': 'tu_password_postgres',
+        'HOST': 'localhost',  # O la IP/hostname de tu servidor PostgreSQL
+        'PORT': '5432',
+    },
+    'secondary': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nombre_de_tu_bd_secundaria',
+        'USER': 'tu_usuario_mysql',
+        'PASSWORD': 'tu_password_mysql',
+        'HOST': 'localhost',  # O la IP/hostname de tu servidor MySQL
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
+    }
+}
+
+# Opcional: Configuración para el enrutamiento de bases de datos
+# Si necesitas que algunos modelos usen la base de datos secundaria
+# Deberás crear un archivo database_router.py y configurarlo en DATABASE_ROUTERS
+# Por ejemplo, en tu settings.py:
+# DATABASE_ROUTERS = ['nombre_de_tu_app.database_router.MyAppRouter']
+```
+
+**Explicación y Consideraciones Importantes:**
+
+1.  **`default` (PostgreSQL):**
+
+      * `'ENGINE': 'django.db.backends.postgresql'`: Especifica que estás usando PostgreSQL.
+      * `'NAME'`, `'USER'`, `'PASSWORD'`, `'HOST'`, `'PORT'`: Debes reemplazar los valores de ejemplo (`'nombre_de_tu_bd_principal'`, etc.) con las credenciales y detalles de conexión de tu base de datos PostgreSQL.
+      * `'HOST'`: Si PostgreSQL está en el mismo servidor que tu aplicación Django, `localhost` es lo usual. Si está en otro servidor, usa la IP o el nombre de host.
+      * `'PORT'`: El puerto predeterminado de PostgreSQL es `5432`.
+
+2.  **`secondary` (MySQL):**
+
+      * `'ENGINE': 'django.db.backends.mysql'`: Especifica que estás usando MySQL.
+      * `'NAME'`, `'USER'`, `'PASSWORD'`, `'HOST'`, `'PORT'`: Similar a PostgreSQL, reemplaza con los detalles de tu base de datos MySQL.
+      * `'PORT'`: El puerto predeterminado de MySQL es `3306`.
+      * **`'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"}`:** Esta opción es común y muy recomendable para MySQL. Ayuda a que MySQL se comporte de una manera más estricta con los datos, similar a otros SGBD, previniendo algunos problemas comunes relacionados con la inserción de datos no válidos (por ejemplo, truncamiento automático de strings demasiado largos).
+
+**Pasos Adicionales y Requerimientos:**
+
+  * **Instalar los adaptadores de base de datos:**
+
+      * Para PostgreSQL: Necesitarás instalar `psycopg2` (o `psycopg2-binary`).
+        ```bash
+        pip install psycopg2-binary
+        ```
+      * Para MySQL: Necesitarás instalar `mysqlclient`.
+        ```bash
+        pip install mysqlclient
+        ```
+        *Nota: Para `mysqlclient`, podrías necesitar algunas dependencias del sistema operativo, como `libmysqlclient-dev` en sistemas basados en Debian/Ubuntu o `mysql-devel` en Fedora/RHEL.*
+
+  * **Enrutamiento de Bases de Datos (Database Routing):**
+    Si tienes una base de datos secundaria, lo más probable es que quieras usarla para ciertos modelos o aplicaciones específicas, y no para todos. Django no sabe automáticamente qué modelos deben ir a qué base de datos. Para esto, necesitas implementar un **Database Router**.
+
+    Aquí un ejemplo básico de cómo sería un archivo `database_router.py` (por ejemplo, dentro de una de tus apps, `mi_app/database_router.py`):
+
+    ```python
+    # mi_app/database_router.py
+
+    class MyAppRouter:
+        """
+        Un enrutador para controlar todas las operaciones de la base de datos
+        para 'mi_app' utilizando la base de datos 'secondary'.
+        """
+        route_app_labels = {'mi_app_para_mysql', 'otra_app_para_mysql'} # Nombres de tus apps que usarán la BD secundaria
+
+        def db_for_read(self, model, **hints):
+            if model._meta.app_label in self.route_app_labels:
+                return 'secondary'
+            return None
+
+        def db_for_write(self, model, **hints):
+            if model._meta.app_label in self.route_app_labels:
+                return 'secondary'
+            return None
+
+        def allow_relation(self, obj1, obj2, **hints):
+            # Permite relaciones si ambos objetos están en la misma base de datos
+            # o si están en 'default' y no hay conflicto.
+            db_list = ('default', 'secondary')
+            if obj1._state.db in db_list and obj2._state.db in db_list:
+                return True
+            return None
+
+        def allow_migrate(self, db, app_label, model_name=None, **hints):
+            """
+            Asegúrate de que las apps solo aparezcan en la base de datos correcta.
+            """
+            if app_label in self.route_app_labels:
+                return db == 'secondary'
+            # Todas las demás apps van a la base de datos 'default'
+            return db == 'default'
+
+    ```
+
+    Y luego, en tu `settings.py`, tendrías que agregar:
+
+    ```python
+    DATABASE_ROUTERS = ['mi_app.database_router.MyAppRouter']
+    ```
+
+    Este enrutador asegura que las migraciones para las aplicaciones listadas en `route_app_labels` se apliquen a la base de datos `secondary`, y las operaciones de lectura/escritura para los modelos de esas apps también se dirijan allí. Todos los demás modelos irán a la base de datos `default`.
+
+¡Espero que esto te sea de gran ayuda para configurar tus bases de datos en Django\!
+
+
+CREACIÓN DE APLICACIÓN PARA EL MODELO.
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py startapp persona
+
+¡Excelente pregunta\! En Django, no añades el atributo `UNIQUE` directamente en la "definición de una tabla" en el sentido de SQL puro dentro del ORM. En su lugar, lo especificas en la definición de tu modelo de Django, y el ORM se encarga de generar la sentencia SQL `CREATE TABLE` (o `ALTER TABLE`) adecuada con la restricción `UNIQUE` en PostgreSQL (o en la base de datos que estés usando).
+
+Hay dos formas principales de hacerlo, dependiendo de si quieres que la unicidad sea para un solo campo o para una combinación de campos.
+
+### 1\. Unicidad en un Solo Campo (Most Common)
+
+Para hacer que un campo individual sea único, simplemente añades `unique=True` a la definición del campo en tu modelo.
+
+**Ejemplo:**
+Imagina que tienes un modelo `Producto` y quieres asegurarte de que cada producto tenga un código SKU único.
+
+```python
+# models.py
+
+from django.db import models
+
+class Producto(models.Model):
+    nombre = models.CharField(max_length=200)
+    # Este campo será único en la base de datos
+    sku = models.CharField(max_length=50, unique=True)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    descripcion = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.nombre
+
+```
+
+**Cómo funciona:**
+
+  * Cuando ejecutes `python manage.py makemigrations` y luego `python manage.py migrate`, Django generará una migración que incluirá una restricción `UNIQUE` en la columna `sku` de la tabla `producto` en PostgreSQL.
+  * Si intentas guardar dos objetos `Producto` con el mismo valor en el campo `sku`, Django (a través de la base de datos) lanzará una excepción `django.db.utils.IntegrityError`.
+
+### 2\. Unicidad en una Combinación de Campos (UniqueTogether Constraint)
+
+A veces, la unicidad no reside en un solo campo, sino en la combinación de dos o más campos. Por ejemplo, en un modelo `Inscripcion`, una persona solo puede estar inscrita una vez a un curso específico, pero puede estar inscrita a varios cursos, y varios cursos pueden tener la misma persona inscrita (solo que no para el mismo curso).
+
+Para esto, usas la opción `unique_together` dentro de la clase `Meta` de tu modelo.
+
+**Ejemplo:**
+Supongamos un modelo `Inscripcion` donde una persona (estudiante) solo puede inscribirse una vez a un curso específico.
+
+```python
+# models.py
+
+from django.db import models
+
+class Estudiante(models.Model):
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField(unique=True) # El email de un estudiante debe ser único
+
+    def __str__(self):
+        return self.nombre
+
+class Curso(models.Model):
+    titulo = models.CharField(max_length=200)
+    codigo_curso = models.CharField(max_length=20, unique=True) # El código del curso debe ser único
+
+    def __str__(self):
+        return self.titulo
+
+class Inscripcion(models.Model):
+    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    fecha_inscripcion = models.DateField(auto_now_add=True)
+
+    class Meta:
+        # Esto asegura que la combinación de 'estudiante' y 'curso' sea única.
+        # Un estudiante no puede inscribirse al mismo curso dos veces.
+        unique_together = ('estudiante', 'curso')
+        verbose_name = "Inscripción"
+        verbose_name_plural = "Inscripciones"
+
+    def __str__(self):
+        return f"{self.estudiante.nombre} - {self.curso.titulo}"
+
+```
+
+**Cómo funciona:**
+
+  * `unique_together = ('estudiante', 'curso')`: Le dice a Django que la combinación de los valores de los campos `estudiante` y `curso` debe ser única en toda la tabla `inscripcion`.
+  * Al ejecutar `makemigrations` y `migrate`, Django creará una restricción `UNIQUE` compuesta en la base de datos que abarcará ambas columnas.
+  * Si intentas crear una `Inscripcion` donde ya existe un `estudiante` y un `curso` idénticos, obtendrás una `IntegrityError`.
+
+### Consideraciones adicionales:
+
+  * **Django 3.x+ y `UniqueConstraint`:** A partir de Django 3.0, `unique_together` es funcional, pero la forma preferida y más flexible de definir restricciones de unicidad compuestas (y otras restricciones de base de datos) es a través de la clase `Meta.constraints` usando `models.UniqueConstraint`. Esto ofrece más opciones, como dar un nombre explícito a la restricción o incluir condiciones.
+
+    **Ejemplo con `UniqueConstraint`:**
+
+    ```python
+    # models.py
+
+    from django.db import models
+
+    class Inscripcion(models.Model):
+        estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+        curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+        fecha_inscripcion = models.DateField(auto_now_add=True)
+
+        class Meta:
+            constraints = [
+                models.UniqueConstraint(fields=['estudiante', 'curso'], name='unique_inscripcion_estudiante_curso')
+            ]
+            verbose_name = "Inscripción"
+            verbose_name_plural = "Inscripciones"
+
+        def __str__(self):
+            return f"{self.estudiante.nombre} - {self.curso.titulo}"
+
+    ```
+
+    `UniqueConstraint` es más potente porque permite:
+
+      * Definir un `name` para la restricción de forma explícita.
+      * Definir restricciones condicionales usando el argumento `condition` (por ejemplo, unicidad solo para registros activos).
+
+  * **Migraciones:** Después de añadir `unique=True` o modificar `unique_together`/`constraints`, siempre debes ejecutar:
+
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+    Esto creará y aplicará la migración que modifica el esquema de tu base de datos para incluir la restricción `UNIQUE`.
+
+Al usar estas opciones en tu modelo de Django, el ORM se encarga de traducir tus intenciones a las sentencias `UNIQUE` apropiadas en PostgreSQL (o en el motor de base de datos que hayas configurado).
+
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py makemigrations 
+Migrations for 'persona':
+  persona\migrations\0001_initial.py
+    + Create model Individuos
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>
+
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py sqlmigrate persona 0001
+BEGIN;
+--
+-- Create model Individuos
+--
+CREATE TABLE "persona_individuos" ("id" bigint NOT NULL PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY, "cedula" varchar(10) NOT NULL UNIQUE, "nombre" varchar(30) NOT NULL, "apellido" varchar(30) NOT NULL, "direccion" text NOT NULL, "fechanac" date NOT NULL);
+CREATE INDEX "persona_individuos_cedula_7cc1fe8c_like" ON "persona_individuos" ("cedula" varchar_pattern_ops);
+COMMIT;
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>
+
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python 
+manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, persona, sessions
+Running migrations:
+  Applying persona.0001_initial... OK
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>   
+
+
+¡Claro\! Asumiendo el rol de desarrollador Django, aquí tienes una muestra de la sección `DATABASES` para tu archivo `settings.py`, configurando PostgreSQL como base de datos principal y MySQL como una base de datos secundaria.
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nombre_de_tu_bd_principal',
+        'USER': 'tu_usuario_postgres',
+        'PASSWORD': 'tu_password_postgres',
+        'HOST': 'localhost',  # O la IP/hostname de tu servidor PostgreSQL
+        'PORT': '5432',
+    },
+    'secondary': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nombre_de_tu_bd_secundaria',
+        'USER': 'tu_usuario_mysql',
+        'PASSWORD': 'tu_password_mysql',
+        'HOST': 'localhost',  # O la IP/hostname de tu servidor MySQL
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
+    }
+}
+
+# Opcional: Configuración para el enrutamiento de bases de datos
+# Si necesitas que algunos modelos usen la base de datos secundaria
+# Deberás crear un archivo database_router.py y configurarlo en DATABASE_ROUTERS
+# Por ejemplo, en tu settings.py:
+# DATABASE_ROUTERS = ['nombre_de_tu_app.database_router.MyAppRouter']
+```
+
+**Explicación y Consideraciones Importantes:**
+
+1.  **`default` (PostgreSQL):**
+
+      * `'ENGINE': 'django.db.backends.postgresql'`: Especifica que estás usando PostgreSQL.
+      * `'NAME'`, `'USER'`, `'PASSWORD'`, `'HOST'`, `'PORT'`: Debes reemplazar los valores de ejemplo (`'nombre_de_tu_bd_principal'`, etc.) con las credenciales y detalles de conexión de tu base de datos PostgreSQL.
+      * `'HOST'`: Si PostgreSQL está en el mismo servidor que tu aplicación Django, `localhost` es lo usual. Si está en otro servidor, usa la IP o el nombre de host.
+      * `'PORT'`: El puerto predeterminado de PostgreSQL es `5432`.
+
+2.  **`secondary` (MySQL):**
+
+      * `'ENGINE': 'django.db.backends.mysql'`: Especifica que estás usando MySQL.
+      * `'NAME'`, `'USER'`, `'PASSWORD'`, `'HOST'`, `'PORT'`: Similar a PostgreSQL, reemplaza con los detalles de tu base de datos MySQL.
+      * `'PORT'`: El puerto predeterminado de MySQL es `3306`.
+      * **`'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"}`:** Esta opción es común y muy recomendable para MySQL. Ayuda a que MySQL se comporte de una manera más estricta con los datos, similar a otros SGBD, previniendo algunos problemas comunes relacionados con la inserción de datos no válidos (por ejemplo, truncamiento automático de strings demasiado largos).
+
+**Pasos Adicionales y Requerimientos:**
+
+  * **Instalar los adaptadores de base de datos:**
+
+      * Para PostgreSQL: Necesitarás instalar `psycopg2` (o `psycopg2-binary`).
+        ```bash
+        pip install psycopg2-binary
+        ```
+      * Para MySQL: Necesitarás instalar `mysqlclient`.
+        ```bash
+        pip install mysqlclient
+        ```
+        *Nota: Para `mysqlclient`, podrías necesitar algunas dependencias del sistema operativo, como `libmysqlclient-dev` en sistemas basados en Debian/Ubuntu o `mysql-devel` en Fedora/RHEL.*
+
+  * **Enrutamiento de Bases de Datos (Database Routing):**
+    Si tienes una base de datos secundaria, lo más probable es que quieras usarla para ciertos modelos o aplicaciones específicas, y no para todos. Django no sabe automáticamente qué modelos deben ir a qué base de datos. Para esto, necesitas implementar un **Database Router**.
+
+    Aquí un ejemplo básico de cómo sería un archivo `database_router.py` (por ejemplo, dentro de una de tus apps, `mi_app/database_router.py`):
+
+    ```python
+    # mi_app/database_router.py
+
+    class MyAppRouter:
+        """
+        Un enrutador para controlar todas las operaciones de la base de datos
+        para 'mi_app' utilizando la base de datos 'secondary'.
+        """
+        route_app_labels = {'mi_app_para_mysql', 'otra_app_para_mysql'} # Nombres de tus apps que usarán la BD secundaria
+
+        def db_for_read(self, model, **hints):
+            if model._meta.app_label in self.route_app_labels:
+                return 'secondary'
+            return None
+
+        def db_for_write(self, model, **hints):
+            if model._meta.app_label in self.route_app_labels:
+                return 'secondary'
+            return None
+
+        def allow_relation(self, obj1, obj2, **hints):
+            # Permite relaciones si ambos objetos están en la misma base de datos
+            # o si están en 'default' y no hay conflicto.
+            db_list = ('default', 'secondary')
+            if obj1._state.db in db_list and obj2._state.db in db_list:
+                return True
+            return None
+
+        def allow_migrate(self, db, app_label, model_name=None, **hints):
+            """
+            Asegúrate de que las apps solo aparezcan en la base de datos correcta.
+            """
+            if app_label in self.route_app_labels:
+                return db == 'secondary'
+            # Todas las demás apps van a la base de datos 'default'
+            return db == 'default'
+
+    ```
+
+    Y luego, en tu `settings.py`, tendrías que agregar:
+
+    ```python
+    DATABASE_ROUTERS = ['mi_app.database_router.MyAppRouter']
+    ```
+
+    Este enrutador asegura que las migraciones para las aplicaciones listadas en `route_app_labels` se apliquen a la base de datos `secondary`, y las operaciones de lectura/escritura para los modelos de esas apps también se dirijan allí. Todos los demás modelos irán a la base de datos `default`.
+
+¡Espero que esto te sea de gran ayuda para configurar tus bases de datos en Django\!
+
+
+CREACIÓN DE APLICACIÓN PARA EL MODELO.
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py startapp persona
+
+¡Excelente pregunta\! En Django, no añades el atributo `UNIQUE` directamente en la "definición de una tabla" en el sentido de SQL puro dentro del ORM. En su lugar, lo especificas en la definición de tu modelo de Django, y el ORM se encarga de generar la sentencia SQL `CREATE TABLE` (o `ALTER TABLE`) adecuada con la restricción `UNIQUE` en PostgreSQL (o en la base de datos que estés usando).
+
+Hay dos formas principales de hacerlo, dependiendo de si quieres que la unicidad sea para un solo campo o para una combinación de campos.
+
+### 1\. Unicidad en un Solo Campo (Most Common)
+
+Para hacer que un campo individual sea único, simplemente añades `unique=True` a la definición del campo en tu modelo.
+
+**Ejemplo:**
+Imagina que tienes un modelo `Producto` y quieres asegurarte de que cada producto tenga un código SKU único.
+
+```python
+# models.py
+
+from django.db import models
+
+class Producto(models.Model):
+    nombre = models.CharField(max_length=200)
+    # Este campo será único en la base de datos
+    sku = models.CharField(max_length=50, unique=True)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    descripcion = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.nombre
+
+```
+
+**Cómo funciona:**
+
+  * Cuando ejecutes `python manage.py makemigrations` y luego `python manage.py migrate`, Django generará una migración que incluirá una restricción `UNIQUE` en la columna `sku` de la tabla `producto` en PostgreSQL.
+  * Si intentas guardar dos objetos `Producto` con el mismo valor en el campo `sku`, Django (a través de la base de datos) lanzará una excepción `django.db.utils.IntegrityError`.
+
+### 2\. Unicidad en una Combinación de Campos (UniqueTogether Constraint)
+
+A veces, la unicidad no reside en un solo campo, sino en la combinación de dos o más campos. Por ejemplo, en un modelo `Inscripcion`, una persona solo puede estar inscrita una vez a un curso específico, pero puede estar inscrita a varios cursos, y varios cursos pueden tener la misma persona inscrita (solo que no para el mismo curso).
+
+Para esto, usas la opción `unique_together` dentro de la clase `Meta` de tu modelo.
+
+**Ejemplo:**
+Supongamos un modelo `Inscripcion` donde una persona (estudiante) solo puede inscribirse una vez a un curso específico.
+
+```python
+# models.py
+
+from django.db import models
+
+class Estudiante(models.Model):
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField(unique=True) # El email de un estudiante debe ser único
+
+    def __str__(self):
+        return self.nombre
+
+class Curso(models.Model):
+    titulo = models.CharField(max_length=200)
+    codigo_curso = models.CharField(max_length=20, unique=True) # El código del curso debe ser único
+
+    def __str__(self):
+        return self.titulo
+
+class Inscripcion(models.Model):
+    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    fecha_inscripcion = models.DateField(auto_now_add=True)
+
+    class Meta:
+        # Esto asegura que la combinación de 'estudiante' y 'curso' sea única.
+        # Un estudiante no puede inscribirse al mismo curso dos veces.
+        unique_together = ('estudiante', 'curso')
+        verbose_name = "Inscripción"
+        verbose_name_plural = "Inscripciones"
+
+    def __str__(self):
+        return f"{self.estudiante.nombre} - {self.curso.titulo}"
+
+```
+
+**Cómo funciona:**
+
+  * `unique_together = ('estudiante', 'curso')`: Le dice a Django que la combinación de los valores de los campos `estudiante` y `curso` debe ser única en toda la tabla `inscripcion`.
+  * Al ejecutar `makemigrations` y `migrate`, Django creará una restricción `UNIQUE` compuesta en la base de datos que abarcará ambas columnas.
+  * Si intentas crear una `Inscripcion` donde ya existe un `estudiante` y un `curso` idénticos, obtendrás una `IntegrityError`.
+
+### Consideraciones adicionales:
+
+  * **Django 3.x+ y `UniqueConstraint`:** A partir de Django 3.0, `unique_together` es funcional, pero la forma preferida y más flexible de definir restricciones de unicidad compuestas (y otras restricciones de base de datos) es a través de la clase `Meta.constraints` usando `models.UniqueConstraint`. Esto ofrece más opciones, como dar un nombre explícito a la restricción o incluir condiciones.
+
+    **Ejemplo con `UniqueConstraint`:**
+
+    ```python
+    # models.py
+
+    from django.db import models
+
+    class Inscripcion(models.Model):
+        estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+        curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+        fecha_inscripcion = models.DateField(auto_now_add=True)
+
+        class Meta:
+            constraints = [
+                models.UniqueConstraint(fields=['estudiante', 'curso'], name='unique_inscripcion_estudiante_curso')
+            ]
+            verbose_name = "Inscripción"
+            verbose_name_plural = "Inscripciones"
+
+        def __str__(self):
+            return f"{self.estudiante.nombre} - {self.curso.titulo}"
+
+    ```
+
+    `UniqueConstraint` es más potente porque permite:
+
+      * Definir un `name` para la restricción de forma explícita.
+      * Definir restricciones condicionales usando el argumento `condition` (por ejemplo, unicidad solo para registros activos).
+
+  * **Migraciones:** Después de añadir `unique=True` o modificar `unique_together`/`constraints`, siempre debes ejecutar:
+
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+    Esto creará y aplicará la migración que modifica el esquema de tu base de datos para incluir la restricción `UNIQUE`.
+
+Al usar estas opciones en tu modelo de Django, el ORM se encarga de traducir tus intenciones a las sentencias `UNIQUE` apropiadas en PostgreSQL (o en el motor de base de datos que hayas configurado).
+
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py makemigrations 
+Migrations for 'persona':
+  persona\migrations\0001_initial.py
+    + Create model Individuos
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>
+
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python manage.py sqlmigrate persona 0001
+BEGIN;
+--
+-- Create model Individuos
+--
+CREATE TABLE "persona_individuos" ("id" bigint NOT NULL PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY, "cedula" varchar(10) NOT NULL UNIQUE, "nombre" varchar(30) NOT NULL, "apellido" varchar(30) NOT NULL, "direccion" text NOT NULL, "fechanac" date NOT NULL);
+CREATE INDEX "persona_individuos_cedula_7cc1fe8c_like" ON "persona_individuos" ("cedula" varchar_pattern_ops);
+COMMIT;
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>
+
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>python 
+manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, persona, sessions
+Running migrations:
+  Applying persona.0001_initial... OK
+
+(.venv) C:\ESP_PYTHON_20250331\NIVEL_IV\HENRY\curso>    
