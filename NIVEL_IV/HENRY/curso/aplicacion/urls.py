@@ -27,10 +27,13 @@ from aplicacion.views import persona_consultar01
 from aplicacion.views import persona_borrar
 from aplicacion.views import persona_borrar01
 from aplicacion.views import persona_actualizar
+from aplicacion.views import persona_actualizar01
+from aplicacion.views import persona_actualizar02
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', principal),
+    path('/', principal),
     path('saludar/', saludo),
     path('saludar1/', otrosaludo),
     path('persona_ingresar/', persona_ingresar),
@@ -41,5 +44,6 @@ urlpatterns = [
     path('persona_borrar/', persona_borrar),
     path('persona_borrar01/', persona_borrar01),
     path('persona_actualizar/', persona_actualizar),
-
+    path('persona_actualizar01/', persona_actualizar01),
+    path('persona_actualizar02/', persona_actualizar02),
 ]
