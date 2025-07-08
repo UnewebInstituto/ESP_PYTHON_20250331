@@ -190,3 +190,21 @@ def persona_actualizar02(request):
         tipo = 3
         return render(request, 'ingresar.html', {'mensaje':mensaje, 'tipo':tipo})
 
+def ejemplo01_js(request):
+    return render(request, 'ejemplo01_js.html')
+
+def ejemplo02_js(request):
+    return render(request, 'ejemplo02_js.html')
+
+def ejemplo03_js(request):
+    
+    return render(request, 'ejemplo03_js.html')
+
+def ejemplo01_jq(request):
+    return render(request, 'ejemplo01_jq.html')
+
+def ejemplo02_jq(request):
+    return render(request, 'ejemplo02_jq.html')
+
+def ejemplo03_jq(request):
+    return render(request, 'ejemplo03_jq.html')

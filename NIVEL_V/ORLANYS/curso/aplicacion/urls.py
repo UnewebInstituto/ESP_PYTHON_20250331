@@ -29,6 +29,14 @@ from aplicacion.views import persona_borrar01
 from aplicacion.views import persona_actualizar
 from aplicacion.views import persona_actualizar01
 from aplicacion.views import persona_actualizar02
+from aplicacion.views import ejemplo01_js
+from aplicacion.views import ejemplo02_js
+from aplicacion.views import ejemplo03_js
+from aplicacion.views import ejemplo01_jq
+from aplicacion.views import ejemplo02_jq
+from aplicacion.views import ejemplo03_jq
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,6 +54,12 @@ urlpatterns = [
     path('persona_actualizar/', persona_actualizar),
     path('persona_actualizar01/', persona_actualizar01),
     path('persona_actualizar02/', persona_actualizar02),
+    path('ejemplo01_js/', ejemplo01_js),
+    path('ejemplo02_js/', ejemplo02_js),
+    path('ejemplo03_js/', ejemplo03_js),
+    path('ejemplo01_jq/', ejemplo01_jq),
+    path('ejemplo02_jq/', ejemplo02_jq),
+    path('ejemplo03_jq/', ejemplo03_jq),
 ]
 
 
