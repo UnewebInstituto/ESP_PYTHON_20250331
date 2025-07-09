@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 #Declaración del modelo de datos
@@ -208,3 +209,29 @@ def ejemplo02_jq(request):
 
 def ejemplo03_jq(request):
     return render(request, 'ejemplo03_jq.html')
+
+def persona_api_json(request):
+    mensaje = ''
+    tipo = 0
+    try:
+        datos = list(Individuos.objects.values())
+        mensaje = 'Consulta a la Api en formato JSON, procesada con éxito'
+        tipo = 1
+        response_data = {
+            'tipo': tipo,
+            'mensaje': mensaje,
+            'datos': datos
+        }
+        return JsonResponse(response_data)
+    except Exception as e:
+        mensaje = 'Ocurrio un error al ejecutar la Api en formato JSON'
+        tipo = 2
+        response_data = {
+            'tipo': tipo,
+            'mensaje': mensaje
+        }
+        return JsonResponse(response_data, status=500)
+
+
+def persona_reporte_api_json(request):
+    return render(request, 'persona_reporte_api_json.html')

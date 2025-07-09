@@ -1,0 +1,263 @@
+https://htmlcheatsheet.com/
+
+https://es.wikipedia.org/wiki/AJAX
+
+Habilitar el acceso CORS (Cross-Origin Resource Sharing) en Django es fundamental cuando tu frontend (por ejemplo, una aplicación React, Vue o Angular) se ejecuta en un dominio o puerto diferente al de tu backend Django API. Los navegadores web, por seguridad, bloquean por defecto las solicitudes de origen cruzado.
+
+La forma más común y recomendada de manejar CORS en Django es utilizando el paquete de terceros `django-cors-headers`. Aquí te explico cómo configurarlo paso a paso:
+
+### Pasos para habilitar CORS en Django
+
+**1. Instalar `django-cors-headers`**
+
+Abre tu terminal y ejecuta el siguiente comando:
+
+```bash
+pip install django-cors-headers
+```
+
+**2. Añadir `corsheaders` a tus `INSTALLED_APPS`**
+
+En tu archivo `settings.py` (ubicado generalmente en la carpeta de tu proyecto Django principal), busca la lista `INSTALLED_APPS` y agrega `'corsheaders'` a ella:
+
+```python
+# myproject/settings.py
+
+INSTALLED_APPS = [
+    # ... otras aplicaciones
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'corsheaders',  # ¡Añade esta línea!
+    # ... tus propias apps
+]
+```
+
+**3. Añadir `CorsMiddleware` a tu `MIDDLEWARE`**
+
+En el mismo archivo `settings.py`, busca la lista `MIDDLEWARE` y añade `'corsheaders.middleware.CorsMiddleware'` al **principio** de la lista. Es crucial que esté lo más arriba posible, preferiblemente antes de `CommonMiddleware` o cualquier otro middleware que pueda generar respuestas.
+
+```python
+# myproject/settings.py
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # ¡Añade esta línea al principio!
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+```
+
+**4. Configurar las políticas CORS**
+
+Ahora, necesitas definir qué orígenes (dominios o URLs) están permitidos para hacer solicitudes a tu API de Django. Hay varias formas de hacerlo:
+
+  * **Permitir todos los orígenes (solo para desarrollo)**:
+    Para desarrollo local, puedes permitir todos los orígenes. **¡ADVERTENCIA\!** No uses esto en producción, ya que abre tu API a solicitudes desde cualquier dominio, lo cual es un riesgo de seguridad.
+
+    ```python
+    # myproject/settings.py
+
+    CORS_ALLOW_ALL_ORIGINS = True
+    ```
+
+  * **Permitir orígenes específicos (recomendado para producción)**:
+    Esta es la forma más segura. Define una lista de dominios desde los cuales tu API aceptará solicitudes.
+
+    ```python
+    # myproject/settings.py
+
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",        # Por ejemplo, si tu frontend React/Vue/Angular se ejecuta aquí
+        "http://127.0.0.1:3000",
+        "https://tu-dominio-frontend.com", # Tu dominio de producción
+        "https://www.otro-dominio-permitido.net",
+    ]
+
+    # También puedes usar regex si tienes muchos subdominios
+    # CORS_ALLOWED_ORIGIN_REGEXES = [
+    #     r"^https://\w+\.tu-dominio\.com$",
+    # ]
+    ```
+
+    **Nota sobre `CORS_ALLOWED_ORIGINS` y `CORS_ALLOW_ALL_ORIGINS`:**
+
+      * Si `CORS_ALLOW_ALL_ORIGINS` es `True`, las otras configuraciones de orígenes (`CORS_ALLOWED_ORIGINS`, `CORS_ALLOWED_ORIGIN_REGEXES`) serán ignoradas, ya que se permiten todos los orígenes.
+      * En producción, siempre configura explícitamente los orígenes permitidos.
+
+**5. (Opcional) Configuración adicional**
+
+`django-cors-headers` ofrece otras configuraciones útiles:
+
+  * **`CORS_ALLOW_CREDENTIALS = True`**:
+    Si tu frontend necesita enviar cookies, encabezados de autorización o certificados TLS con las solicitudes de origen cruzado, debes establecer esto a `True`. Ten en cuenta las implicaciones de seguridad al habilitarlo.
+
+    ```python
+    # myproject/settings.py
+
+    CORS_ALLOW_CREDENTIALS = True
+    ```
+
+  * **`CORS_ALLOW_METHODS`**:
+    Define qué métodos HTTP (GET, POST, PUT, DELETE, etc.) están permitidos para las solicitudes de origen cruzado. Por defecto, ya permite los más comunes.
+
+    ```python
+    # myproject/settings.py
+
+    from corsheaders.defaults import default_methods
+
+    CORS_ALLOW_METHODS = (
+        *default_methods,
+        # "PATCH", # Si necesitas añadir otros métodos
+    )
+    ```
+
+  * **`CORS_ALLOW_HEADERS`**:
+    Define qué encabezados HTTP personalizados están permitidos en las solicitudes de origen cruzado. Por defecto, ya permite los encabezados estándar.
+
+    ```python
+    # myproject/settings.py
+
+    from corsheaders.defaults import default_headers
+
+    CORS_ALLOW_HEADERS = (
+        *default_headers,
+        # "X-Custom-Header", # Si necesitas añadir otros encabezados
+    )
+    ```
+
+  * **`CORS_EXPOSE_HEADERS`**:
+    Si tu API necesita exponer encabezados personalizados al frontend (es decir, hacerlos accesibles para JavaScript en el navegador), debes listarlos aquí.
+
+    ```python
+    # myproject/settings.py
+
+    CORS_EXPOSE_HEADERS = [
+        "X-Custom-Result-Count",
+        "X-Pagination-Page",
+    ]
+    ```
+
+### Ejemplo completo de `settings.py` (para desarrollo)
+
+```python
+# myproject/settings.py
+
+import os
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'corsheaders',  # ¡Importante!
+    # ... tus otras apps
+]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # ¡Importante, al principio!
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Configuración CORS
+CORS_ALLOW_ALL_ORIGINS = True  # Solo para desarrollo. ¡Cambiar en producción!
+# O para producción, usa:
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://tu-dominio-frontend.com",
+# ]
+
+CORS_ALLOW_CREDENTIALS = True # Si necesitas enviar cookies/headers de autorización
+# Puedes añadir más configuraciones según tus necesidades
+```
+
+### Reiniciar el servidor de desarrollo
+
+Después de hacer estos cambios en `settings.py`, asegúrate de reiniciar tu servidor de desarrollo de Django:
+
+```bash
+python manage.py runserver
+```
+
+Con estos pasos, tu API de Django debería estar configurada para permitir las solicitudes de origen cruzado de tu frontend. Recuerda siempre priorizar la seguridad en entornos de producción limitando los orígenes permitidos.
+
+
+Este error `net::ERR_CONNECTION_REFUSED` no está relacionado directamente con la configuración de CORS. Indica que tu navegador intentó conectarse a `http://127.0.0.1:5001/persona_api_json/?datos=` pero el servidor en esa dirección no respondió o rechazó activamente la conexión.
+
+Aunque hayas configurado `CORS_ALLOW_ALL_ORIGINS` correctamente en Django, ese ajuste solo entra en juego *después* de que se haya establecido una conexión con el servidor. El error que estás viendo significa que ni siquiera se pudo iniciar la comunicación.
+
+-----
+
+### Posibles causas y soluciones
+
+Aquí te indico las causas más comunes de `ERR_CONNECTION_REFUSED` y cómo solucionarlas:
+
+#### 1\. El servidor Django no está corriendo o está en un puerto diferente
+
+Es la causa más frecuente.
+
+  * **Verificación:**
+
+      * Abre tu terminal y verifica si el servidor de desarrollo de Django está activo. Deberías ver algo como:
+        ```
+        Watching for file changes with StatReloader
+        Performing system checks...
+
+        System check identified no issues (0 silenced).
+        July 09, 2025 - 17:10:55
+        Django version 4.x.x, using settings 'your_project_name.settings'
+        Starting development server at http://127.0.0.1:8000/
+        Quit the server with CONTROL-C.
+        ```
+      * **Importante:** Nota el puerto en la línea `Starting development server at http://127.0.0.1:8000/`. Por defecto, Django se ejecuta en el puerto `8000`, no en el `5001` que estás intentando acceder.
+
+  * **Solución:**
+
+      * **Si el servidor no está corriendo:** Inícialo con `python manage.py runserver`.
+      * **Si está corriendo en otro puerto (ej. 8000):** Cambia la URL en tu código JavaScript (donde haces la llamada `GET`) para que apunte al puerto correcto.
+          * **De:** `http://127.0.0.1:5001/persona_api_json/?datos=`
+          * **A:** `http://127.0.0.1:8000/persona_api_json/?datos=` (o el puerto que muestre tu terminal)
+
+#### 2\. Un firewall o antivirus está bloqueando la conexión
+
+Tu sistema operativo o un software de seguridad podría estar impidiendo la conexión a ese puerto.
+
+  * **Verificación:** Temporalmente, desactiva tu firewall o antivirus y prueba de nuevo (solo para diagnóstico).
+  * **Solución:** Si esa es la causa, deberás añadir una excepción en tu firewall para el puerto donde se ejecuta Django (por defecto 8000).
+
+#### 3\. El servidor está escuchando en una dirección IP diferente
+
+Menos común para desarrollo local, pero posible.
+
+  * **Verificación:** Revisa la salida de `python manage.py runserver`. ¿Está escuchando en `127.0.0.1` o en `0.0.0.0`?
+  * **Solución:** Asegúrate de que la IP en tu solicitud `GET` (por ejemplo, `127.0.0.1`) coincida con la IP en la que el servidor de Django está escuchando. Si iniciaste el servidor con `python manage.py runserver 0.0.0.0:8000`, significa que está escuchando en todas las interfaces de red disponibles.
+
+#### 4\. Otra aplicación ya está usando el puerto 5001
+
+Es posible que otro proceso en tu máquina ya esté ocupando el puerto 5001, impidiendo que Django (si intentaras iniciarlo allí) o tu navegador se conecten.
+
+  * **Verificación:** Puedes intentar iniciar Django en el puerto 5001 explícitamente: `python manage.py runserver 5001`. Si ya está ocupado, Django te lo indicará.
+  * **Solución:** Si necesitas usar el puerto 5001, identifica y detén el proceso que lo está usando, o simplemente usa el puerto por defecto de Django (8000) o cualquier otro puerto libre.
+
+-----
+
+**En resumen, antes de preocuparte por CORS, asegúrate de que tu servidor Django esté corriendo y que la URL a la que intentas acceder en tu frontend (especialmente el puerto) coincida exactamente con la dirección en la que tu servidor Django está escuchando.**
+
+Una vez que el error `net::ERR_CONNECTION_REFUSED` desaparezca, si sigues viendo problemas relacionados con `Access-Control-Allow-Origin`, entonces sabrás que tu configuración de CORS es el siguiente paso a revisar.
+
+¿Puedes verificar en tu terminal en qué puerto está corriendo tu servidor Django?
