@@ -1,0 +1,186 @@
+Tokens que causaron el error: ['0115', 'V000000022926919', '4121872143', '0191', '4249166846', '05-05-2025', '22:54:28', '731983', '543302', '200,00', '01150111771005354998', '0000', 'APP', '000731983']
+Saltando línea vacía o muy corta en el registro 187596: ''
+Saltando línea vacía o muy corta en el registro 187597: ''
+Saltando línea vacía o muy corta en el registro 187598: ''
+Error procesando/insertando registro 187599: '0104                          4142698301          0115       J000000501267278     4120990798      05-05-2025   22:54:43   836247   544335               886,40                         01150029361005990119   0000                                   APP    000836247' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0104', '4142698301', '0115', 'J000000501267278', '4120990798', '05-05-2025', '22:54:43', '836247', '544335', '886,40', '01150029361005990119', '0000', 'APP', '000836247']
+Saltando línea vacía o muy corta en el registro 187600: ''
+Saltando línea vacía o muy corta en el registro 187601: ''
+Saltando línea vacía o muy corta en el registro 187602: ''
+Error procesando/insertando registro 187603: '0115      V000000026478067    4242014603          0191                            4249166846      05-05-2025   22:54:43   732022   558109               150,00   01150053601006589667    
+                     0000                                   APP    000732022' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000026478067', '4242014603', '0191', '4249166846', '05-05-2025', '22:54:43', '732022', '558109', '150,00', '01150053601006589667', '0000', 'APP', '000732022']
+Saltando línea vacía o muy corta en el registro 187604: ''
+Saltando línea vacía o muy corta en el registro 187605: ''
+Saltando línea vacía o muy corta en el registro 187606: ''
+Error procesando/insertando registro 187607: '0115      V000000014001777    4121555941          0168                            4126115000      05-05-2025   22:54:45   732026   632081                78,00   01150014511002192125    
+                     0000                                   APP    000732026' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000014001777', '4121555941', '0168', '4126115000', '05-05-2025', '22:54:45', '732026', '632081', '78,00', '01150014511002192125', '0000', 'APP', '000732026']
+Saltando línea vacía o muy corta en el registro 187608: ''
+Saltando línea vacía o muy corta en el registro 187609: ''
+Saltando línea vacía o muy corta en el registro 187610: ''
+Error procesando/insertando registro 187611: '0115      V000000007107159    4144284864          0105                            4145090578      05-05-2025   22:54:50   732039   732039               553,76   01150051020510070791    
+                     0000                                   APP    000732039' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000007107159', '4144284864', '0105', '4145090578', '05-05-2025', '22:54:50', '732039', '732039', '553,76', '01150051020510070791', '0000', 'APP', '000732039']
+Saltando línea vacía o muy corta en el registro 187612: ''
+Saltando línea vacía o muy corta en el registro 187613: ''
+Saltando línea vacía o muy corta en el registro 187614: ''
+Error procesando/insertando registro 187615: '0115      V000000014875300    4242845240          0138                            4241380042      05-05-2025   22:55:07   732082   545364               135,15   01150023420231217743    
+                     0000                                   APP    000732082' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000014875300', '4242845240', '0138', '4241380042', '05-05-2025', '22:55:07', '732082', '545364', '135,15', '01150023420231217743', '0000', 'APP', '000732082']
+Saltando línea vacía o muy corta en el registro 187616: ''
+Saltando línea vacía o muy corta en el registro 187617: ''
+Saltando línea vacía o muy corta en el registro 187618: ''
+Error procesando/insertando registro 187619: '0102                          4125620292          0115       J000000402362404     4245505035      05-05-2025   22:55:20   538743                      1.329,60                         01150035821003217130   0022 RESPUESTA ERRADA A PREGUNTA DE    APP    232538743' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0102', '4125620292', '0115', 'J000000402362404', '4245505035', '05-05-2025', '22:55:20', '538743', '1.329,60', '01150035821003217130', '0022', 'RESPUESTA', 'ERRADA', 'A', 'PREGUNTA', 'DE', 'APP', '232538743']
+Saltando línea vacía o muy corta en el registro 187620: ''
+Saltando línea vacía o muy corta en el registro 187621: ''
+Saltando línea vacía o muy corta en el registro 187622: ''
+Error procesando/insertando registro 187623: '0102                          4125620292          0115       J000000402362404     4245505035      05-05-2025   22:55:41   538924   554194             1.329,60                         01150035821003217130   0000                                   APP    232538924' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0102', '4125620292', '0115', 'J000000402362404', '4245505035', '05-05-2025', '22:55:41', '538924', '554194', '1.329,60', '01150035821003217130', '0000', 'APP', '232538924']
+Saltando línea vacía o muy corta en el registro 187624: ''
+Saltando línea vacía o muy corta en el registro 187625: ''
+Saltando línea vacía o muy corta en el registro 187626: ''
+Error procesando/insertando registro 187627: '0102                          4129886802          0115       J000000501267278     4120990798      05-05-2025   22:55:49   538983   554934             1.240,96                         01150029361005990119   0000                                   APP    232538983' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0102', '4129886802', '0115', 'J000000501267278', '4120990798', '05-05-2025', '22:55:49', '538983', '554934', '1.240,96', '01150029361005990119', '0000', 'APP', '232538983']
+Saltando línea vacía o muy corta en el registro 187628: ''
+Saltando línea vacía o muy corta en el registro 187629: ''
+Saltando línea vacía o muy corta en el registro 187630: ''
+Error procesando/insertando registro 187631: '0115      V000000011614517    4141347321          0172                            4249166846      05-05-2025   22:55:50   732187   554638               200,00   01150010201006487335    
+                     0000                                   APP    000732187' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000011614517', '4141347321', '0172', '4249166846', '05-05-2025', '22:55:50', '732187', '554638', '200,00', '01150010201006487335', '0000', 'APP', '000732187']
+Saltando línea vacía o muy corta en el registro 187632: ''
+Saltando línea vacía o muy corta en el registro 187633: ''
+Saltando línea vacía o muy corta en el registro 187634: ''
+Error procesando/insertando registro 187635: '0115      V000000018615996    4241341751          0191                            4249166846      05-05-2025   22:56:03   732213   718075               220,00   01150046331001763130    
+                     0000                                   APP    000732213' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000018615996', '4241341751', '0191', '4249166846', '05-05-2025', '22:56:03', '732213', '718075', '220,00', '01150046331001763130', '0000', 'APP', '000732213']
+Saltando línea vacía o muy corta en el registro 187636: ''
+Saltando línea vacía o muy corta en el registro 187637: ''
+Saltando línea vacía o muy corta en el registro 187638: ''
+Error procesando/insertando registro 187639: '0102                          4247616770          0115       J000000501267278     4120990798      05-05-2025   22:56:05   539126   560566               620,48                         01150029361005990119   0000                                   APP    232539126' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0102', '4247616770', '0115', 'J000000501267278', '4120990798', '05-05-2025', '22:56:05', '539126', '560566', '620,48', '01150029361005990119', '0000', 'APP', '232539126']
+Saltando línea vacía o muy corta en el registro 187640: ''
+Saltando línea vacía o muy corta en el registro 187641: ''
+Saltando línea vacía o muy corta en el registro 187642: ''
+Error procesando/insertando registro 187643: '0115      V000000018559583    4160796204          0169                            4143987110      05-05-2025   22:56:37   732287   563763               300,00   01150079011002652744    
+                     0000                                   APP    000732287' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000018559583', '4160796204', '0169', '4143987110', '05-05-2025', '22:56:37', '732287', '563763', '300,00', '01150079011002652744', '0000', 'APP', '000732287']
+Saltando línea vacía o muy corta en el registro 187644: ''
+Saltando línea vacía o muy corta en el registro 187645: ''
+Saltando línea vacía o muy corta en el registro 187646: ''
+Error procesando/insertando registro 187647: '0134                          4241781883          0115       J000000000698988     4123181100      05-05-2025   22:57:36   968758   573639             2.034,73                         01150023453000129977   0000                                   APP    256968758' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0134', '4241781883', '0115', 'J000000000698988', '4123181100', '05-05-2025', '22:57:36', '968758', '573639', '2.034,73', '01150023453000129977', '0000', 'APP', '256968758']
+Saltando línea vacía o muy corta en el registro 187648: ''
+Saltando línea vacía o muy corta en el registro 187649: ''
+Saltando línea vacía o muy corta en el registro 187650: ''
+Error procesando/insertando registro 187651: '0115      V000000019248270    4248515754          0191                            4123335043      05-05-2025   22:57:36   732392   850833               185,00   01150072241005525001    
+                     0000                                   APP    000732392' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000019248270', '4248515754', '0191', '4123335043', '05-05-2025', '22:57:36', '732392', '850833', '185,00', '01150072241005525001', '0000', 'APP', '000732392']
+Saltando línea vacía o muy corta en el registro 187652: ''
+Saltando línea vacía o muy corta en el registro 187653: ''
+Saltando línea vacía o muy corta en el registro 187654: ''
+Error procesando/insertando registro 187655: '0115      V000000026236358    4126786365          0134                            4246937410      05-05-2025   22:57:44   732411   277705             1.330,80   01150085441006310755    
+                     0000                                   APP    000732411' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000026236358', '4126786365', '0134', '4246937410', '05-05-2025', '22:57:44', '732411', '277705', '1.330,80', '01150085441006310755', '0000', 'APP', '000732411']
+Saltando línea vacía o muy corta en el registro 187656: ''
+Saltando línea vacía o muy corta en el registro 187657: ''
+Saltando línea vacía o muy corta en el registro 187658: ''
+Error procesando/insertando registro 187659: '0115      V000000013718256    4263197301          0172                            4249166846      05-05-2025   22:57:52   732435   574922               300,00   01150005610051129571    
+                     0000                                   APP    000732435' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000013718256', '4263197301', '0172', '4249166846', '05-05-2025', '22:57:52', '732435', '574922', '300,00', '01150005610051129571', '0000', 'APP', '000732435']
+Saltando línea vacía o muy corta en el registro 187660: ''
+Saltando línea vacía o muy corta en el registro 187661: ''
+Saltando línea vacía o muy corta en el registro 187662: ''
+Error procesando/insertando registro 187663: '0115      V000000025695276    4128733836          0172                            4249166846      05-05-2025   22:57:53   732439   574983               200,00   01150092771006575634    
+                     0000                                   APP    000732439' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000025695276', '4128733836', '0172', '4249166846', '05-05-2025', '22:57:53', '732439', '574983', '200,00', '01150092771006575634', '0000', 'APP', '000732439']
+Saltando línea vacía o muy corta en el registro 187664: ''
+Saltando línea vacía o muy corta en el registro 187665: ''
+Saltando línea vacía o muy corta en el registro 187666: ''
+Error procesando/insertando registro 187667: '0115      V000000032097256    4128934132          0105                            4145090578      05-05-2025   22:58:14   732474   732474             2.404,51   01150093528000181887    
+                     0000                                   APP    000732474' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000032097256', '4128934132', '0105', '4145090578', '05-05-2025', '22:58:14', '732474', '732474', '2.404,51', '01150093528000181887', '0000', 'APP', '000732474']
+Saltando línea vacía o muy corta en el registro 187668: ''
+Saltando línea vacía o muy corta en el registro 187669: ''
+Saltando línea vacía o muy corta en el registro 187670: ''
+Error procesando/insertando registro 187671: '0115      V000000025470856    4246015799          0191                            4122478331      05-05-2025   22:58:30   732514   944360               460,00   01150082041004231554    
+                     0000                                   APP    000732514' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000025470856', '4246015799', '0191', '4122478331', '05-05-2025', '22:58:30', '732514', '944360', '460,00', '01150082041004231554', '0000', 'APP', '000732514']
+Saltando línea vacía o muy corta en el registro 187672: ''
+Saltando línea vacía o muy corta en el registro 187673: ''
+Saltando línea vacía o muy corta en el registro 187674: ''
+Error procesando/insertando registro 187675: '0115      V000000032252003    4168104132          0191                            4124594594      05-05-2025   22:58:54   732563   008669               100,00   01150056161006384534    
+                     0000                                   APP    000732563' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000032252003', '4168104132', '0191', '4124594594', '05-05-2025', '22:58:54', '732563', '008669', '100,00', '01150056161006384534', '0000', 'APP', '000732563']
+Saltando línea vacía o muy corta en el registro 187676: ''
+Saltando línea vacía o muy corta en el registro 187677: ''
+Saltando línea vacía o muy corta en el registro 187678: ''
+Error procesando/insertando registro 187679: '0115      V000000021249927    4121908076          0169                            4143987110      05-05-2025   22:59:23   732632   592307               200,00   01150105281006074970    
+                     0000                                   APP    000732632' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000021249927', '4121908076', '0169', '4143987110', '05-05-2025', '22:59:23', '732632', '592307', '200,00', '01150105281006074970', '0000', 'APP', '000732632']
+Saltando línea vacía o muy corta en el registro 187680: ''
+Saltando línea vacía o muy corta en el registro 187681: ''
+Saltando línea vacía o muy corta en el registro 187682: ''
+Error procesando/insertando registro 187683: '0115      V000000025130131    4243707615          0191                            4249166846      05-05-2025   22:59:34   732664   048923                60,00   01150093571006030822    
+                     0000                                   APP    000732664' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000025130131', '4243707615', '0191', '4249166846', '05-05-2025', '22:59:34', '732664', '048923', '60,00', '01150093571006030822', '0000', 'APP', '000732664']
+Saltando línea vacía o muy corta en el registro 187684: ''
+Saltando línea vacía o muy corta en el registro 187685: ''
+Saltando línea vacía o muy corta en el registro 187686: ''
+Error procesando/insertando registro 187687: '0102                          4140185651          0115       J000000501267278     4120990798      05-05-2025   22:59:48   540930   594893               886,40                         01150029361005990119   0000                                   APP    232540930' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0102', '4140185651', '0115', 'J000000501267278', '4120990798', '05-05-2025', '22:59:48', '540930', '594893', '886,40', '01150029361005990119', '0000', 'APP', '232540930']
+Saltando línea vacía o muy corta en el registro 187688: ''
+Saltando línea vacía o muy corta en el registro 187689: ''
+Saltando línea vacía o muy corta en el registro 187690: ''
+Error procesando/insertando registro 187691: '0115      V000000011900759    4142600367          0174                            4141771689      05-05-2025   22:59:51   732709                      2.430,00   01150010221001305565    
+                     0005 NO ACEPTE LA TARJETA              APP    000732709' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000011900759', '4142600367', '0174', '4141771689', '05-05-2025', '22:59:51', '732709', '2.430,00', '01150010221001305565', '0005', 'NO', 'ACEPTE', 'LA', 'TARJETA', 'APP', '000732709']    
+Saltando línea vacía o muy corta en el registro 187692: ''
+Saltando línea vacía o muy corta en el registro 187693: ''
+Saltando línea vacía o muy corta en el registro 187694: ''
+Error procesando/insertando registro 187695: '0115      V000000028438762    4126550799          0191                            4123335043      05-05-2025   22:59:55   732713   109519                50,00   01150019661005846812    
+                     0000                                   APP    000732713' - transacción abortada, las órdenes serán ignoradas hasta el fin de bloque de transacción
+
+Tokens que causaron el error: ['0115', 'V000000028438762', '4126550799', '0191', '4123335043', '05-05-2025', '22:59:55', '732713', '109519', '50,00', '01150019661005846812', '0000', 'APP', '000732713']
+Saltando línea vacía o muy corta en el registro 187696: ''
+Saltando línea vacía o muy corta en el registro 187697: ''
+Saltando línea vacía o muy corta en el registro 187698: ''
+Saltando línea vacía o muy corta en el registro 187699: ''
+Saltando línea vacía o muy corta en el registro 187700: ''
+Saltando línea vacía o muy corta en el registro 187701: 'TOTAL GENERAL'      
+Saltando línea vacía o muy corta en el registro 187702: ''
+Saltando línea vacía o muy corta en el registro 187703: 'TRANSACCIONES PROCESADAS 448.380'
+Saltando línea vacía o muy corta en el registro 187704: ''
+Saltando línea vacía o muy corta en el registro 187705: 'TRANSACCIONES ACEPTADAS   44.639'
+Saltando línea vacía o muy corta en el registro 187706: ''
+Saltando línea vacía o muy corta en el registro 187707: 'TRANSACCIONES RECHAZADAS   2.281'
+Saltando línea vacía o muy corta en el registro 187708: ''
+Saltando línea vacía o muy corta en el registro 187709: 'TRANSACCIONES REVERSADAS       0'
+Carga de datos completada. Se insertaron 4 registros en la tabla 'pago_movil'.
+Conexión a la base de datos cerrada.
+[11/Jul/2025 16:39:20] "GET /importar_pago_movil/ HTTP/1.1" 200 3901

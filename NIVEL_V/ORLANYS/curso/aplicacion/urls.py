@@ -37,7 +37,8 @@ from aplicacion.views import ejemplo02_jq
 from aplicacion.views import ejemplo03_jq
 from aplicacion.views import persona_api_json
 from aplicacion.views import persona_reporte_api_json
-
+from aplicacion.views import persona_exportar_excel
+from aplicacion.views import importar_pago_movil
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -63,6 +64,8 @@ urlpatterns = [
     path('ejemplo03_jq/', ejemplo03_jq),
     path('persona_api_json/', persona_api_json),
     path('persona_reporte_api_json/', persona_reporte_api_json),
+    path('persona_exportar_excel/', persona_exportar_excel),
+    path('importar_pago_movil/', importar_pago_movil)
 ]
 
 
